@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ReportHzV", "ReportHzV\ReportHzV.rptproj", "{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.ActiveCfg = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.Build.0 = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.Deploy.0 = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Default.Build.0 = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.ActiveCfg = Release
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.Build.0 = Release
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {200CECE8-D7E5-44F7-ACDC-7C46C9B2DB6D}
+	EndGlobalSection
+EndGlobal
