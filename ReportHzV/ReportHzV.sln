@@ -5,21 +5,33 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ReportHzV", "ReportHzV\ReportHzV.rptproj", "{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_DDL_ETL", "SQL_DDL_ETL\SQL_DDL_ETL.sqlproj", "{D3CC6634-281F-410B-AC34-DCA4497BC977}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Default = Debug|Default
-		DebugLocal|Default = DebugLocal|Default
-		Release|Default = Release|Default
+		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.ActiveCfg = Debug
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.Build.0 = Debug
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Default.Deploy.0 = Debug
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Default.ActiveCfg = DebugLocal
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Default.Build.0 = DebugLocal
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.ActiveCfg = Release
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.Build.0 = Release
-		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Default.Deploy.0 = Release
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Any CPU.ActiveCfg = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Any CPU.Build.0 = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Debug|Any CPU.Deploy.0 = Debug
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.Deploy.0 = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.ActiveCfg = Release
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.Build.0 = Release
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.Deploy.0 = Release
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
