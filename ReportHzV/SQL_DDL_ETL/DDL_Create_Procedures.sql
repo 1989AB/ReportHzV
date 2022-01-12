@@ -10,6 +10,11 @@ CREATE PROCEDURE [HZV].[SP_Steuerung_Quartale]
 AS
 BEGIN
 	--Steuertabelle befüllen
+	  update HZV.Steuerung
+	  set 
+		 Q_Dashboard_kurz=  (select max(quartal) from [HZV].[NVI]) 
+		,Q_Dashboard_lang=	concat( left((select max(quartal) from [HZV].[NVI]),4),'0',right((select max(quartal) from [HZV].[NVI]),1))
+		,LastUpdate=getdate()
 
 
 	--Quartalstabelle auf Basis aller vorhandenen Quartale befüllen
