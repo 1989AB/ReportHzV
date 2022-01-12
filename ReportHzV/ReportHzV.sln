@@ -7,10 +7,13 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ReportHzV", "ReportHzV\Repo
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_DDL_ETL", "SQL_DDL_ETL\SQL_DDL_ETL.sqlproj", "{D3CC6634-281F-410B-AC34-DCA4497BC977}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS_Import_Datastore", "SSIS_Import_Datastore\SSIS_Import_Datastore.dtproj", "{BF23F105-BD01-4FA9-975E-EA53CDEEC477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		DebugLocal|Any CPU = DebugLocal|Any CPU
+		Development|Any CPU = Development|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -20,6 +23,9 @@ Global
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.Build.0 = DebugLocal
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.DebugLocal|Any CPU.Deploy.0 = DebugLocal
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Development|Any CPU.ActiveCfg = 
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Development|Any CPU.Build.0 = 
+		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Development|Any CPU.Deploy.0 = 
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.ActiveCfg = Release
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.Build.0 = Release
 		{DD311CF2-E5F0-4460-BF2C-B7B65EFB882B}.Release|Any CPU.Deploy.0 = Release
@@ -29,9 +35,20 @@ Global
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.DebugLocal|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Development|Any CPU.Deploy.0 = Debug|Any CPU
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3CC6634-281F-410B-AC34-DCA4497BC977}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Debug|Any CPU.ActiveCfg = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Debug|Any CPU.Build.0 = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.DebugLocal|Any CPU.ActiveCfg = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.DebugLocal|Any CPU.Build.0 = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Development|Any CPU.ActiveCfg = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Development|Any CPU.Build.0 = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Release|Any CPU.ActiveCfg = Development
+		{BF23F105-BD01-4FA9-975E-EA53CDEEC477}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,2185 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/12/2022 1:58:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LYO-VDI10-DVS22"
+  DTS:CreatorName="SPECTRUMK\Jan.Neubert"
+  DTS:DTSID="{42B7E57F-1661-442F-BB9A-23CC2C5ABD3A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Import_Teilnehmer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6722F4C4-0878-430B-9CA5-FCF3FBDB24EF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+      DTS:ObjectName="AbrBV_Reporting_DEV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LYO-PSQL01\PSQLCL1_AG1_1;Initial Catalog=AbrBV_Reporting_DEV;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DATASTORE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{82BBDBD9-0B4A-4F90-B29E-D5B170A15C7C}"
+      DTS:ObjectName="DATASTORE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LYO-PSTORE01;Initial Catalog=DATASTORE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Teilnehmer leeren"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{A23AC79F-23F8-449A-AE2D-C5396C8F4CC6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Teilnehmer leeren"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:SqlStatementSource="truncate TABLE [HZV].[Teilnehmer_Versicherte]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Teilnehmer vom Store laden"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{42FA9BBE-2318-41E0-A60D-B6FFA69F9FDF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Teilnehmer vom Store laden"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
+              description="OLE DB-Quelle"
+              name="OLE DB-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+      [VERTRAGS_ID]
+	  ,case when SUBSTRING([VERTRAGS_ID],4,2)='99' then '52' else SUBSTRING([VERTRAGS_ID],4,2) end as VertragsKV
+      ,[QUARTAL]
+	  ,[skunde]
+      ,[H2IK]
+      ,[KASSEN_IK]
+      ,[SVP]
+      ,[SMA]
+      ,[EGK_NR]
+      ,[KV_NUMMER]
+      ,[VORNAME]
+      ,[NACHNAME]
+      ,[GESCHLECHT]
+      ,[GEBURTS_DATUM]
+	  , '' as Altersgruppe
+      ,[TEILNAHME_BEGINN]
+      ,[TEILNAHME_ENDE]
+      ,[ENDEGRUND]
+	  , ''as Endegrund_Text
+      ,[L_ARZT_NR]
+	  ,'' as WohnortKV
+--		select top 100 *
+  FROM [V_HZV].[V_HZV_Versicherte]
+where left(quartal,4) &gt;=year(getdate())-4
+and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEILNAHME_ENDE is null)</property>
+                <property
+                  dataType="System.String"
+                  description="Die Variable, die den auszuführenden SQL-Befehl enthält."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATASTORE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATASTORE]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]"
+                  name="Ausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VERTRAGS_ID]"
+                      length="11"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      name="VERTRAGS_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VertragsKV]"
+                      length="2"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      name="VertragsKV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[QUARTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[QUARTAL]"
+                      length="6"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[QUARTAL]"
+                      name="QUARTAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[skunde]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[skunde]"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[skunde]"
+                      name="skunde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[H2IK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[H2IK]"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[H2IK]"
+                      name="H2IK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KASSEN_IK]"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      name="KASSEN_IK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SVP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SVP]"
+                      length="10"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SVP]"
+                      name="SVP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SMA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SMA]"
+                      length="2"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SMA]"
+                      name="SMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[EGK_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[EGK_NR]"
+                      length="10"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[EGK_NR]"
+                      name="EGK_NR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KV_NUMMER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KV_NUMMER]"
+                      length="12"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KV_NUMMER]"
+                      name="KV_NUMMER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VORNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VORNAME]"
+                      length="35"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VORNAME]"
+                      name="VORNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[NACHNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[NACHNAME]"
+                      length="50"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[NACHNAME]"
+                      name="NACHNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GESCHLECHT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[GESCHLECHT]"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GESCHLECHT]"
+                      name="GESCHLECHT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GEBURTS_DATUM]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[GEBURTS_DATUM]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GEBURTS_DATUM]"
+                      name="GEBURTS_DATUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Altersgruppe]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Altersgruppe]"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Altersgruppe]"
+                      name="Altersgruppe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_BEGINN]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TEILNAHME_BEGINN]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_BEGINN]"
+                      name="TEILNAHME_BEGINN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_ENDE]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TEILNAHME_ENDE]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_ENDE]"
+                      name="TEILNAHME_ENDE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ENDEGRUND]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      name="ENDEGRUND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Endegrund_Text]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Endegrund_Text]"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Endegrund_Text]"
+                      name="Endegrund_Text"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[L_ARZT_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[L_ARZT_NR]"
+                      length="7"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[L_ARZT_NR]"
+                      name="L_ARZT_NR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[WohnortKV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[WohnortKV]"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[WohnortKV]"
+                      name="WohnortKV"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="VERTRAGS_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="VertragsKV" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[QUARTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="QUARTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[skunde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="skunde" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[H2IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="H2IK" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KASSEN_IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="KASSEN_IK" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SVP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SVP" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="SMA" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[EGK_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="EGK_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KV_NUMMER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="KV_NUMMER" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VORNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="VORNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[NACHNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NACHNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[GESCHLECHT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="GESCHLECHT" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[GEBURTS_DATUM]"
+                      dataType="dbDate"
+                      name="GEBURTS_DATUM" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Altersgruppe]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Altersgruppe" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TEILNAHME_BEGINN]"
+                      dataType="dbDate"
+                      name="TEILNAHME_BEGINN" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TEILNAHME_ENDE]"
+                      dataType="dbDate"
+                      name="TEILNAHME_ENDE" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ENDEGRUND]"
+                      dataType="i4"
+                      name="ENDEGRUND" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Endegrund_Text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Endegrund_Text" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[L_ARZT_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="L_ARZT_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[WohnortKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="WohnortKV" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      name="VERTRAGS_ID" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      name="VertragsKV" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[QUARTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[QUARTAL]"
+                      name="QUARTAL" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[skunde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[skunde]"
+                      name="skunde" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[H2IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[H2IK]"
+                      name="H2IK" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      name="KASSEN_IK" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SVP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SVP]"
+                      name="SVP" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SMA]"
+                      name="SMA" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[EGK_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[EGK_NR]"
+                      name="EGK_NR" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KV_NUMMER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KV_NUMMER]"
+                      name="KV_NUMMER" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VORNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VORNAME]"
+                      name="VORNAME" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[NACHNAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[NACHNAME]"
+                      name="NACHNAME" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[GESCHLECHT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[GESCHLECHT]"
+                      name="GESCHLECHT" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[GEBURTS_DATUM]"
+                      dataType="dbDate"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[GEBURTS_DATUM]"
+                      name="GEBURTS_DATUM" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Altersgruppe]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Altersgruppe]"
+                      name="Altersgruppe" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TEILNAHME_BEGINN]"
+                      dataType="dbDate"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TEILNAHME_BEGINN]"
+                      name="TEILNAHME_BEGINN" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TEILNAHME_ENDE]"
+                      dataType="dbDate"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TEILNAHME_ENDE]"
+                      name="TEILNAHME_ENDE" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      dataType="i4"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      name="ENDEGRUND" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Endegrund_Text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Endegrund_Text]"
+                      name="Endegrund_Text" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[L_ARZT_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[L_ARZT_NR]"
+                      name="L_ARZT_NR" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[WohnortKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[WohnortKV]"
+                      name="WohnortKV" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[HZV].[Teilnehmer_Versicherte]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[VERTRAGS_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="VERTRAGS_ID"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vertrags_ID]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[VertragsKV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="VertragsKV"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VertragsKV]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[QUARTAL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="QUARTAL"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Quartal]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[QUARTAL]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[skunde]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="skunde"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sKunde]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[skunde]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[H2IK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="H2IK"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[H2IK]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[H2IK]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[KASSEN_IK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="KASSEN_IK"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Kassen_IK]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[SVP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SVP"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sVP]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SVP]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[SMA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="SMA"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sMA]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SMA]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[EGK_NR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="EGK_NR"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EGK_NR]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[EGK_NR]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[KV_NUMMER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="KV_NUMMER"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KV_NUMMER]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KV_NUMMER]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[VORNAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="VORNAME"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VORNAME]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[NACHNAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NACHNAME"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[NACHNAME]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[GESCHLECHT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="GESCHLECHT"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GESCHLECHT]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[GEBURTS_DATUM]"
+                      cachedDataType="dbDate"
+                      cachedName="GEBURTS_DATUM"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geburts_Datum]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[GEBURTS_DATUM]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Altersgruppe]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Altersgruppe"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Altersgruppe]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Altersgruppe]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[TEILNAHME_BEGINN]"
+                      cachedDataType="dbDate"
+                      cachedName="TEILNAHME_BEGINN"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Teilnahme_Beginn]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_BEGINN]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[TEILNAHME_ENDE]"
+                      cachedDataType="dbDate"
+                      cachedName="TEILNAHME_ENDE"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Teilnahme_Ende]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TEILNAHME_ENDE]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[ENDEGRUND]"
+                      cachedDataType="i4"
+                      cachedName="ENDEGRUND"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Endegrund_Text]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Endegrund_Text"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund_Text]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Endegrund_Text]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[L_ARZT_NR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="L_ARZT_NR"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[L_ARZT_NR]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[L_ARZT_NR]" />
+                    <inputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[WohnortKV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="WohnortKV"
+                      externalMetadataColumnId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[WohnortKV]"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[WohnortKV]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vertrags_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="Vertrags_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="VertragsKV" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Quartal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="Quartal" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sKunde]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="sKunde" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[H2IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="H2IK" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Kassen_IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="Kassen_IK" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sVP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="22"
+                      name="sVP" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[sMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="sMA" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EGK_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="EGK_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KV_NUMMER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="KV_NUMMER" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geburts_Datum]"
+                      dataType="dbDate"
+                      name="Geburts_Datum" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Altersgruppe]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Altersgruppe" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Teilnahme_Beginn]"
+                      dataType="dbDate"
+                      name="Teilnahme_Beginn" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Teilnahme_Ende]"
+                      dataType="dbDate"
+                      name="Teilnahme_Ende" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund]"
+                      dataType="i4"
+                      name="Endegrund" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund_Text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      name="Endegrund_Text" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[L_ARZT_NR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="L_ARZT_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[WohnortKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="WohnortKV" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Teilnehmer vom Store laden.Paths[Ausgabe der OLE DB-Quelle]"
+              endId="Package\Teilnehmer vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der OLE DB-Quelle"
+              startId="Package\Teilnehmer vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ärzte leeren"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{433E9F22-83D7-4CE3-A3C2-A5963EE5BB66}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ärzte leeren"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:SqlStatementSource="truncate table hzv.Teilnehmer_Aerzte" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ärzte von Store laden"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{96BFB655-EF55-406F-9D8A-C138D56A9F93}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ärzte von Store laden"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Ärzte von Store laden\OLE DB-Quelle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
+              description="OLE DB-Quelle"
+              name="OLE DB-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- BSNR Join vorerst ausgesetzt da die Adressen nicht BSNRspezifisch vorhanden sind.
+select 
+	t1.VERTRAGS_ID,
+	case when SUBSTRING(t1.[VERTRAGS_ID],4,2)='99' then '52' else SUBSTRING(t1.[VERTRAGS_ID],4,2) end as VertragsKV,
+	t1.L_ARZT_NR as LANR7,
+	t1.L_ARZT_BS_FG as LANR_FG,
+	null as BSNR9,				--concat(t2.BS_NR,t2.BSN_KV_ERW),
+	null as BSNR_GueltigVon,	--t2.GUELTIG_VON,
+	null as BSNR_GueltigBis,	--t2.GUELTIG_BIS,
+	t3.ANREDE,
+	t3.Vorname,
+	t3.Nachname,
+	t3.Strasse,
+	t3.PLZ,
+	t3.Ort,
+	t1.GUELTIG_VON as TeilnahmeBeginn,
+	t1.GUELTIG_BIS as TeilnahmeEnde,
+	t1.ENDEGRUND,
+	t1.endegrund_text,
+	null as AnzahlVersicherte
+from [V_HZV].[V_HZV_Arzt_Teilnahme] t1
+--inner join [V_HZV].[V_HZV_Arzt_BS] t2
+--on t1.L_ARZT_NR		=	t2.L_ARZT_NR
+--and t1.L_ARZT_BS_FG	=	t2.L_ARZT_BS_FG
+--and t1.VERTRAGS_ID	=	t2.VERTRAGS_ID
+inner join [V_HZV].[V_HZV_Arzt] t3
+on t1.L_ARZT_NR		=	t3.LANR7
+and t1.L_ARZT_BS_FG	=	t3.FACHGRUPPE
+and t1.VERTRAGS_ID	=	t3.VERTRAGS_ID
+where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</property>
+                <property
+                  dataType="System.String"
+                  description="Die Variable, die den auszuführenden SQL-Befehl enthält."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ärzte von Store laden\OLE DB-Quelle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATASTORE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATASTORE]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]"
+                  name="Ausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VERTRAGS_ID]"
+                      length="11"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      name="VERTRAGS_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VertragsKV]"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      name="VertragsKV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR7]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LANR7]"
+                      length="7"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR7]"
+                      name="LANR7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR_FG]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LANR_FG]"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR_FG]"
+                      name="LANR_FG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR9]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR9]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR9]"
+                      name="BSNR9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigVon]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR_GueltigVon]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigVon]"
+                      name="BSNR_GueltigVon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigBis]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR_GueltigBis]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigBis]"
+                      name="BSNR_GueltigBis"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ANREDE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ANREDE]"
+                      length="20"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ANREDE]"
+                      name="ANREDE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
+                      length="35"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      name="Vorname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
+                      length="50"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      name="Nachname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Strasse]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Strasse]"
+                      length="70"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Strasse]"
+                      name="Strasse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[PLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PLZ]"
+                      length="10"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[PLZ]"
+                      name="PLZ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Ort]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Ort]"
+                      length="34"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Ort]"
+                      name="Ort"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeBeginn]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TeilnahmeBeginn]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeBeginn]"
+                      name="TeilnahmeBeginn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeEnde]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TeilnahmeEnde]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeEnde]"
+                      name="TeilnahmeEnde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ENDEGRUND]"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      name="ENDEGRUND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[endegrund_text]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[endegrund_text]"
+                      length="500"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[endegrund_text]"
+                      name="endegrund_text"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[AnzahlVersicherte]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[AnzahlVersicherte]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[AnzahlVersicherte]"
+                      name="AnzahlVersicherte"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="VERTRAGS_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="VertragsKV" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LANR7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="LANR7" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LANR_FG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="LANR_FG" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR9]"
+                      dataType="i4"
+                      name="BSNR9" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR_GueltigVon]"
+                      dataType="i4"
+                      name="BSNR_GueltigVon" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BSNR_GueltigBis]"
+                      dataType="i4"
+                      name="BSNR_GueltigBis" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ANREDE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ANREDE" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Strasse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="Strasse" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PLZ" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Ort]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      name="Ort" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TeilnahmeBeginn]"
+                      dataType="dbDate"
+                      name="TeilnahmeBeginn" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TeilnahmeEnde]"
+                      dataType="dbDate"
+                      name="TeilnahmeEnde" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ENDEGRUND]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="ENDEGRUND" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[endegrund_text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="endegrund_text" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[AnzahlVersicherte]"
+                      dataType="i4"
+                      name="AnzahlVersicherte" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VERTRAGS_ID]"
+                      name="VERTRAGS_ID" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[VertragsKV]"
+                      name="VertragsKV" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LANR7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LANR7]"
+                      name="LANR7" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LANR_FG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LANR_FG]"
+                      name="LANR_FG" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR9]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR9]"
+                      name="BSNR9" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR_GueltigVon]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR_GueltigVon]"
+                      name="BSNR_GueltigVon" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR_GueltigBis]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BSNR_GueltigBis]"
+                      name="BSNR_GueltigBis" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ANREDE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ANREDE]"
+                      name="ANREDE" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      name="Vorname" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      name="Nachname" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Strasse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Strasse]"
+                      name="Strasse" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PLZ]"
+                      name="PLZ" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Ort]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Ort]"
+                      name="Ort" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TeilnahmeBeginn]"
+                      dataType="dbDate"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TeilnahmeBeginn]"
+                      name="TeilnahmeBeginn" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TeilnahmeEnde]"
+                      dataType="dbDate"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TeilnahmeEnde]"
+                      name="TeilnahmeEnde" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ENDEGRUND]"
+                      name="ENDEGRUND" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[endegrund_text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[endegrund_text]"
+                      name="endegrund_text" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[AnzahlVersicherte]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[AnzahlVersicherte]"
+                      name="AnzahlVersicherte" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ärzte von Store laden\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[HZV].[Teilnehmer_Aerzte]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ärzte von Store laden\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[VertragsKV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="VertragsKV"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VertragsKV]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[VertragsKV]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[LANR7]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="LANR7"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LANR7]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR7]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[LANR_FG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="LANR_FG"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LANR_FG]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[LANR_FG]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[BSNR9]"
+                      cachedDataType="i4"
+                      cachedName="BSNR9"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR9]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR9]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[BSNR_GueltigVon]"
+                      cachedDataType="i4"
+                      cachedName="BSNR_GueltigVon"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR_GueltigVon]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigVon]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[BSNR_GueltigBis]"
+                      cachedDataType="i4"
+                      cachedName="BSNR_GueltigBis"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR_GueltigBis]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[BSNR_GueltigBis]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[ANREDE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ANREDE"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ANREDE]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Vorname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="35"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Nachname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[PLZ]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PLZ"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PLZ]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[PLZ]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Ort]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="34"
+                      cachedName="Ort"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Ort]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Ort]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[TeilnahmeBeginn]"
+                      cachedDataType="dbDate"
+                      cachedName="TeilnahmeBeginn"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TeilnahmeBeginn]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeBeginn]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[TeilnahmeEnde]"
+                      cachedDataType="dbDate"
+                      cachedName="TeilnahmeEnde"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TeilnahmeEnde]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[TeilnahmeEnde]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[ENDEGRUND]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="ENDEGRUND"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[ENDEGRUND]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[endegrund_text]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="500"
+                      cachedName="endegrund_text"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EndeGrund_Text]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[endegrund_text]" />
+                    <inputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[AnzahlVersicherte]"
+                      cachedDataType="i4"
+                      cachedName="AnzahlVersicherte"
+                      externalMetadataColumnId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[AnzahlVersicherte]"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[AnzahlVersicherte]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VertragsID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="VertragsID" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VertragsKV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="VertragsKV" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LANR7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="LANR7" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LANR_FG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="LANR_FG" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="BSNR9" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR_GueltigVon]"
+                      dataType="dbDate"
+                      name="BSNR_GueltigVon" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BSNR_GueltigBis]"
+                      dataType="dbDate"
+                      name="BSNR_GueltigBis" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Anrede" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="35"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StrasseHausNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="StrasseHausNr" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PLZ" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Ort]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      name="Ort" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TeilnahmeBeginn]"
+                      dataType="dbDate"
+                      name="TeilnahmeBeginn" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TeilnahmeEnde]"
+                      dataType="dbDate"
+                      name="TeilnahmeEnde" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Endegrund]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Endegrund" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EndeGrund_Text]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="EndeGrund_Text" />
+                    <externalMetadataColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[AnzahlVersicherte]"
+                      dataType="i4"
+                      name="AnzahlVersicherte" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ärzte von Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ärzte von Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ärzte von Store laden\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Ärzte von Store laden.Paths[Ausgabe der OLE DB-Quelle]"
+              endId="Package\Ärzte von Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der OLE DB-Quelle"
+              startId="Package\Ärzte von Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung]"
+      DTS:CreationName=""
+      DTS:DTSID="{C5F74E67-5D74-454D-9D4A-80C6A43ACAE2}"
+      DTS:From="Package\Teilnehmer leeren"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung"
+      DTS:To="Package\Teilnehmer vom Store laden" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{524EC23A-5FA5-4711-BC0E-AD2DBB8AF0AE}"
+      DTS:From="Package\Ärzte leeren"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 1"
+      DTS:To="Package\Ärzte von Store laden" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{7E4115BA-E499-4A2A-935B-28919ABAFEB1}"
+      DTS:From="Package\Teilnehmer vom Store laden"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 2"
+      DTS:To="Package\Ärzte leeren" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Teilnehmer vom Store laden"
+          TopLeft="342,43" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Teilnehmer leeren"
+          TopLeft="112,43" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung]"
+          TopLeft="276,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Ärzte leeren"
+          TopLeft="111,147" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Ärzte von Store laden"
+          TopLeft="361,145" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 1]"
+          TopLeft="247,167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="114,0"
+              Start="0,0"
+              End="106.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="106.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 2]"
+          TopLeft="448,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-269,62"
+              Start="0,0"
+              End="-269,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-265,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-265,31"
+                    Point2="-269,31"
+                    Point3="-269,35" />
+                  <mssgle:LineSegment
+                    End="-269,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Teilnehmer vom Store laden">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
+          TopLeft="209,234" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Teilnehmer vom Store laden\OLE DB-Quelle"
+          TopLeft="210,61" />
+        <EdgeLayout
+          Id="Package\Teilnehmer vom Store laden.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="280.25,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,131"
+              Start="0,0"
+              End="0,123.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,123.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Ärzte von Store laden">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Ärzte von Store laden\OLE DB-Quelle"
+          TopLeft="140,64" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Ärzte von Store laden\OLE DB-Ziel"
+          TopLeft="151,199" />
+        <EdgeLayout
+          Id="Package\Ärzte von Store laden.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="216.25,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ärzte von Store laden\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ärzte von Store laden\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

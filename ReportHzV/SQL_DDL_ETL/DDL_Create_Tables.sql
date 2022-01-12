@@ -78,3 +78,49 @@ CREATE TABLE [HZV].[NVI](
 	[NVI_KNZ] [varchar](max) NOT NULL
 ) 
 GO
+
+CREATE TABLE [HZV].[Teilnehmer_Versicherte](
+	[Vertrags_ID] [varchar](11) NULL,
+	[VertragsKV] [varchar](2) NULL,
+	[Quartal] [varchar](6) NULL,
+	[sKunde] [varchar](9) NOT NULL,
+	[H2IK] [varchar](9) NULL,
+	[Kassen_IK] [varchar](9) NULL,
+	[sVP] [varchar](22) NULL,
+	[sMA] [varchar](2) NULL,
+	[EGK_NR] [varchar](10) NULL,
+	[KV_NUMMER] [varchar](12) NULL,
+	[Vorname] [varchar](35) NULL,
+	[Nachname] [varchar](50) NULL,
+	[Geschlecht] [varchar](1) NULL,
+	[Geburts_Datum] [date] NULL,
+	[Altersgruppe] [varchar](5) NULL,
+	[Teilnahme_Beginn] [date] NULL,
+	[Teilnahme_Ende] [date] NULL,
+	[Endegrund] [int] NULL,
+	[Endegrund_Text] [varchar](400),
+	[L_ARZT_NR] [varchar](7) NULL,
+	[WohnortKV] [varchar](2) NULL
+) ON [PRIMARY]
+GO
+
+  create table hzv.Teilnehmer_Aerzte
+  (		VertragsID varchar(11) null,
+		VertragsKV varchar(2) null,
+		LANR7 varchar(7) null,
+		LANR_FG varchar(2) null,
+		BSNR9 varchar(9) null,
+		BSNR_GueltigVon date null,
+		BSNR_GueltigBis date null,
+		Anrede varchar(9) null,
+		Vorname varchar(35) null,
+		Nachname varchar(50) null,
+		StrasseHausNr varchar(70) null,
+		PLZ varchar(10) null,
+		Ort varchar(34) null,
+		TeilnahmeBeginn date null,
+		TeilnahmeEnde date not null,
+		Endegrund varchar(2) null,
+		EndeGrund_Text varchar(500) null,
+		AnzahlVersicherte int
+  )
