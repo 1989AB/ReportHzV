@@ -104,6 +104,14 @@ BEGIN
 		AND V.Name LIKE 'HzV%'
 		AND VR.GueltigBis > DATEADD(year,-4,CAST(CONCAT(YEAR(GETDATE()) - 1,'-12-31') AS date))
 		AND (KVRD.QuartalBis > CONCAT(YEAR(GETDATE()) - 5,'4') OR KVRD.QuartalBis IS NULL)
+
+	--Löschung der BKK VBU, KV 71 TNM aufgrund DL-Wechsel zwischen Convema und spectrumK
+	DELETE --SELECT *
+	FROM [HZV].[Vertraege]
+	WHERE HauptKassenIK = '109723913'
+		AND VertragsKV = '71'
+		AND Dienstleistung = 'Teilnehmermanagement'
+		AND DienstleistungEnde IS NOT NULL
 END
 GO
 
