@@ -18,7 +18,7 @@ BEGIN
 
 
 	--Quartalstabelle auf Basis aller vorhandenen Quartale befüllen
-	DELETE FROM [HZV].[Quartale]
+	TRUNCATE TABLE [HZV].[Quartale]
 
 	INSERT INTO [HZV].[Quartale]
 	SELECT
@@ -58,6 +58,52 @@ BEGIN
 		UNION 
 		SELECT DISTINCT Quartal FROM [HZV].[NVI]
 		) Q
+END
+GO
+
+-- ===========================================================
+-- Author:		Antje Buksch
+-- Create date: 2022-01-13
+-- Description:	Abzug der Vertragsdaten für den HzV-Report
+-- ===========================================================
+CREATE PROCEDURE [HZV].[SP_Vertraege]
+	-- Add the parameters for the stored procedure here
+AS
+BEGIN
+	TRUNCATE TABLE [HZV].[Vertraege]
+
+	INSERT INTO [HZV].[Vertraege]
+	SELECT    
+		V.Name AS VertragName, 
+		KVR.Vertragskennzeichen, 
+		R.KV,
+		VR.GueltigVon, 
+		VR.GueltigBis, 
+		K.HauptIK, 
+		K.Name AS KasseName, 
+		KVR.Beitrittsquartal, 
+		D.Name AS Dienstleistung, 
+		KVRD.QuartalVon, 
+		KVRD.QuartalBis
+	FROM AbrBV_Vertragsmanagement_PROD.dbo.Kasse AS K 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.KasseVertragRegionen AS KVR
+		ON KVR.KasseID = K.KasseID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.KasseVertragRegionDienstleistungen AS KVRD 
+		ON KVRD.KVRID = KVR.KVRID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.Vertrag AS V 
+		ON V.VertragID = KVR.VertragID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.Region AS R 
+		ON R.RegionID = KVR.RegionID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.VertragRegionen AS VR 
+		ON VR.VertragID = V.VertragID AND VR.RegionID = R.RegionID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.Dienstleistung AS D 
+		ON D.DLID = KVRD.DLID 
+	INNER JOIN AbrBV_Vertragsmanagement_PROD.dbo.Vertragsart AS VA 
+		ON VA.VertragsartID = V.VertragsartID
+	WHERE (KVRD.Del = '0')
+		AND V.Name LIKE 'HzV%'
+		AND VR.GueltigBis > DATEADD(year,-4,CAST(CONCAT(YEAR(GETDATE()) - 1,'-12-31') AS date))
+		AND (KVRD.QuartalBis > CONCAT(YEAR(GETDATE()) - 5,'4') OR KVRD.QuartalBis IS NULL)
 END
 GO
 
