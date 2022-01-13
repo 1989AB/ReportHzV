@@ -37,6 +37,21 @@ CREATE TABLE [HZV].[Quartale](
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [HZV].[Vertraege](
+	VertragsName varchar(255) NULL,
+	VertragsID varchar(25) NOT NULL,
+	VertragsKV char(2) NULL,
+	VertragBeginn date NULL,
+	VertragEnde date NULL,
+	HauptKassenIK char(9) NOT NULL,
+	KasseName varchar(255) NOT NULL,
+	Beitrittsquartal varchar(5) NOT NULL,
+	Dienstleistung varchar(70) NULL,
+	DienstleistungBeginn varchar(5) NOT NULL,
+	DienstleistungEnde varchar(5) NULL
+) 
+GO
+
 CREATE TABLE [HZV].[Bereinigung](
 	[VERTRAGS_ID] [nvarchar](25) NOT NULL,
 	[VERTRAGS_KV] [nvarchar](2) NOT NULL,
@@ -101,10 +116,10 @@ CREATE TABLE [HZV].[Teilnehmer_Versicherte](
 	[Endegrund_Text] [varchar](400),
 	[L_ARZT_NR] [varchar](7) NULL,
 	[WohnortKV] [varchar](2) NULL
-) ON [PRIMARY]
+) 
 GO
 
-  create table hzv.Teilnehmer_Aerzte
+create table hzv.Teilnehmer_Aerzte
   (		VertragsID varchar(11) null,
 		VertragsKV varchar(2) null,
 		LANR7 varchar(7) null,
