@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="HZV_Bereinigung">
+    <Query>
+      <DataSourceReference>DS_Reporting</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Quartal">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>select* from hzv.Bereinigung
+where Quartal =@Quartal</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="VERTRAGS_ID">
+        <DataField>VERTRAGS_ID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VERTRAGS_KV">
+        <DataField>VERTRAGS_KV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="WOHNORT_KV">
+        <DataField>WOHNORT_KV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="QUARTAL">
+        <DataField>QUARTAL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="HauptKassenIK">
+        <DataField>HauptKassenIK</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VKNR">
+        <DataField>VKNR</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Anzahl_Versicherte">
+        <DataField>Anzahl_Versicherte</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Anzahl_Neueinschreiber">
+        <DataField>Anzahl_Neueinschreiber</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Diff_kons_Punkte">
+        <DataField>Diff_kons_Punkte</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Diff_kons_Euro">
+        <DataField>Diff_kons_Euro</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Gesamt_fortentw_Punkte">
+        <DataField>Gesamt_fortentw_Punkte</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Gesamt_fortentw_Euro">
+        <DataField>Gesamt_fortentw_Euro</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Gesamt_Punkte">
+        <DataField>Gesamt_Punkte</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Gesamt_Euro">
+        <DataField>Gesamt_Euro</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
