@@ -73,19 +73,28 @@ ORDER BY KasseName</CommandText>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
         <CommandText>HZV.SP_DB_Dataset_Teilnehmer</CommandText>
       </Query>
       <Fields>
-        <Field Name="VertragsKV">
-          <DataField>VertragsKV</DataField>
+        <Field Name="KVId">
+          <DataField>KVId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VertragsID">
-          <DataField>VertragsID</DataField>
+        <Field Name="Kuerzel_lang">
+          <DataField>Kuerzel_lang</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kuerzel_kurz">
+          <DataField>Kuerzel_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Geometrie">
+          <DataField>Geometrie</DataField>
+          <rd:TypeName>Microsoft.SqlServer.Types.SqlGeometry</rd:TypeName>
         </Field>
         <Field Name="AnzTV">
           <DataField>AnzTV</DataField>
@@ -127,10 +136,10 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>16.01542cm</Top>
-            <Left>12.37933cm</Left>
+            <Top>23.18562cm</Top>
+            <Left>16.87321cm</Left>
             <Height>1.15562cm</Height>
-            <Width>6.38937cm</Width>
+            <Width>8.55896cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -151,6 +160,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>=Parameters!Kasse.Label</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -161,8 +171,8 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>0.90771cm</Top>
-            <Left>11.21516cm</Left>
+            <Top>1.26401cm</Top>
+            <Left>16.87321cm</Left>
             <Height>0.4in</Height>
             <Width>8.55896cm</Width>
             <ZIndex>1</ZIndex>
@@ -186,6 +196,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>=First(Fields!Quartal_Text_lang.Value, "DS_DB_Steuerung")</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -196,10 +207,10 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.17771cm</Top>
-            <Left>12.37933cm</Left>
+            <Top>2.4564cm</Top>
+            <Left>16.87321cm</Left>
             <Height>0.4in</Height>
-            <Width>5.93958cm</Width>
+            <Width>8.55896cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -221,6 +232,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>Teilnehmer</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>#9f281d</Color>
                     </Style>
@@ -235,7 +247,7 @@ ORDER BY KasseName</CommandText>
             <Top>0.32563cm</Top>
             <Left>0.762cm</Left>
             <Height>0.3in</Height>
-            <Width>9.88399cm</Width>
+            <Width>15.93483cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -257,6 +269,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>Abrechnung</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>#9f281d</Color>
                     </Style>
@@ -269,9 +282,9 @@ ORDER BY KasseName</CommandText>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>0.32563cm</Top>
-            <Left>20.15373cm</Left>
+            <Left>25.63283cm</Left>
             <Height>0.3in</Height>
-            <Width>9.88399cm</Width>
+            <Width>16.0142cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -293,6 +306,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>Bereinigung</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>#9f281d</Color>
                     </Style>
@@ -304,10 +318,10 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>8.93233cm</Top>
+            <Top>13.03338cm</Top>
             <Left>0.762cm</Left>
             <Height>0.3in</Height>
-            <Width>9.88399cm</Width>
+            <Width>15.93483cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -329,6 +343,7 @@ ORDER BY KasseName</CommandText>
                   <TextRun>
                     <Value>NVI</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>#9f281d</Color>
                     </Style>
@@ -340,10 +355,10 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>8.93233cm</Top>
-            <Left>20.15373cm</Left>
+            <Top>13.03338cm</Top>
+            <Left>25.63283cm</Left>
             <Height>0.3in</Height>
-            <Width>9.88399cm</Width>
+            <Width>16.0142cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -505,14 +520,14 @@ ORDER BY KasseName</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="VertragsKV">
+                        <Textbox Name="Kuerzel_lang">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!VertragsKV.Value</Value>
+                                  <Value>=Fields!Kuerzel_lang.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -521,7 +536,7 @@ ORDER BY KasseName</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>VertragsKV</rd:DefaultName>
+                          <rd:DefaultName>Kuerzel_lang</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -548,7 +563,7 @@ ORDER BY KasseName</CommandText>
                                 <TextRun>
                                   <Value>=Fields!QuoteTV.Value</Value>
                                   <Style>
-                                    <Format>#,0.00</Format>
+                                    <Format>#,0.00%</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -631,8 +646,17 @@ ORDER BY KasseName</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DS_DB_Teilnehmer</DataSetName>
-            <Top>1.41571cm</Top>
-            <Left>4.64599cm</Left>
+            <Filters>
+              <Filter>
+                <FilterExpression>=IsNothing(Fields!QuoteTV.Value)</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">false</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
+            <Top>1.26401cm</Top>
+            <Left>10.69683cm</Left>
             <Height>1.778cm</Height>
             <Width>6cm</Width>
             <ZIndex>7</ZIndex>
@@ -642,11 +666,214 @@ ORDER BY KasseName</CommandText>
               </Border>
             </Style>
           </Tablix>
+          <Map Name="Map7">
+            <MapViewport>
+              <ProjectionCenterX>NaN</ProjectionCenterX>
+              <ProjectionCenterY>NaN</ProjectionCenterY>
+              <MapLimits>
+                <MinimumX>NaN</MinimumX>
+                <MinimumY>NaN</MinimumY>
+                <MaximumX>NaN</MaximumX>
+                <MaximumY>NaN</MaximumY>
+              </MapLimits>
+              <MaximumZoom>4000000</MaximumZoom>
+              <MapCustomView>
+                <CenterX>38.4452209472656</CenterX>
+                <CenterY>50.6939926147461</CenterY>
+                <Zoom>126.684751005554</Zoom>
+              </MapCustomView>
+              <MapMeridians>
+                <Style>
+                  <Border>
+                    <Color>LightGrey</Color>
+                    <Style>None</Style>
+                  </Border>
+                  <FontSize>8pt</FontSize>
+                  <Format>#;#;0</Format>
+                  <Color>Gray</Color>
+                </Style>
+                <Hidden>true</Hidden>
+                <Interval>NaN</Interval>
+                <ShowLabels>true</ShowLabels>
+              </MapMeridians>
+              <MapParallels>
+                <Style>
+                  <Border>
+                    <Color>LightGrey</Color>
+                    <Style>None</Style>
+                  </Border>
+                  <FontSize>8pt</FontSize>
+                  <Format>#;#;0</Format>
+                  <Color>Gray</Color>
+                </Style>
+                <Hidden>true</Hidden>
+                <Interval>NaN</Interval>
+                <ShowLabels>true</ShowLabels>
+              </MapParallels>
+              <GridUnderContent>false</GridUnderContent>
+              <Style>
+                <Border>
+                  <Color>#00ffffff</Color>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>White</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>#00ffffff</BackgroundGradientEndColor>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <LeftMargin>2pt</LeftMargin>
+              <RightMargin>2pt</RightMargin>
+              <TopMargin>2pt</TopMargin>
+              <BottomMargin>2pt</BottomMargin>
+            </MapViewport>
+            <MapDataRegions>
+              <MapDataRegion Name="Map7_PolygonLayer1_DataRegion">
+                <DataSetName>DS_DB_Teilnehmer</DataSetName>
+                <MapMember>
+                  <Group Name="Map7_PolygonLayer1_Group" />
+                </MapMember>
+              </MapDataRegion>
+            </MapDataRegions>
+            <MapLayers>
+              <MapPolygonLayer Name="PolygonLayer1">
+                <MapPolygonTemplate>
+                  <Style>
+                    <Border>
+                      <Color>Gray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BackgroundGradientType>None</BackgroundGradientType>
+                    <BackgroundGradientEndColor>LightGrey</BackgroundGradientEndColor>
+                    <FontSize>8pt</FontSize>
+                    <Color>White</Color>
+                  </Style>
+                  <Label>=Fields!Kuerzel_kurz.Value</Label>
+                </MapPolygonTemplate>
+                <MapPolygonRules>
+                  <MapCustomColorRule>
+                    <MapCustomColors>
+                      <MapCustomColor>#575756</MapCustomColor>
+                      <MapCustomColor>#9f281d</MapCustomColor>
+                    </MapCustomColors>
+                    <ShowInColorScale>true</ShowInColorScale>
+                    <DataValue>=Sum(Fields!QuoteTV.Value)</DataValue>
+                    <BucketCount>2</BucketCount>
+                    <StartValue />
+                    <EndValue />
+                    <LegendName>Legend1</LegendName>
+                    <LegendText>#FROMVALUE{N0} - #TOVALUE{N0}</LegendText>
+                  </MapCustomColorRule>
+                </MapPolygonRules>
+                <MapMarkerTemplate>
+                  <MapMarker>
+                    <MapMarkerStyle>Circle</MapMarkerStyle>
+                  </MapMarker>
+                  <Size>10pt</Size>
+                  <Style>
+                    <Border>
+                      <Color>Gray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>White</BackgroundColor>
+                    <BackgroundGradientType>None</BackgroundGradientType>
+                    <BackgroundGradientEndColor>LightGrey</BackgroundGradientEndColor>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Hidden>true</Hidden>
+                </MapMarkerTemplate>
+                <MapCenterPointRules />
+                <MapDataRegionName>Map7_PolygonLayer1_DataRegion</MapDataRegionName>
+                <MapSpatialDataRegion>
+                  <VectorData>=Fields!Geometrie.Value</VectorData>
+                </MapSpatialDataRegion>
+              </MapPolygonLayer>
+            </MapLayers>
+            <MapDistanceScale>
+              <ScaleBorderColor>LightGrey</ScaleBorderColor>
+              <Position>RightBottom</Position>
+              <DockOutsideViewport>false</DockOutsideViewport>
+              <Style>
+                <Border>
+                  <Color>#00ffffff</Color>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>#40000000</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>#00ffffff</BackgroundGradientEndColor>
+                <FontSize>8pt</FontSize>
+                <Color>White</Color>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <MapSize>
+                <Width>80</Width>
+                <Height>40</Height>
+                <Unit>Point</Unit>
+              </MapSize>
+              <LeftMargin>2pt</LeftMargin>
+              <RightMargin>2pt</RightMargin>
+              <TopMargin>2pt</TopMargin>
+              <BottomMargin>2pt</BottomMargin>
+            </MapDistanceScale>
+            <MapColorScale>
+              <MapColorScaleTitle>
+                <Style>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+                <Caption />
+              </MapColorScaleTitle>
+              <ColorBarBorderColor>Gray</ColorBarBorderColor>
+              <LabelFormat>0%</LabelFormat>
+              <HideEndLabels>false</HideEndLabels>
+              <NoDataText>Keine Daten</NoDataText>
+              <Position>LeftBottom</Position>
+              <DockOutsideViewport>false</DockOutsideViewport>
+              <Style>
+                <Border>
+                  <Color>#00ffffff</Color>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>#00ffffff</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>#00ffffff</BackgroundGradientEndColor>
+                <FontSize>8pt</FontSize>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <LeftMargin>2pt</LeftMargin>
+              <RightMargin>2pt</RightMargin>
+              <TopMargin>2pt</TopMargin>
+              <BottomMargin>2pt</BottomMargin>
+            </MapColorScale>
+            <MapBorderSkin>
+              <Style>
+                <Border />
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                <Color>White</Color>
+              </Style>
+            </MapBorderSkin>
+            <Top>2.28001cm</Top>
+            <Left>0.762cm</Left>
+            <Height>10cm</Height>
+            <Width>9.29979cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Color>Gray</Color>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+            </Style>
+          </Map>
         </ReportItems>
-        <Height>6.875in</Height>
+        <Height>10.01042in</Height>
         <Style />
       </Body>
-      <Width>12.17708in</Width>
+      <Width>16.84375in</Width>
       <Page>
         <PageHeader>
           <Height>2.34349cm</Height>
@@ -675,7 +902,7 @@ ORDER BY KasseName</CommandText>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.7112cm</Top>
-              <Left>3.31042in</Left>
+              <Left>5.18198in</Left>
               <Height>0.4in</Height>
               <Width>15.99375cm</Width>
               <Style>
