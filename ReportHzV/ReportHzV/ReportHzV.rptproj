@@ -4,15 +4,16 @@
     <FullPath>Debug</FullPath>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorLevel>2</ErrorLevel>
-    <OverwriteDatasets>False</OverwriteDatasets>
-    <OverwriteDataSources>False</OverwriteDataSources>
-    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <OverwriteDatasets>True</OverwriteDatasets>
+    <OverwriteDataSources>True</OverwriteDataSources>
+    <TargetServerVersion>SSRS2008R2</TargetServerVersion>
     <Platform>Win32</Platform>
-    <TargetReportFolder>ReportHzV</TargetReportFolder>
-    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
-    <TargetDatasourceFolder>Datenquellen</TargetDatasourceFolder>
-    <TargetReportPartFolder>Berichtsteile</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+    <TargetReportFolder>AbrBV/Reporting</TargetReportFolder>
+    <TargetDatasetFolder>AbrBV/Reporting/Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>AbrBV/Reporting/Datenquellen</TargetDatasourceFolder>
+    <TargetReportPartFolder>AbrBV/Reporting/Berichtsteile</TargetReportPartFolder>
+    <TargetServerURL>http://reporting.spectrumk.ads/Reporting</TargetServerURL>
+    <StartItem>HZV_Dashboard.rdl</StartItem>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Report Include="HZV_Bereinigung.rdl" />
+    <Report Include="HZV_Dashboard.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
