@@ -10,11 +10,24 @@
           <Nullable>true</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
           <rd:DbType>Object</rd:DbType>
-          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="@KV_Region">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@Kasse">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
         </DataSetParameter>
       </DataSetParameters>
       <CommandText>select* from hzv.Bereinigung
-where Quartal =@Quartal</CommandText>
+where Quartal =@Quartal
+and Wohnort_kv= @KV_Region
+and HauptkassenIK = @Kasse</CommandText>
     </Query>
     <Fields>
       <Field Name="VERTRAGS_ID">

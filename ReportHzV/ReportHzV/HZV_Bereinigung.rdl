@@ -17,6 +17,14 @@
           <QueryParameter Name="@Quartal">
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@KV_Region">
+            <Value>=Parameters!KV_Region.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
         </QueryParameters>
       </SharedDataSet>
       <Fields>
@@ -693,6 +701,7 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <Format>#,0.0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -762,6 +771,7 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <Format>#,0.0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -796,6 +806,7 @@
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>11pt</FontSize>
+                                    <Format>#,0.0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -848,7 +859,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>HZV_Bereinigung</DataSetName>
-            <Top>3.03424cm</Top>
+            <Top>2.00237cm</Top>
             <Left>0.762cm</Left>
             <Height>1.778cm</Height>
             <Width>35.91434cm</Width>
@@ -882,7 +893,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox40</rd:DefaultName>
-            <Top>5.73828cm</Top>
+            <Top>4.07141cm</Top>
             <Left>0.762cm</Left>
             <Height>0.6cm</Height>
             <Width>8.50604cm</Width>
@@ -905,27 +916,45 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Bereinigungsübersicht für </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!Quartal.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>, </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!KV_Region.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value> - </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!Kasse.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -934,7 +963,10 @@
                 <TextRuns>
                   <TextRun>
                     <Value />
-                    <Style />
+                    <Style>
+                      <FontFamily>Arial</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -980,7 +1012,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox42</rd:DefaultName>
-            <Top>1.87537cm</Top>
+            <Top>1.09071cm</Top>
             <Left>0.762cm</Left>
             <Height>0.6cm</Height>
             <Width>10.51688cm</Width>
@@ -996,13 +1028,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2.73958in</Height>
+        <Height>1.96875in</Height>
         <Style />
       </Body>
       <Width>17.87711in</Width>
       <Page>
         <PageHeader>
-          <Height>2.72521cm</Height>
+          <Height>2.14312cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1014,36 +1046,6 @@
                   <TextRuns>
                     <TextRun>
                       <Value>Controlling Hausarztzentrierte Versorgung</Value>
-                      <Style>
-                        <FontSize>20pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Color>MidnightBlue</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontSize>20pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Color>MidnightBlue</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
                       <Style>
                         <FontSize>20pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1105,7 +1107,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox35</rd:DefaultName>
-              <Top>0.49953cm</Top>
+              <Top>0.14111cm</Top>
               <Left>0.3in</Left>
               <Height>0.6cm</Height>
               <Width>27.63542cm</Width>

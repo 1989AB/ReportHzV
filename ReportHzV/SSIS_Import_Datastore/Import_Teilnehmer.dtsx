@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Teilnehmer"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{F9A92B37-0EC3-4515-B5DD-15A5E91F6F8C}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{011FFBA0-032F-4F9E-836C-F838632F260B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -70,7 +70,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.SKunde =t2.HauptKassenIK&#xA;where t1.Quartal  not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="&#xA;-- Löschen der KM6-Statistik wenn Vertrag noch nicht gestartet oder bereits beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.SKunde =t2.HauptKassenIK&#xA;where t1.Quartal  not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der KM6-Statistik wenn kein Vertrag existiert&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.SKunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -118,12 +118,31 @@
 	,[SKUNDE_name] AS Kasse
 	,[KV] AS KV
 	,CASE WHEN [SPALTE] = '7' THEN 'männlich' ELSE 'weiblich' END AS Geschlecht
+	,cast(round(SUM( [Wert] )/3,0) as int)	 AS Anzahl	
+from					--	Unterabfrage zum gruppieren je Monat um Duplikate herauszufiltern vor der Summierung
+(	select jahr,quartal_s,monat,[SKUNDE],[SKUNDE_name],[KV],[SPALTE],[Wert]	
+	FROM [DATASTORE].[V_HZV].[V_Statistik_KM6]
+	WHERE  right(quartal,4) &gt;=year(getdate())-4
+	AND (ZEILE LIKE '199%' OR ZEILE LIKE '299%')
+	AND SPALTE IN ('7','8')
+	group by jahr,quartal_s,monat,[SKUNDE],[SKUNDE_name],[KV],[SPALTE],[Wert]
+) t1
+GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
+
+/* Alte Variante mit falscher Summierung
+SELECT
+	 cast( concat(jahr,quartal_s) as varchar(5)) AS Quartal
+	,[SKUNDE]
+	,[SKUNDE_name] AS Kasse
+	,[KV] AS KV
+	,CASE WHEN [SPALTE] = '7' THEN 'männlich' ELSE 'weiblich' END AS Geschlecht
 	,cast(round(SUM( [Wert] )/3,0) as int)	 AS Anzahl	--		select distinct quartal
 FROM [DATASTORE].[V_HZV].[V_Statistik_KM6]
 WHERE  right(quartal,4) &gt;=year(getdate())-4
 	AND (ZEILE LIKE '199%' OR ZEILE LIKE '299%')
 	AND SPALTE IN ('7','8')
-GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE</property>
+GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
+*/</property>
                 <property
                   dataType="System.String"
                   description="Die Variable, die den auszuführenden SQL-Befehl enthält."
@@ -549,7 +568,7 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen der Teilnehmer deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der Teilnehmer die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select distinct vertrags_ID, skunde, t1.vertragsKV&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t1.skunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1582,7 +1601,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.VertragsID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;where t1.TeilnahmeEnde&lt;t2.VertragBeginn or t1.TeilnahmeBeginn&gt;t2.VertragEnde" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen der Ärzte deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.VertragsID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;where t1.TeilnahmeEnde&lt;t2.VertragBeginn or t1.TeilnahmeBeginn&gt;t2.VertragEnde&#xA;&#xA;-- Löschen der Ärzte die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.VertragsID=t2.VertragsID and &#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2536,13 +2555,41 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="212,42"
-          Id="Package\Teilnehmer vom Store laden"
-          TopLeft="342,43" />
+          Size="136,42"
+          Id="Package\Ärzte leeren"
+          TopLeft="111,147" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Ärzte um Verträge bereinigen"
+          TopLeft="630,143" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Ärzte von Store laden"
+          TopLeft="361,145" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\KM6 leeren"
+          TopLeft="117,243" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\KM6 um Verträge bereinigen"
+          TopLeft="633,244" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\KM6 vom Store laden"
+          TopLeft="358,242" />
         <NodeLayout
           Size="164,42"
           Id="Package\Teilnehmer leeren"
           TopLeft="112,43" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Teilnehmer um Verträge bereinigen"
+          TopLeft="605,48" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Teilnehmer vom Store laden"
+          TopLeft="342,43" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung]"
           TopLeft="276,64">
@@ -2565,14 +2612,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Ärzte leeren"
-          TopLeft="111,147" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Ärzte von Store laden"
-          TopLeft="361,145" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 1]"
           TopLeft="247,167">
@@ -2595,26 +2634,28 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="246,42"
-          Id="Package\Teilnehmer um Verträge bereinigen"
-          TopLeft="605,48" />
-        <NodeLayout
-          Size="218,42"
-          Id="Package\Ärzte um Verträge bereinigen"
-          TopLeft="630,143" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\KM6 leeren"
-          TopLeft="117,243" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\KM6 um Verträge bereinigen"
-          TopLeft="633,244" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\KM6 vom Store laden"
-          TopLeft="358,242" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 2]"
+          TopLeft="541,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="89,0"
+              Start="0,0"
+              End="81.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 3]"
           TopLeft="554,66.5">
@@ -2663,28 +2704,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                     Point3="-527.666666666667,37.8023255813953" />
                   <mssgle:LineSegment
                     End="-527.666666666667,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 2]"
-          TopLeft="541,165">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="89,0"
-              Start="0,0"
-              End="81.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="81.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2774,65 +2793,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Teilnehmer vom Store laden">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
-          TopLeft="209,234" />
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Teilnehmer vom Store laden\OLE DB-Quelle"
-          TopLeft="210,61" />
-        <EdgeLayout
-          Id="Package\Teilnehmer vom Store laden.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="280.25,103">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,131"
-              Start="0,0"
-              End="0,123.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,123.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Ziel">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Quelle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Ärzte von Store laden">
     <LayoutInfo>
@@ -2940,6 +2900,67 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\KM6 vom Store laden\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Teilnehmer vom Store laden">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
+          TopLeft="209,234" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Teilnehmer vom Store laden\OLE DB-Quelle"
+          TopLeft="210,61" />
+        <EdgeLayout
+          Id="Package\Teilnehmer vom Store laden.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="280.25,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,131"
+              Start="0,0"
+              End="0,123.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,123.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Ziel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
