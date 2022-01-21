@@ -26,26 +26,26 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LYO-VDI10-DVS22</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAp0nbAggbfU2bH7DtyyL/3wAAAAACAAAAAAADZgAAwAAAABAAAABzbrpYrFq2OtmmHuX+coPAAAAAAASAAACgAAAAEAAAAH/NT32ncECmPme0BxiiVN2IAAAAQiphGvnz49BfdnRXqjrzKI4XajQtkgXa8B43LcgRb//wYurwmrXbgLHMYQFLBXFMyiPpg11Dbv27uBUstdjhpCR/mzmYST4ptYn6LPg977IIXtRAd66JFSmy3Tmt6pBEezWyG8TMons2xPBPd7AHUDr4Ij58V+vA7Y/4xh9WHUD9Xzgo/53V/RQAAAAd56LpMC7LD1trwlTPnlmsE1/24Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAp0nbAggbfU2bH7DtyyL/3wAAAAACAAAAAAADZgAAwAAAABAAAACfDEK2Q7762KIGekPs/LgvAAAAAASAAACgAAAAEAAAAMOSkZQbOBt4A/kA/V8neIiIAAAAHXyp6ZnRrRQjAv+1t6zFP/kgWAlbklOYLLST/HtZ12sjBFJ5FW9yVCION4LV1CuGNkXLHufhi5PnidowQ5srcl/Vos0d8EhojLshf0CZRNXbpbwx5osLbSUv8roeF27kAAtC2UjzyGqwEM0xLdR0fhrfLoANJKmGDE/jqGQsvJZPo9xima9fuRQAAAAH2Wpj0GoDsCXWvwRy95xOpHTnYA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Import_Teilnehmer.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Import_Datastore.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Import_Teilnehmer.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Import_Datastore.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{42B7E57F-1661-442F-BB9A-23CC2C5ABD3A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Import_Teilnehmer</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{39CC90D1-C833-4811-A0B4-6D17D8F9EA35}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Import_Datastore</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">20</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1B99A5A0-68A4-4966-BEB6-EF1A4A999113}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7B7FC165-06AC-482D-BF3B-03BAA6F6468B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
