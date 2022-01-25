@@ -11,10 +11,9 @@
   </DataSources>
   <DataSets>
     <DataSet Name="DS_DB_Steuerung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <CommandText>SELECT * FROM HZV.V_DB_Steuerung</CommandText>
-      </Query>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_Steuerung</SharedDataSetReference>
+      </SharedDataSet>
       <Fields>
         <Field Name="Q_Dashboard_kurz">
           <DataField>Q_Dashboard_kurz</DataField>
@@ -47,11 +46,9 @@
       </Fields>
     </DataSet>
     <DataSet Name="DS_DB_Kassen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <CommandText>SELECT * FROM HZV.V_DB_Kassen
-ORDER BY KasseName</CommandText>
-      </Query>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_Kassen</SharedDataSetReference>
+      </SharedDataSet>
       <Fields>
         <Field Name="Id">
           <DataField>Id</DataField>
@@ -68,17 +65,15 @@ ORDER BY KasseName</CommandText>
       </Fields>
     </DataSet>
     <DataSet Name="DS_DB_Teilnehmer">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_Teilnehmer</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
             <rd:UserDefined>true</rd:UserDefined>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Teilnehmer</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="KVId">
           <DataField>KVId</DataField>
@@ -115,16 +110,14 @@ ORDER BY KasseName</CommandText>
       </Fields>
     </DataSet>
     <DataSet Name="DS_DB_Bereinigung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_Bereinigung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Bereinigung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="HauptKassenIK">
           <DataField>HauptKassenIK</DataField>
@@ -153,16 +146,14 @@ ORDER BY KasseName</CommandText>
       </Fields>
     </DataSet>
     <DataSet Name="DS_DB_NVI">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_NVI</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_NVI</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VertragsKV">
           <DataField>VertragsKV</DataField>
@@ -183,16 +174,14 @@ ORDER BY KasseName</CommandText>
       </Fields>
     </DataSet>
     <DataSet Name="DS_DB_Abrechnung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>DS_DB_Abrechnung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Abrechnung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="S_ABRECHNUNGSQUARTAL">
           <DataField>S_ABRECHNUNGSQUARTAL</DataField>
@@ -687,7 +676,6 @@ ORDER BY KasseName</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

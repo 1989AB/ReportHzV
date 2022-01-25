@@ -50,6 +50,12 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="DS_DB_Abrechnung.rsd" />
+    <DataSet Include="DS_DB_Bereinigung.rsd" />
+    <DataSet Include="DS_DB_Kassen.rsd" />
+    <DataSet Include="DS_DB_NVI.rsd" />
+    <DataSet Include="DS_DB_Steuerung.rsd" />
+    <DataSet Include="DS_DB_Teilnehmer.rsd" />
     <DataSet Include="HZV_Bereinigung.rsd" />
   </ItemGroup>
   <ItemGroup>
