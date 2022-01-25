@@ -58,6 +58,7 @@
   <ItemGroup>
     <Report Include="HZV_Bereinigung.rdl" />
     <Report Include="HZV_Dashboard.rdl" />
+    <Report Include="HZV_Versicherte.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
