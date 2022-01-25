@@ -57,6 +57,7 @@
     <DataSet Include="HZV_DB_NVI.rsd" />
     <DataSet Include="HZV_DB_Steuerung.rsd" />
     <DataSet Include="HZV_DB_Teilnehmer.rsd" />
+    <DataSet Include="HZV_Kassen.rsd" />
     <DataSet Include="HZV_LastUpdate.rsd" />
   </ItemGroup>
   <ItemGroup>
