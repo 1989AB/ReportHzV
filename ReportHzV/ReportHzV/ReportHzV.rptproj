@@ -56,6 +56,7 @@
     <DataSet Include="DS_DB_NVI.rsd" />
     <DataSet Include="DS_DB_Steuerung.rsd" />
     <DataSet Include="DS_DB_Teilnehmer.rsd" />
+    <DataSet Include="DS_LastUpdate.rsd" />
     <DataSet Include="HZV_Bereinigung.rsd" />
   </ItemGroup>
   <ItemGroup>
