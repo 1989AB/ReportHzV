@@ -2839,6 +2839,23 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>DurchschnittKosten</rd:DefaultName>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Drillthrough>
+                                  <ReportName>HZV_DurchschnittKosten</ReportName>
+                                  <Parameters>
+                                    <Parameter Name="Kasse">
+                                      <Value>=Parameters!Kasse.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Quartal">
+                                      <Value>=Parameters!Quartal.Value</Value>
+                                    </Parameter>
+                                  </Parameters>
+                                </Drillthrough>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
