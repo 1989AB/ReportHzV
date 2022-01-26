@@ -65,6 +65,7 @@
     <DataSource Include="DS_Reporting.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="HZV_Abrechnung.rdl" />
     <Report Include="HZV_Bereinigung.rdl" />
     <Report Include="HZV_Dashboard.rdl" />
     <Report Include="HZV_DurchschnittKosten.rdl" />
