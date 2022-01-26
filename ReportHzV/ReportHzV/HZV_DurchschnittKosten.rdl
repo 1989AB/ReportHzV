@@ -21,25 +21,6 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_Kassen">
-      <SharedDataSet>
-        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
-      </SharedDataSet>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="HauptKassenIK">
-          <DataField>HauptKassenIK</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KasseName">
-          <DataField>KasseName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="HZV_DurchschnittKosten_Quartale">
       <Query>
         <DataSourceName>DS_Reporting</DataSourceName>
@@ -181,6 +162,25 @@
         <Field Name="DurchschnittKosten">
           <DataField>DurchschnittKosten</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_Kassen">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HauptKassenIK">
+          <DataField>HauptKassenIK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KasseName">
+          <DataField>KasseName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>

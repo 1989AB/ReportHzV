@@ -45,25 +45,6 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_DB_Kassen">
-      <SharedDataSet>
-        <SharedDataSetReference>HZV_DB_Kassen</SharedDataSetReference>
-      </SharedDataSet>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="HauptKassenIK">
-          <DataField>HauptKassenIK</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KasseName">
-          <DataField>KasseName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="HZV_DB_Teilnehmer">
       <SharedDataSet>
         <SharedDataSetReference>HZV_DB_Teilnehmer</SharedDataSetReference>
@@ -230,6 +211,25 @@
         <Field Name="DurchschnittKosten">
           <DataField>DurchschnittKosten</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_Kassen">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HauptKassenIK">
+          <DataField>HauptKassenIK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KasseName">
+          <DataField>KasseName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -2644,7 +2644,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>=Fields!Kuerzel_lang.Value</Value>
-                                <Style />
+                                <Style>
+                                  <TextDecoration>Underline</TextDecoration>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -3035,7 +3037,7 @@
       <Prompt>Krankenkasse</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_DB_Kassen</DataSetName>
+          <DataSetName>HZV_Kassen</DataSetName>
           <ValueField>HauptKassenIK</ValueField>
           <LabelField>KasseName</LabelField>
         </DataSetReference>

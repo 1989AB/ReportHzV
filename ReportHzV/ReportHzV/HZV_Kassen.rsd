@@ -4,12 +4,12 @@
   <DataSet Name="HZV_Kassen">
     <Query>
       <DataSourceReference>DS_Reporting</DataSourceReference>
-      <CommandText>SELECT * FROM HZV.V_Kassen</CommandText>
+      <CommandText>SELECT * FROM [HZV].[Kassen]</CommandText>
     </Query>
     <Fields>
       <Field Name="Id">
         <DataField>Id</DataField>
-        <rd:TypeName>System.Int64</rd:TypeName>
+        <rd:TypeName>System.Int32</rd:TypeName>
       </Field>
       <Field Name="HauptKassenIK">
         <DataField>HauptKassenIK</DataField>
