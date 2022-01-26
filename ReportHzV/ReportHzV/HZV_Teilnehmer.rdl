@@ -177,6 +177,10 @@
           <DataField>Quartal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Quartal_Text_kurz">
+          <DataField>Quartal_Text_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="AnzTNM">
           <DataField>AnzTNM</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -230,7 +234,7 @@
                 <ChartMember>
                   <Group Name="Chart1_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Quartal.Value</GroupExpression>
+                      <GroupExpression>=Fields!Quartal_Text_kurz.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -238,7 +242,7 @@
                       <Value>=Fields!Quartal.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!Quartal.Value</Label>
+                  <Label>=Fields!Quartal_Text_kurz.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -343,6 +347,7 @@
                         <Color>#5c5c5c</Color>
                       </Style>
                     </ChartAxisTitle>
+                    <Interval>1</Interval>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
                       <Style>
@@ -378,6 +383,8 @@
                     <CrossAt>NaN</CrossAt>
                     <Minimum>NaN</Minimum>
                     <Maximum>NaN</Maximum>
+                    <Angle>-90</Angle>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -600,7 +607,7 @@
             <DataSetName>HZV_Teilnehmer_Entwicklung</DataSetName>
             <Top>3.17183cm</Top>
             <Left>14.54679cm</Left>
-            <Height>8.43958cm</Height>
+            <Height>10.10646cm</Height>
             <Width>17.254cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -618,7 +625,7 @@
                 <ChartMember>
                   <Group Name="Chart2_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Altersgruppe.Value</GroupExpression>
+                      <GroupExpression>=Fields!AG_lang.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
@@ -626,7 +633,7 @@
                       <Value>=Fields!AG_Id.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!Altersgruppe.Value</Label>
+                  <Label>=Fields!AG_lang.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -965,7 +972,7 @@
             <Top>3.17183cm</Top>
             <Left>1.05304cm</Left>
             <Height>15.53042cm</Height>
-            <Width>12.60646cm</Width>
+            <Width>13.31736cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1034,7 +1041,7 @@
             <Top>2.39544cm</Top>
             <Left>1.47637cm</Left>
             <Height>0.6cm</Height>
-            <Width>12.18312cm</Width>
+            <Width>12.89403cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -1135,7 +1142,7 @@
             <Source>Embedded</Source>
             <Value>Icon_Teilnehmermanagement</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>13.4112cm</Top>
+            <Top>14.39016cm</Top>
             <Left>15.92263cm</Left>
             <Height>1.5cm</Height>
             <Width>1.5cm</Width>
@@ -1150,7 +1157,7 @@
             <Source>Embedded</Source>
             <Value>Icon_HzV</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>15.71308cm</Top>
+            <Top>16.36087cm</Top>
             <Left>15.92263cm</Left>
             <Height>1.5cm</Height>
             <Width>1.5cm</Width>
@@ -1181,7 +1188,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>13.4112cm</Top>
+            <Top>14.39016cm</Top>
             <Left>17.90912cm</Left>
             <Height>1.5cm</Height>
             <Width>13.89168cm</Width>
@@ -1217,7 +1224,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>15.71308cm</Top>
+            <Top>16.36087cm</Top>
             <Left>17.90912cm</Left>
             <Height>1.5cm</Height>
             <Width>13.89168cm</Width>
@@ -1233,8 +1240,41 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Hinweis: (Daten gem. Löschkonzept)</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>19.49162cm</Top>
+            <Left>0.762cm</Left>
+            <Height>0.6cm</Height>
+            <Width>11.12542cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>7.68092in</Height>
+        <Height>8.03508in</Height>
         <Style />
       </Body>
       <Width>12.98875in</Width>
