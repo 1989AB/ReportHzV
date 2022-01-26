@@ -2655,6 +2655,29 @@
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Kuerzel_lang1</rd:DefaultName>
+                        <ActionInfo>
+                          <Actions>
+                            <Action>
+                              <Drillthrough>
+                                <ReportName>HZV_Abrechnung</ReportName>
+                                <Parameters>
+                                  <Parameter Name="Kasse">
+                                    <Value>=Parameters!Kasse.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="User">
+                                    <Value>=Parameters!User.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="Quartal">
+                                    <Value>=Fields!S_ABRECHNUNGSQUARTAL.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="KV">
+                                    <Value>=Fields!KV.Value</Value>
+                                  </Parameter>
+                                </Parameters>
+                              </Drillthrough>
+                            </Action>
+                          </Actions>
+                        </ActionInfo>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
