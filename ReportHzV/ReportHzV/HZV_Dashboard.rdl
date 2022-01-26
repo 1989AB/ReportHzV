@@ -221,12 +221,12 @@
         <CommandText>HZV.SP_DB_Dataset_DurchschnittKosten</CommandText>
       </Query>
       <Fields>
-        <Field Name="Quartal">
-          <DataField>Quartal</DataField>
+        <Field Name="Quartal_kurz">
+          <DataField>Quartal_kurz</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Q_Dashboard_lang">
-          <DataField>Q_Dashboard_lang</DataField>
+        <Field Name="Quartal_lang">
+          <DataField>Quartal_lang</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DurchschnittKosten">
@@ -2816,7 +2816,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>5.34324cm</Height>
+                  <Height>5.02574cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2878,7 +2878,7 @@
             <DataSetName>HZV_DB_DurchschnittKosten</DataSetName>
             <Top>2.63985cm</Top>
             <Left>18.27953cm</Left>
-            <Height>14.25116cm</Height>
+            <Height>13.93366cm</Height>
             <Width>6.49521cm</Width>
             <ZIndex>29</ZIndex>
             <Style>
