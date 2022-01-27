@@ -1169,6 +1169,32 @@
             <Source>Embedded</Source>
             <Value>Icon_Teilnehmermanagement</Value>
             <Sizing>FitProportional</Sizing>
+            <ActionInfo>
+              <Actions>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>HZV_Versicherte</ReportName>
+                    <Parameters>
+                      <Parameter Name="Kasse">
+                        <Value>=Parameters!Kasse.Value</Value>
+                      </Parameter>
+                      <Parameter Name="User">
+                        <Value>=Parameters!User.Value</Value>
+                      </Parameter>
+                      <Parameter Name="Quartal">
+                        <Value>=Parameters!Quartal.Value</Value>
+                      </Parameter>
+                      <Parameter Name="KV">
+                        <Value>=Parameters!KV.Value</Value>
+                      </Parameter>
+                      <Parameter Name="Arzt">
+                        <Value>="0000000"</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+              </Actions>
+            </ActionInfo>
             <Top>14.39016cm</Top>
             <Left>15.92263cm</Left>
             <Height>1.5cm</Height>
@@ -1215,6 +1241,32 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
+            <ActionInfo>
+              <Actions>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>HZV_Versicherte</ReportName>
+                    <Parameters>
+                      <Parameter Name="Kasse">
+                        <Value>=Parameters!Kasse.Value</Value>
+                      </Parameter>
+                      <Parameter Name="User">
+                        <Value>=Parameters!User.Value</Value>
+                      </Parameter>
+                      <Parameter Name="Quartal">
+                        <Value>=Parameters!Quartal.Value</Value>
+                      </Parameter>
+                      <Parameter Name="KV">
+                        <Value>=Parameters!KV.Value</Value>
+                      </Parameter>
+                      <Parameter Name="Arzt">
+                        <Value>="0000000"</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+              </Actions>
+            </ActionInfo>
             <Top>14.39016cm</Top>
             <Left>17.90912cm</Left>
             <Height>1.5cm</Height>
