@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="DS_DB_Steuerung">
+    <Query>
+      <DataSourceReference>DS_Reporting</DataSourceReference>
+      <CommandText>SELECT * FROM HZV.V_DB_Steuerung</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Q_Dashboard_kurz">
+        <DataField>Q_Dashboard_kurz</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Q_Dashboard_lang">
+        <DataField>Q_Dashboard_lang</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LastUpdate">
+        <DataField>LastUpdate</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Beginn">
+        <DataField>Quartal_Beginn</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Text_kurz">
+        <DataField>Quartal_Text_kurz</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Ende">
+        <DataField>Quartal_Ende</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Text_lang">
+        <DataField>Quartal_Text_lang</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

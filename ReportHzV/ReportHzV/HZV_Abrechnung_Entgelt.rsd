@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="HZV_Abrechnung_Entgelt">
+    <Query>
+      <DataSourceReference>DS_Reporting</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Kasse">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+        <DataSetParameter Name="@Quartal">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+        <DataSetParameter Name="@KV">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>HZV.SP_Dataset_Abrechnung_Entgelt</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="S_ABRECHNUNGSQUARTAL">
+        <DataField>S_ABRECHNUNGSQUARTAL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="KV">
+        <DataField>KV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LEISTUNGSQUARTAL">
+        <DataField>LEISTUNGSQUARTAL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Text_kurz">
+        <DataField>Quartal_Text_kurz</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VERARBEITUNGS_KNZ">
+        <DataField>VERARBEITUNGS_KNZ</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="GO_NR">
+        <DataField>GO_NR</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Leistung_Text">
+        <DataField>Leistung_Text</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ANZ_GONR">
+        <DataField>ANZ_GONR</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="BETRAG">
+        <DataField>BETRAG</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

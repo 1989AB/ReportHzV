@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="HZV_Bereinigung_Quartale">
+    <Query>
+      <DataSourceReference>DS_Reporting</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Kasse">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiStringFixedLength</rd:DbType>
+          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>HZV.SP_Dataset_Bereinigung_Quartale</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="QUARTAL">
+        <DataField>QUARTAL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Text_kurz">
+        <DataField>Quartal_Text_kurz</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Quartal_Text_lang">
+        <DataField>Quartal_Text_lang</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

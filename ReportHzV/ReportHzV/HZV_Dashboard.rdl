@@ -10,11 +10,10 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DS_DB_Steuerung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <CommandText>SELECT * FROM HZV.V_DB_Steuerung</CommandText>
-      </Query>
+    <DataSet Name="HZV_DB_Steuerung">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_Steuerung</SharedDataSetReference>
+      </SharedDataSet>
       <Fields>
         <Field Name="Q_Dashboard_kurz">
           <DataField>Q_Dashboard_kurz</DataField>
@@ -46,39 +45,16 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DS_DB_Kassen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <CommandText>SELECT * FROM HZV.V_DB_Kassen
-ORDER BY KasseName</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="HauptKassenIK">
-          <DataField>HauptKassenIK</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KasseName">
-          <DataField>KasseName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="DS_DB_Teilnehmer">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+    <DataSet Name="HZV_DB_Teilnehmer">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_Teilnehmer</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
             <rd:UserDefined>true</rd:UserDefined>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Teilnehmer</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="KVId">
           <DataField>KVId</DataField>
@@ -114,17 +90,15 @@ ORDER BY KasseName</CommandText>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DS_DB_Bereinigung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+    <DataSet Name="HZV_DB_Bereinigung">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_Bereinigung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Bereinigung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="HauptKassenIK">
           <DataField>HauptKassenIK</DataField>
@@ -152,17 +126,15 @@ ORDER BY KasseName</CommandText>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DS_DB_NVI">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+    <DataSet Name="HZV_DB_NVI">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_NVI</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_NVI</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VertragsKV">
           <DataField>VertragsKV</DataField>
@@ -182,17 +154,15 @@ ORDER BY KasseName</CommandText>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DS_DB_Abrechnung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+    <DataSet Name="HZV_DB_Abrechnung">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_Abrechnung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_DB_Dataset_Abrechnung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="S_ABRECHNUNGSQUARTAL">
           <DataField>S_ABRECHNUNGSQUARTAL</DataField>
@@ -220,6 +190,49 @@ ORDER BY KasseName</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="HZV_DB_DurchschnittKosten">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DB_DurchschnittKosten</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="Quartal_kurz">
+          <DataField>Quartal_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quartal_lang">
+          <DataField>Quartal_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DurchschnittKosten">
+          <DataField>DurchschnittKosten</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_Kassen">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HauptKassenIK">
+          <DataField>HauptKassenIK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KasseName">
+          <DataField>KasseName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -232,7 +245,7 @@ ORDER BY KasseName</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="letzte Aktualisierung: " &amp; Environment.NewLine &amp; First(Fields!LastUpdate.Value, "DS_DB_Steuerung")</Value>
+                    <Value>="letzte Aktualisierung: " &amp; Environment.NewLine &amp; First(Fields!LastUpdate.Value, "HZV_DB_Steuerung")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -242,8 +255,8 @@ ORDER BY KasseName</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>14.06985cm</Top>
-            <Left>17.17308cm</Left>
+            <Top>24.64083cm</Top>
+            <Left>17.16954cm</Left>
             <Height>1.15562cm</Height>
             <Width>8.55896cm</Width>
             <Style>
@@ -301,7 +314,7 @@ ORDER BY KasseName</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Quartal_Text_lang.Value, "DS_DB_Steuerung")</Value>
+                    <Value>=First(Fields!Quartal_Text_lang.Value, "HZV_DB_Steuerung")</Value>
                     <Style>
                       <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -393,7 +406,7 @@ ORDER BY KasseName</CommandText>
             <Top>0.32563cm</Top>
             <Left>26.2612cm</Left>
             <Height>0.3in</Height>
-            <Width>16.0142cm</Width>
+            <Width>16.70212cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -469,7 +482,7 @@ ORDER BY KasseName</CommandText>
             <Top>13.98588cm</Top>
             <Left>26.2612cm</Left>
             <Height>0.3in</Height>
-            <Width>16.0142cm</Width>
+            <Width>16.70212cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -640,7 +653,9 @@ ORDER BY KasseName</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Kuerzel_lang.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -649,6 +664,29 @@ ORDER BY KasseName</CommandText>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Kuerzel_lang</rd:DefaultName>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Drillthrough>
+                                  <ReportName>HZV_Teilnehmer</ReportName>
+                                  <Parameters>
+                                    <Parameter Name="Kasse">
+                                      <Value>=Parameters!Kasse.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Quartal">
+                                      <Value>=First(Fields!Q_Dashboard_lang.Value, "HZV_DB_Steuerung")</Value>
+                                    </Parameter>
+                                    <Parameter Name="KV">
+                                      <Value>=Fields!KVId.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="User">
+                                      <Value>=Parameters!User.Value</Value>
+                                    </Parameter>
+                                  </Parameters>
+                                </Drillthrough>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -757,7 +795,7 @@ ORDER BY KasseName</CommandText>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DS_DB_Teilnehmer</DataSetName>
+            <DataSetName>HZV_DB_Teilnehmer</DataSetName>
             <Filters>
               <Filter>
                 <FilterExpression>=IsNothing(Fields!QuoteTV.Value)</FilterExpression>
@@ -840,7 +878,7 @@ ORDER BY KasseName</CommandText>
             </MapViewport>
             <MapDataRegions>
               <MapDataRegion Name="Map7_PolygonLayer1_DataRegion">
-                <DataSetName>DS_DB_Teilnehmer</DataSetName>
+                <DataSetName>HZV_DB_Teilnehmer</DataSetName>
                 <MapMember>
                   <Group Name="Map7_PolygonLayer1_Group" />
                 </MapMember>
@@ -860,6 +898,29 @@ ORDER BY KasseName</CommandText>
                     <FontSize>8pt</FontSize>
                     <Color>White</Color>
                   </Style>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Drillthrough>
+                          <ReportName>HZV_Teilnehmer</ReportName>
+                          <Parameters>
+                            <Parameter Name="Kasse">
+                              <Value>=Parameters!Kasse.Value</Value>
+                            </Parameter>
+                            <Parameter Name="User">
+                              <Value>=Parameters!User.Value</Value>
+                            </Parameter>
+                            <Parameter Name="Quartal">
+                              <Value>=First(Fields!Q_Dashboard_lang.Value, "HZV_DB_Steuerung")</Value>
+                            </Parameter>
+                            <Parameter Name="KV">
+                              <Value>=Fields!KVId.Value</Value>
+                            </Parameter>
+                          </Parameters>
+                        </Drillthrough>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
                   <Label>=Fields!Kuerzel_kurz.Value</Label>
                 </MapPolygonTemplate>
                 <MapPolygonRules>
@@ -1020,6 +1081,29 @@ ORDER BY KasseName</CommandText>
                       <ChartDataLabel>
                         <Style />
                       </ChartDataLabel>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>HZV_Bereinigung</ReportName>
+                              <Parameters>
+                                <Parameter Name="Kasse">
+                                  <Value>=Parameters!Kasse.Value</Value>
+                                </Parameter>
+                                <Parameter Name="Quartal">
+                                  <Value>=Parameters!Quartal.Value</Value>
+                                </Parameter>
+                                <Parameter Name="User">
+                                  <Value>=Parameters!User.Value</Value>
+                                </Parameter>
+                                <Parameter Name="KV">
+                                  <Value>=Fields!VERTRAGS_KV.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
                       <Style />
                       <ChartMarker>
                         <Style />
@@ -1355,7 +1439,7 @@ ORDER BY KasseName</CommandText>
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DS_DB_Bereinigung</DataSetName>
+            <DataSetName>HZV_DB_Bereinigung</DataSetName>
             <Top>14.92426cm</Top>
             <Left>0.762cm</Left>
             <Height>10.87219cm</Height>
@@ -1823,11 +1907,11 @@ ORDER BY KasseName</CommandText>
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DS_DB_NVI</DataSetName>
+            <DataSetName>HZV_DB_NVI</DataSetName>
             <Top>14.92426cm</Top>
             <Left>26.2612cm</Left>
             <Height>10.87219cm</Height>
-            <Width>16.0142cm</Width>
+            <Width>16.70212cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1853,7 +1937,7 @@ ORDER BY KasseName</CommandText>
           </Line>
           <Line Name="Line10">
             <Top>13.80949cm</Top>
-            <Left>42.67729cm</Left>
+            <Left>43.31229cm</Left>
             <Height>12.32076cm</Height>
             <Width>0cm</Width>
             <ZIndex>20</ZIndex>
@@ -1868,7 +1952,7 @@ ORDER BY KasseName</CommandText>
             <Top>13.80949cm</Top>
             <Left>25.90842cm</Left>
             <Height>0cm</Height>
-            <Width>16.76887cm</Width>
+            <Width>17.40387cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -1881,7 +1965,7 @@ ORDER BY KasseName</CommandText>
             <Top>26.13025cm</Top>
             <Left>25.90842cm</Left>
             <Height>0cm</Height>
-            <Width>16.76887cm</Width>
+            <Width>17.40387cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1894,7 +1978,7 @@ ORDER BY KasseName</CommandText>
             <Top>0.14111cm</Top>
             <Left>25.90842cm</Left>
             <Height>0cm</Height>
-            <Width>16.76887cm</Width>
+            <Width>17.40387cm</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1920,7 +2004,7 @@ ORDER BY KasseName</CommandText>
             <Top>13.39586cm</Top>
             <Left>25.90842cm</Left>
             <Height>0cm</Height>
-            <Width>16.76887cm</Width>
+            <Width>17.40387cm</Width>
             <ZIndex>25</ZIndex>
             <Style>
               <Border>
@@ -1931,7 +2015,7 @@ ORDER BY KasseName</CommandText>
           </Line>
           <Line Name="Line16">
             <Top>0.16317cm</Top>
-            <Left>42.67729cm</Left>
+            <Left>43.31229cm</Left>
             <Height>13.23269cm</Height>
             <Width>0cm</Width>
             <ZIndex>26</ZIndex>
@@ -1977,6 +2061,7 @@ ORDER BY KasseName</CommandText>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
+                        <Visible>true</Visible>
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -2292,11 +2377,11 @@ ORDER BY KasseName</CommandText>
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DS_DB_Abrechnung</DataSetName>
+            <DataSetName>HZV_DB_Abrechnung</DataSetName>
             <Top>1.26402cm</Top>
             <Left>26.2612cm</Left>
             <Height>11.82625cm</Height>
-            <Width>6.20552cm</Width>
+            <Width>6.54419cm</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
@@ -2365,7 +2450,7 @@ ORDER BY KasseName</CommandText>
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Center</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -2606,7 +2691,9 @@ ORDER BY KasseName</CommandText>
                             <TextRuns>
                               <TextRun>
                                 <Value>=Fields!Kuerzel_lang.Value</Value>
-                                <Style />
+                                <Style>
+                                  <TextDecoration>Underline</TextDecoration>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -2615,6 +2702,29 @@ ORDER BY KasseName</CommandText>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Kuerzel_lang1</rd:DefaultName>
+                        <ActionInfo>
+                          <Actions>
+                            <Action>
+                              <Drillthrough>
+                                <ReportName>HZV_Abrechnung</ReportName>
+                                <Parameters>
+                                  <Parameter Name="Kasse">
+                                    <Value>=Parameters!Kasse.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="User">
+                                    <Value>=Parameters!User.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="Quartal">
+                                    <Value>=Fields!S_ABRECHNUNGSQUARTAL.Value</Value>
+                                  </Parameter>
+                                  <Parameter Name="KV">
+                                    <Value>=Fields!KV.Value</Value>
+                                  </Parameter>
+                                </Parameters>
+                              </Drillthrough>
+                            </Action>
+                          </Actions>
+                        </ActionInfo>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2654,12 +2764,13 @@ ORDER BY KasseName</CommandText>
                                   <TextRun>
                                     <Value>=RunningValue(Fields!KV.Value,countdistinct,Nothing)</Value>
                                     <Style>
+                                      <FontSize>1pt</FontSize>
                                       <Color>=iif(val(ReportItems!ROWCOLOR.Value) Mod 2,"White","#eaeaea")</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
-                                  <TextAlign>Center</TextAlign>
+                                  <TextAlign>Left</TextAlign>
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
@@ -2686,12 +2797,178 @@ ORDER BY KasseName</CommandText>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DS_DB_Abrechnung</DataSetName>
+            <DataSetName>HZV_DB_Abrechnung</DataSetName>
             <Top>1.26402cm</Top>
-            <Left>32.67486cm</Left>
+            <Left>33.08761cm</Left>
             <Height>1.778cm</Height>
             <Width>7.07938cm</Width>
             <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix5">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>6.49521cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>8.90792cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox29">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Durchschnittliche Kosten je</Value>
+                                  <Style>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>#575756</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>teilnehmenden Versicherten</Value>
+                                  <Style>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>#575756</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>#575756</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox29</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>5.02574cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DurchschnittKosten">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=FormatNumber(Fields!DurchschnittKosten.Value,2) &amp; " Euro"</Value>
+                                  <Style>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>DurchschnittKosten</rd:DefaultName>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Drillthrough>
+                                  <ReportName>HZV_DurchschnittKosten</ReportName>
+                                  <Parameters>
+                                    <Parameter Name="Kasse">
+                                      <Value>=Parameters!Kasse.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Quartal">
+                                      <Value>=Parameters!Quartal.Value</Value>
+                                    </Parameter>
+                                  </Parameters>
+                                </Drillthrough>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>#9f281d</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details1" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>HZV_DB_DurchschnittKosten</DataSetName>
+            <Top>2.63985cm</Top>
+            <Left>18.27953cm</Left>
+            <Height>13.93366cm</Height>
+            <Width>6.49521cm</Width>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2702,7 +2979,7 @@ ORDER BY KasseName</CommandText>
         <Height>10.54792in</Height>
         <Style />
       </Body>
-      <Width>17.14361in</Width>
+      <Width>17.39361in</Width>
       <Page>
         <PageHeader>
           <Height>2.34349cm</Height>
@@ -2733,7 +3010,7 @@ ORDER BY KasseName</CommandText>
               <Top>0.7112cm</Top>
               <Left>0.19667in</Left>
               <Height>0.4in</Height>
-              <Width>42.17775cm</Width>
+              <Width>42.81275cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2814,7 +3091,7 @@ ORDER BY KasseName</CommandText>
       <DataType>String</DataType>
       <DefaultValue>
         <DataSetReference>
-          <DataSetName>DS_DB_Steuerung</DataSetName>
+          <DataSetName>HZV_DB_Steuerung</DataSetName>
           <ValueField>Q_Dashboard_kurz</ValueField>
         </DataSetReference>
       </DefaultValue>
@@ -2831,7 +3108,7 @@ ORDER BY KasseName</CommandText>
       <Prompt>Krankenkasse</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>DS_DB_Kassen</DataSetName>
+          <DataSetName>HZV_Kassen</DataSetName>
           <ValueField>HauptKassenIK</ValueField>
           <LabelField>KasseName</LabelField>
         </DataSetReference>
@@ -2863,8 +3140,8 @@ ORDER BY KasseName</CommandText>
           <ParameterName>Kasse</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>0</RowIndex>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>User</ParameterName>
         </CellDefinition>
       </CellDefinitions>
@@ -2880,6 +3157,7 @@ dim arrUserID
 	end if
 end function</Code>
   <Language>de-DE</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>8b489d09-5e1f-4569-aafe-7486ce9875bc</rd:ReportID>
 </Report>
