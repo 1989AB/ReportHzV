@@ -1147,7 +1147,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>je etilnehmer</Value>
+                                  <Value>je Teilnehmer</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>

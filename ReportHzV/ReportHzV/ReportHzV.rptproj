@@ -60,6 +60,7 @@
     <DataSet Include="HZV_DB_Abrechnung.rsd" />
     <DataSet Include="HZV_DB_Bereinigung.rsd" />
     <DataSet Include="HZV_DB_DurchschnittKosten.rsd" />
+    <DataSet Include="HZV_DB_Kassen.rsd" />
     <DataSet Include="HZV_DB_NVI.rsd" />
     <DataSet Include="HZV_DB_Steuerung.rsd" />
     <DataSet Include="HZV_DB_Teilnehmer.rsd" />

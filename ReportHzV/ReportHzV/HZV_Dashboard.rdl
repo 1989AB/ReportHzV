@@ -214,14 +214,14 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_Kassen">
+    <DataSet Name="HZV_DB_Kassen">
       <SharedDataSet>
-        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+        <SharedDataSetReference>HZV_DB_Kassen</SharedDataSetReference>
       </SharedDataSet>
       <Fields>
         <Field Name="Id">
           <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="HauptKassenIK">
           <DataField>HauptKassenIK</DataField>
@@ -3935,7 +3935,7 @@
       <Prompt>Krankenkasse</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_Kassen</DataSetName>
+          <DataSetName>HZV_DB_Kassen</DataSetName>
           <ValueField>HauptKassenIK</ValueField>
           <LabelField>KasseName</LabelField>
         </DataSetReference>
