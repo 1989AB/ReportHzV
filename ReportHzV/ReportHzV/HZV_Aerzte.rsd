@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="HZV_Aerzte">
+    <Query>
+      <DataSourceReference>DS_Reporting</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Kasse">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiStringFixedLength</rd:DbType>
+          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="@Quartal">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiStringFixedLength</rd:DbType>
+          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+        <DataSetParameter Name="@KV">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiStringFixedLength</rd:DbType>
+          <rd:IsMultiValued>false</rd:IsMultiValued>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>HZV.SP_Dataset_Aerzte</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Quartal_lang">
+        <DataField>Quartal_lang</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VertragsID">
+        <DataField>VertragsID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="HauptKassenIK">
+        <DataField>HauptKassenIK</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VertragsKV">
+        <DataField>VertragsKV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LANR7">
+        <DataField>LANR7</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="LANR_FG">
+        <DataField>LANR_FG</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Vorname">
+        <DataField>Vorname</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Nachname">
+        <DataField>Nachname</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="StrasseHausNr">
+        <DataField>StrasseHausNr</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="PLZ">
+        <DataField>PLZ</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Ort">
+        <DataField>Ort</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TeilnahmeBeginn">
+        <DataField>TeilnahmeBeginn</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="TeilnahmeEnde">
+        <DataField>TeilnahmeEnde</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Anzahl_Versicherte">
+        <DataField>Anzahl_Versicherte</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
