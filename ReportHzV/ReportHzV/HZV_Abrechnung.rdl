@@ -22,16 +22,14 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Abrechnung_Quartale">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Abrechnung_Quartale</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Abrechnung_Quartale</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="S_ABRECHNUNGSQUARTAL">
           <DataField>S_ABRECHNUNGSQUARTAL</DataField>
@@ -48,8 +46,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Abrechnung_KVRegionen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Abrechnung_KVRegionen</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -58,9 +56,7 @@
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Abrechnung_KVRegionen</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="KV">
           <DataField>KV</DataField>
@@ -85,8 +81,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Abrechnung_Entgelt">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Abrechnung_Entgelt</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -98,9 +94,7 @@
             <Value>=Parameters!KV.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Abrechnung_Entgelt</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="S_ABRECHNUNGSQUARTAL">
           <DataField>S_ABRECHNUNGSQUARTAL</DataField>

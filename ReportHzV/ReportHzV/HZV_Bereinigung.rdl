@@ -125,16 +125,14 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Bereinigung_Quartale">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Bereinigung_Quartale</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Bereinigung_Quartale</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="QUARTAL">
           <DataField>QUARTAL</DataField>
@@ -151,8 +149,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Bereinigung_KVRegionen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Bereinigung_KVRegionen</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -161,12 +159,10 @@
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Bereinigung_KVRegionen</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VERTRAGS_KV">
-          <DataField>Vertrags_KV</DataField>
+          <DataField>VERTRAGS_KV</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="KV_kurz">

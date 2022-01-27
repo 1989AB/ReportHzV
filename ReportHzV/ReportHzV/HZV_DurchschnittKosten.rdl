@@ -22,16 +22,14 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_DurchschnittKosten_Quartale">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DurchschnittKosten_Quartale</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_DurchschnittKosten_Quartale</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Quartal_kurz">
           <DataField>Quartal_kurz</DataField>
@@ -52,8 +50,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_DurchschnittKosten_Entwicklung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DurchschnittKosten_Entwicklung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -62,9 +60,7 @@
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_DurchschnittKosten_Entwicklung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Quartal_kurz">
           <DataField>Quartal_kurz</DataField>
@@ -105,8 +101,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_DurchschnittKosten_StandKV">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_DurchschnittKosten_StandKV</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -115,9 +111,7 @@
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_DurchschnittKosten_StandKV</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VertragsKV">
           <DataField>VertragsKV</DataField>

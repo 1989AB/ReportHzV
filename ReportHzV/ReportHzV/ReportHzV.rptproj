@@ -50,15 +50,27 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="HZV_Abrechnung_Entgelt.rsd" />
+    <DataSet Include="HZV_Abrechnung_KVRegionen.rsd" />
+    <DataSet Include="HZV_Abrechnung_Quartale.rsd" />
     <DataSet Include="HZV_Bereinigung.rsd" />
+    <DataSet Include="HZV_Bereinigung_KVRegionen.rsd" />
+    <DataSet Include="HZV_Bereinigung_Quartale.rsd" />
     <DataSet Include="HZV_DB_Abrechnung.rsd" />
     <DataSet Include="HZV_DB_Bereinigung.rsd" />
     <DataSet Include="HZV_DB_DurchschnittKosten.rsd" />
     <DataSet Include="HZV_DB_NVI.rsd" />
     <DataSet Include="HZV_DB_Steuerung.rsd" />
     <DataSet Include="HZV_DB_Teilnehmer.rsd" />
+    <DataSet Include="HZV_DurchschnittKosten_Entwicklung.rsd" />
+    <DataSet Include="HZV_DurchschnittKosten_Quartale.rsd" />
+    <DataSet Include="HZV_DurchschnittKosten_StandKV.rsd" />
     <DataSet Include="HZV_Kassen.rsd" />
     <DataSet Include="HZV_LastUpdate.rsd" />
+    <DataSet Include="HZV_Teilnehmer_Altersgruppen.rsd" />
+    <DataSet Include="HZV_Teilnehmer_Entwicklung.rsd" />
+    <DataSet Include="HZV_Teilnehmer_KVRegionen.rsd" />
+    <DataSet Include="HZV_Teilnehmer_Quartale.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="DS_Reporting.rds" />

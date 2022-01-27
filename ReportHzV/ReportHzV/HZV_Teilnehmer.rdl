@@ -22,16 +22,14 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Teilnehmer_Quartale">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_Quartale</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Teilnehmer_Quartale</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Quartal">
           <DataField>Quartal</DataField>
@@ -48,8 +46,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Teilnehmer_KVRegionen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_KVRegionen</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -58,9 +56,7 @@
             <Value>=Parameters!Quartal.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Teilnehmer_KVRegionen</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VertragsKV">
           <DataField>VertragsKV</DataField>
@@ -85,8 +81,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Teilnehmer_Altersgruppen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_Altersgruppen</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -98,9 +94,7 @@
             <Value>=Parameters!KV.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Teilnehmer_Altersgruppen</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Quartal">
           <DataField>Quartal</DataField>
@@ -133,8 +127,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Teilnehmer_Entwicklung">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_Entwicklung</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -146,9 +140,7 @@
             <Value>=Parameters!KV.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Teilnehmer_Entwicklung</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="VertragsKV">
           <DataField>VertragsKV</DataField>
