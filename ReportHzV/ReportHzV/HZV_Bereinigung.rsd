@@ -11,7 +11,7 @@
           <OmitFromQuery>false</OmitFromQuery>
           <rd:DbType>Object</rd:DbType>
         </DataSetParameter>
-        <DataSetParameter Name="@KV_Region">
+        <DataSetParameter Name="@KV">
           <ReadOnly>false</ReadOnly>
           <Nullable>false</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
@@ -24,18 +24,20 @@
           <rd:DbType>Object</rd:DbType>
         </DataSetParameter>
       </DataSetParameters>
-      <CommandText>select* from hzv.Bereinigung
-where Quartal =@Quartal
-and Wohnort_kv= @KV_Region
-and HauptkassenIK = @Kasse</CommandText>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>HZV.SP_Dataset_Bereinigung</CommandText>
     </Query>
     <Fields>
       <Field Name="VERTRAGS_ID">
-        <DataField>VERTRAGS_ID</DataField>
+        <DataField>Vertrags_ID</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="VERTRAGS_KV">
         <DataField>VERTRAGS_KV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="VertragsKV_Text">
+        <DataField>VertragsKV_Text</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="WOHNORT_KV">
@@ -44,6 +46,10 @@ and HauptkassenIK = @Kasse</CommandText>
       </Field>
       <Field Name="QUARTAL">
         <DataField>QUARTAL</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="WohnortKV_Text">
+        <DataField>WohnortKV_Text</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
       <Field Name="HauptKassenIK">
