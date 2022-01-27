@@ -11,8 +11,8 @@
   </DataSources>
   <DataSets>
     <DataSet Name="HZV_Versicherte">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Versicherte</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -27,9 +27,7 @@
             <Value>=Parameters!Arzt.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Versicherte</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Vertrags_ID">
           <DataField>Vertrags_ID</DataField>
@@ -196,8 +194,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_Versicherte_Aerzte">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Versicherte_Aerzte</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -209,9 +207,7 @@
             <Value>=Parameters!KV.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Versicherte_Aerzte</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Id">
           <DataField>Id</DataField>

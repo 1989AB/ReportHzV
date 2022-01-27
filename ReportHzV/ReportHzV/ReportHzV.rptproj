@@ -71,6 +71,8 @@
     <DataSet Include="HZV_Teilnehmer_Entwicklung.rsd" />
     <DataSet Include="HZV_Teilnehmer_KVRegionen.rsd" />
     <DataSet Include="HZV_Teilnehmer_Quartale.rsd" />
+    <DataSet Include="HZV_Versicherte.rsd" />
+    <DataSet Include="HZV_Versicherte_Aerzte.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="DS_Reporting.rds" />
