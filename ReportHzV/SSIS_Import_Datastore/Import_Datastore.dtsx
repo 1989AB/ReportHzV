@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{6426BD2E-03DB-4D1E-9F57-C0EE165981A2}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{125EB10C-2CF7-4950-8D85-7B2D806CC0C9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -8138,7 +8138,7 @@ and PRUEF_KZ='U'</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].[Abrechnung_Diagnosen] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.SKUNDE =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].[Abrechnung_Diagnosen] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.skunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].[Abrechnung_Diagnosen] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].[Abrechnung_Diagnosen] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8172,7 +8172,7 @@ and PRUEF_KZ='U'</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="&#xA;-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Einzelfall t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.SKUNDE =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Einzelfall t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.skunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Einzelfall t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Einzelfall t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8206,7 +8206,7 @@ and PRUEF_KZ='U'</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="&#xA;-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.SKUNDE =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.skunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8257,7 +8257,7 @@ and PRUEF_KZ='U'</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="&#xA;-- Löschen der KM6-Statistik wenn Vertrag noch nicht gestartet oder bereits beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.SKunde =t2.HauptKassenIK&#xA;where t1.Quartal  not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der KM6-Statistik wenn kein Vertrag existiert&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.SKunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen der KM6-Statistik wenn Vertrag noch nicht gestartet oder bereits beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.Kassen_IK =t2.HauptKassenIK&#xA;where t1.Quartal  not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der KM6-Statistik wenn kein Vertrag existiert&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].KM6 t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on  t1.KV=t2.VertragsKV&#xA;and t1.Kassen_IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8301,35 +8301,20 @@ and PRUEF_KZ='U'</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
 	 cast( concat(jahr,quartal_s) as varchar(5)) AS Quartal
-	,[SKUNDE]
-	,[SKUNDE_name] AS Kasse
+	,KASSEN_IK
+	,Kassenname AS Kasse
 	,[KV] AS KV
 	,CASE WHEN [SPALTE] = '7' THEN 'männlich' ELSE 'weiblich' END AS Geschlecht
 	,cast(round(SUM( [Wert] )/3,0) as int)	 AS Anzahl	
 from					--	Unterabfrage zum gruppieren je Monat um Duplikate herauszufiltern vor der Summierung
-(	select jahr,quartal_s,monat,[SKUNDE],[SKUNDE_name],[KV],[SPALTE],[Wert]	
+(	select jahr,quartal_s,monat,KASSEN_IK,Kassenname,[KV],[SPALTE],[Wert]	
 	FROM [DATASTORE].[V_HZV].[V_Statistik_KM6]
 	WHERE  right(quartal,4) &gt;=year(getdate())-4
 	AND (ZEILE LIKE '199%' OR ZEILE LIKE '299%')
 	AND SPALTE IN ('7','8')
-	group by jahr,quartal_s,monat,[SKUNDE],[SKUNDE_name],[KV],[SPALTE],[Wert]
+	group by jahr,quartal_s,monat,KASSEN_IK,Kassenname,[KV],[SPALTE],[Wert]
 ) t1
-GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
-
-/* Alte Variante mit falscher Summierung
-SELECT
-	 cast( concat(jahr,quartal_s) as varchar(5)) AS Quartal
-	,[SKUNDE]
-	,[SKUNDE_name] AS Kasse
-	,[KV] AS KV
-	,CASE WHEN [SPALTE] = '7' THEN 'männlich' ELSE 'weiblich' END AS Geschlecht
-	,cast(round(SUM( [Wert] )/3,0) as int)	 AS Anzahl	--		select distinct quartal
-FROM [DATASTORE].[V_HZV].[V_Statistik_KM6]
-WHERE  right(quartal,4) &gt;=year(getdate())-4
-	AND (ZEILE LIKE '199%' OR ZEILE LIKE '299%')
-	AND SPALTE IN ('7','8')
-GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
-*/</property>
+GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <property
                   dataType="System.String"
                   description="Die Variable, die den auszuführenden SQL-Befehl enthält."
@@ -8419,15 +8404,15 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       name="Anzahl"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SKUNDE]"
+                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SKUNDE]"
+                      externalMetadataColumnId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KASSEN_IK]"
                       length="9"
-                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SKUNDE]"
-                      name="SKUNDE"
+                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      name="KASSEN_IK"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -8442,7 +8427,7 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Kasse]"
                       codePage="1252"
                       dataType="str"
-                      length="150"
+                      length="30"
                       name="Kasse" />
                     <externalMetadataColumn
                       refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KV]"
@@ -8461,11 +8446,11 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       dataType="i4"
                       name="Anzahl" />
                     <externalMetadataColumn
-                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[SKUNDE]"
+                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KASSEN_IK]"
                       codePage="1252"
                       dataType="str"
                       length="9"
-                      name="SKUNDE" />
+                      name="KASSEN_IK" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -8481,17 +8466,17 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Quartal]"
                       name="Quartal" />
                     <outputColumn
-                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SKUNDE]"
+                      refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
                       codePage="1252"
                       dataType="str"
                       length="9"
-                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[SKUNDE]"
-                      name="SKUNDE" />
+                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KASSEN_IK]"
+                      name="KASSEN_IK" />
                     <outputColumn
                       refId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Kasse]"
                       codePage="1252"
                       dataType="str"
-                      length="150"
+                      length="30"
                       lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Kasse]"
                       name="Kasse" />
                     <outputColumn
@@ -8641,13 +8626,13 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       externalMetadataColumnId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anzahl]"
                       lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anzahl]" />
                     <inputColumn
-                      refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[SKUNDE]"
+                      refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[KASSEN_IK]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="9"
-                      cachedName="SKUNDE"
-                      externalMetadataColumnId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[SKunde]"
-                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[SKUNDE]" />
+                      cachedName="KASSEN_IK"
+                      externalMetadataColumnId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Kassen_IK]"
+                      lineageId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KASSEN_IK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8657,12 +8642,6 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       dataType="str"
                       length="5"
                       name="Quartal" />
-                    <externalMetadataColumn
-                      refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[SKunde]"
-                      codePage="1252"
-                      dataType="str"
-                      length="9"
-                      name="SKunde" />
                     <externalMetadataColumn
                       refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Kasse]"
                       codePage="1252"
@@ -8685,6 +8664,12 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
                       refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anzahl]"
                       dataType="i4"
                       name="Anzahl" />
+                    <externalMetadataColumn
+                      refId="Package\KM6 vom Store laden\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Kassen_IK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="Kassen_IK" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -8755,7 +8740,7 @@ GROUP BY jahr,quartal_s,SKUNDE,SKUNDE_name,KV,SPALTE
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="-- Löschen der Teilnehmer deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der Teilnehmer die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select distinct vertrags_ID, skunde, t1.vertragsKV&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t1.skunde =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen der Teilnehmer deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der Teilnehmer die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select distinct vertrags_ID, skunde, t1.vertragsKV&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10822,29 +10807,69 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="183,42"
+          Id="Package\Abr_Diagnosen leeren"
+          TopLeft="111,274" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\Abr_Diagnosen um Verträge bereinigen"
+          TopLeft="640,274" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Abr_Einzelfall leeren"
+          TopLeft="106,362" />
+        <NodeLayout
+          Size="256,42"
+          Id="Package\Abr_Einzelfall um Verträge bereinigen"
+          TopLeft="637,361" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Abr_Entgelt leeren"
+          TopLeft="103,440" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Abr_Entgelt um Verträge bereinigen"
+          TopLeft="634,439" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Abrechnung _Entgelt"
+          TopLeft="344,440" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Abrechnung_Diagnosen"
+          TopLeft="348,273" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Abrechnung_Einzelfall"
+          TopLeft="349,357" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Altersgruppe, EndegrundText füllen"
+          TopLeft="950,50" />
+        <NodeLayout
           Size="136,42"
           Id="Package\Ärzte leeren"
-          TopLeft="111,147" />
+          TopLeft="110,118" />
         <NodeLayout
           Size="218,42"
           Id="Package\Ärzte um Verträge bereinigen"
-          TopLeft="630,143" />
+          TopLeft="640,114" />
         <NodeLayout
           Size="180,42"
           Id="Package\Ärzte von Store laden"
-          TopLeft="361,145" />
+          TopLeft="346,115" />
         <NodeLayout
           Size="132,42"
           Id="Package\KM6 leeren"
-          TopLeft="117,243" />
+          TopLeft="113,191" />
         <NodeLayout
           Size="214,42"
           Id="Package\KM6 um Verträge bereinigen"
-          TopLeft="633,244" />
+          TopLeft="642,193" />
         <NodeLayout
           Size="180,42"
           Id="Package\KM6 vom Store laden"
-          TopLeft="358,242" />
+          TopLeft="348,189" />
         <NodeLayout
           Size="164,42"
           Id="Package\Teilnehmer leeren"
@@ -10852,7 +10877,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <NodeLayout
           Size="246,42"
           Id="Package\Teilnehmer um Verträge bereinigen"
-          TopLeft="605,48" />
+          TopLeft="638,48" />
         <NodeLayout
           Size="212,42"
           Id="Package\Teilnehmer vom Store laden"
@@ -10881,7 +10906,275 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 1]"
-          TopLeft="247,167">
+          TopLeft="246,137.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100,0"
+              Start="0,0"
+              End="92.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="92.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 10]"
+          TopLeft="294,294.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,0"
+              Start="0,0"
+              End="46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 11]"
+          TopLeft="772.5,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-579.5,46"
+              Start="0,0"
+              End="-579.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="-4,23" />
+                  <mssgle:LineSegment
+                    End="-575.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-575.5,23"
+                    Point2="-579.5,23"
+                    Point3="-579.5,27" />
+                  <mssgle:LineSegment
+                    End="-579.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 12]"
+          TopLeft="280,380.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,0"
+              Start="0,0"
+              End="61.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 13]"
+          TopLeft="269,461">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75,0"
+              Start="0,0"
+              End="67.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="67.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 14]"
+          TopLeft="765,403">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-579,37"
+              Start="0,0"
+              End="-579,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-575,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-575,18.5"
+                    Point2="-579,18.5"
+                    Point3="-579,22.5" />
+                  <mssgle:LineSegment
+                    End="-579,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 15]"
+          TopLeft="522,460.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,0"
+              Start="0,0"
+              End="104.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 16]"
+          TopLeft="749,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-546.5,39"
+              Start="0,0"
+              End="-546.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-542.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-542.5,19.5"
+                    Point2="-546.5,19.5"
+                    Point3="-546.5,23.5" />
+                  <mssgle:LineSegment
+                    End="-546.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 17]"
+          TopLeft="884,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 18]"
+          TopLeft="1073,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-895,26"
+              Start="0,0"
+              End="-895,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="-4,13" />
+                  <mssgle:LineSegment
+                    End="-891,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-891,13"
+                    Point2="-895,13"
+                    Point3="-895,17" />
+                  <mssgle:LineSegment
+                    End="-895,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 2]"
+          TopLeft="526,135.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10902,41 +11195,19 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 2]"
-          TopLeft="541,165">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="89,0"
-              Start="0,0"
-              End="81.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="81.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 3]"
           TopLeft="554,66.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51,0"
+              EndConnector="84,0"
               Start="0,0"
-              End="43.5,0">
+              End="76.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="43.5,0" />
+                    End="76.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10947,30 +11218,30 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 5]"
-          TopLeft="739,185">
+          TopLeft="749,156">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-556,58"
+              EndConnector="-570,35"
               Start="0,0"
-              End="-556,50.5">
+              End="-570,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25" />
+                    End="0,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="-4,29" />
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
                   <mssgle:LineSegment
-                    End="-552,29" />
+                    End="-566,17.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-552,29"
-                    Point2="-556,29"
-                    Point3="-556,33" />
+                    Point1="-566,17.5"
+                    Point2="-570,17.5"
+                    Point3="-570,21.5" />
                   <mssgle:LineSegment
-                    End="-556,50.5" />
+                    End="-570,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10981,18 +11252,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 6]"
-          TopLeft="249,263.5">
+          TopLeft="245,211">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109,0"
+              EndConnector="103,0"
               Start="0,0"
-              End="101.5,0">
+              End="95.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="101.5,0" />
+                    End="95.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11003,65 +11274,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 7]"
-          TopLeft="538,264">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="95,0"
-              Start="0,0"
-              End="87.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="87.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="183,42"
-          Id="Package\Abr_Diagnosen leeren"
-          TopLeft="89,354" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Abrechnung_Diagnosen"
-          TopLeft="386,349" />
-        <NodeLayout
-          Size="265,42"
-          Id="Package\Abr_Diagnosen um Verträge bereinigen"
-          TopLeft="660,355" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Abr_Einzelfall leeren"
-          TopLeft="89,462" />
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Abrechnung_Einzelfall"
-          TopLeft="386,457" />
-        <NodeLayout
-          Size="256,42"
-          Id="Package\Abr_Einzelfall um Verträge bereinigen"
-          TopLeft="660,463" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Abr_Entgelt leeren"
-          TopLeft="89,570" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Abrechnung _Entgelt"
-          TopLeft="386,565" />
-        <NodeLayout
-          Size="248,42"
-          Id="Package\Abr_Entgelt um Verträge bereinigen"
-          TopLeft="660,571" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 10]"
-          TopLeft="272,372.5">
+          TopLeft="528,212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11083,96 +11296,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 8]"
-          TopLeft="576,373">
+          TopLeft="538,294.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="84,0"
+              EndConnector="102,0"
               Start="0,0"
-              End="76.5,0">
+              End="94.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="76.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 11]"
-          TopLeft="792.5,397">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-616.5,65"
-              Start="0,0"
-              End="-616.5,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.5"
-                    Point2="0,32.5"
-                    Point3="-4,32.5" />
-                  <mssgle:LineSegment
-                    End="-612.5,32.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-612.5,32.5"
-                    Point2="-616.5,32.5"
-                    Point3="-616.5,36.5" />
-                  <mssgle:LineSegment
-                    End="-616.5,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 12]"
-          TopLeft="263,480.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="123,0"
-              Start="0,0"
-              End="115.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="115.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 13]"
-          TopLeft="255,588.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="131,0"
-              Start="0,0"
-              End="123.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="123.5,0" />
+                    End="94.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11183,168 +11318,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 9]"
-          TopLeft="568,481">
+          TopLeft="531,380">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="92,0"
+              EndConnector="106,0"
               Start="0,0"
-              End="84.5,0">
+              End="98.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="84.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 14]"
-          TopLeft="788,505">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-616,65"
-              Start="0,0"
-              End="-616,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.5"
-                    Point2="0,32.5"
-                    Point3="-4,32.5" />
-                  <mssgle:LineSegment
-                    End="-612,32.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-612,32.5"
-                    Point2="-616,32.5"
-                    Point3="-616,36.5" />
-                  <mssgle:LineSegment
-                    End="-616,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 15]"
-          TopLeft="564,589">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96,0"
-              Start="0,0"
-              End="88.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="88.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 16]"
-          TopLeft="740,286">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-559.5,68"
-              Start="0,0"
-              End="-559.5,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30"
-                    Point2="0,34"
-                    Point3="-4,34" />
-                  <mssgle:LineSegment
-                    End="-555.5,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-555.5,34"
-                    Point2="-559.5,34"
-                    Point3="-559.5,38" />
-                  <mssgle:LineSegment
-                    End="-559.5,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="246,42"
-          Id="Package\Altersgruppe, EndegrundText füllen"
-          TopLeft="950,50" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 17]"
-          TopLeft="851,70">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="99,0"
-              Start="0,0"
-              End="91.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="91.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 18]"
-          TopLeft="1041,92">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-862,55"
-              Start="0,0"
-              End="-862,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="-4,27.5" />
-                  <mssgle:LineSegment
-                    End="-858,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-858,27.5"
-                    Point2="-862,27.5"
-                    Point3="-862,31.5" />
-                  <mssgle:LineSegment
-                    End="-862,47.5" />
+                    End="98.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11356,6 +11341,183 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Abrechnung _Entgelt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Abrechnung _Entgelt\OLE DB-Ziel"
+          TopLeft="221,180" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Abrechnung _Entgelt\OLE DB-Quelle"
+          TopLeft="216,65" />
+        <EdgeLayout
+          Id="Package\Abrechnung _Entgelt.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="289.25,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung _Entgelt\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung _Entgelt\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Abrechnung_Diagnosen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Abrechnung_Diagnosen\OLE DB-Ziel"
+          TopLeft="199,183" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Abrechnung_Diagnosen\OLE DB-Quelle"
+          TopLeft="198,48" />
+        <EdgeLayout
+          Id="Package\Abrechnung_Diagnosen.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="269.25,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung_Diagnosen\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung_Diagnosen\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Abrechnung_Einzelfall">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Abrechnung_Einzelfall\OLE DB-Quelle"
+          TopLeft="267,72" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Abrechnung_Einzelfall\OLE DB-Ziel"
+          TopLeft="272,221" />
+        <EdgeLayout
+          Id="Package\Abrechnung_Einzelfall.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="340.25,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107"
+              Start="0,0"
+              End="0,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung_Einzelfall\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Abrechnung_Einzelfall\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Ärzte von Store laden">
     <LayoutInfo>
@@ -11522,183 +11684,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Ziel">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Abrechnung_Diagnosen">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Abrechnung_Diagnosen\OLE DB-Quelle"
-          TopLeft="198,48" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Abrechnung_Diagnosen\OLE DB-Ziel"
-          TopLeft="199,183" />
-        <EdgeLayout
-          Id="Package\Abrechnung_Diagnosen.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="269.25,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,93"
-              Start="0,0"
-              End="0,85.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,85.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Abrechnung_Einzelfall">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Abrechnung_Einzelfall\OLE DB-Quelle"
-          TopLeft="267,72" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Abrechnung_Einzelfall\OLE DB-Ziel"
-          TopLeft="272,221" />
-        <EdgeLayout
-          Id="Package\Abrechnung_Einzelfall.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="340.25,114">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,107"
-              Start="0,0"
-              End="0,99.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,99.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Abrechnung _Entgelt">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Abrechnung _Entgelt\OLE DB-Quelle"
-          TopLeft="216,65" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Abrechnung _Entgelt\OLE DB-Ziel"
-          TopLeft="221,180" />
-        <EdgeLayout
-          Id="Package\Abrechnung _Entgelt.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="289.25,107">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,73"
-              Start="0,0"
-              End="0,65.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung_Diagnosen\OLE DB-Quelle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung_Diagnosen\OLE DB-Ziel">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung_Einzelfall\OLE DB-Quelle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung_Einzelfall\OLE DB-Ziel">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung _Entgelt\OLE DB-Quelle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Abrechnung _Entgelt\OLE DB-Ziel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
