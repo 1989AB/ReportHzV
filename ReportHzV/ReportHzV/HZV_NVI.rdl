@@ -34,65 +34,6 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_Teilnehmer_Quartale">
-      <SharedDataSet>
-        <SharedDataSetReference>HZV_Teilnehmer_Quartale</SharedDataSetReference>
-        <QueryParameters>
-          <QueryParameter Name="@Kasse">
-            <Value>=Parameters!Kasse.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-      </SharedDataSet>
-      <Fields>
-        <Field Name="Quartal">
-          <DataField>Quartal</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Quartal_Text_kurz">
-          <DataField>Quartal_Text_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Quartal_Text_lang">
-          <DataField>Quartal_Text_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="HZV_Teilnehmer_KVRegionen">
-      <SharedDataSet>
-        <SharedDataSetReference>HZV_Teilnehmer_KVRegionen</SharedDataSetReference>
-        <QueryParameters>
-          <QueryParameter Name="@Kasse">
-            <Value>=Parameters!Kasse.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@Quartal">
-            <Value>=Parameters!Quartal.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-      </SharedDataSet>
-      <Fields>
-        <Field Name="VertragsKV">
-          <DataField>VertragsKV</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KV_kurz">
-          <DataField>KV_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KV_lang">
-          <DataField>KV_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Kuerzel_kurz">
-          <DataField>Kuerzel_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Kuerzel_lang">
-          <DataField>Kuerzel_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="HZV_LastUpdate">
       <SharedDataSet>
         <SharedDataSetReference>HZV_LastUpdate</SharedDataSetReference>
@@ -195,6 +136,69 @@
         <Field Name="Rang_Quartal_L3">
           <DataField>Rang_Quartal_L3</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_NVI_Quartale">
+      <Query>
+        <DataSourceName>DS_Reporting</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>HZV.SP_Dataset_NVI_Quartale</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Quartal">
+          <DataField>Quartal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quartal_Text_kurz">
+          <DataField>Quartal_Text_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quartal_Text_lang">
+          <DataField>Quartal_Text_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_NVI_KVRegionen">
+      <Query>
+        <DataSourceName>DS_Reporting</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Quartal">
+            <Value>=Parameters!Quartal.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>HZV.SP_Dataset_NVI_KVRegionen</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="VertragsKV">
+          <DataField>VertragsKV</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KV_kurz">
+          <DataField>KV_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KV_lang">
+          <DataField>KV_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kuerzel_kurz">
+          <DataField>Kuerzel_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kuerzel_lang">
+          <DataField>Kuerzel_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -1229,7 +1233,7 @@
       <Prompt>Quartal</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_Teilnehmer_Quartale</DataSetName>
+          <DataSetName>HZV_NVI_Quartale</DataSetName>
           <ValueField>Quartal</ValueField>
           <LabelField>Quartal_Text_lang</LabelField>
         </DataSetReference>
@@ -1240,7 +1244,7 @@
       <Prompt>KV-Region</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_Teilnehmer_KVRegionen</DataSetName>
+          <DataSetName>HZV_NVI_KVRegionen</DataSetName>
           <ValueField>VertragsKV</ValueField>
           <LabelField>KV_lang</LabelField>
         </DataSetReference>
