@@ -29,6 +29,65 @@
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="HZV_Teilnehmer_Quartale">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_Quartale</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="Quartal">
+          <DataField>Quartal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quartal_Text_kurz">
+          <DataField>Quartal_Text_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quartal_Text_lang">
+          <DataField>Quartal_Text_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HZV_Teilnehmer_KVRegionen">
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_Teilnehmer_KVRegionen</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@Kasse">
+            <Value>=Parameters!Kasse.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Quartal">
+            <Value>=Parameters!Quartal.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="VertragsKV">
+          <DataField>VertragsKV</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KV_kurz">
+          <DataField>KV_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KV_lang">
+          <DataField>KV_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kuerzel_kurz">
+          <DataField>Kuerzel_kurz</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kuerzel_lang">
+          <DataField>Kuerzel_lang</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
     <DataSet Name="HZV_LastUpdate">
       <SharedDataSet>
         <SharedDataSetReference>HZV_LastUpdate</SharedDataSetReference>
@@ -75,9 +134,9 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_Aerzte">
-      <SharedDataSet>
-        <SharedDataSetReference>HZV_Aerzte</SharedDataSetReference>
+    <DataSet Name="HZV_NVI_VI">
+      <Query>
+        <DataSourceName>DS_Reporting</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -88,127 +147,49 @@
           <QueryParameter Name="@KV">
             <Value>=Parameters!KV.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@TOP">
+            <Value>=Parameters!TOP.Value</Value>
+          </QueryParameter>
         </QueryParameters>
-      </SharedDataSet>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>HZV.SP_Dataset_TOP_NVI_VI</CommandText>
+      </Query>
       <Fields>
-        <Field Name="Quartal_lang">
-          <DataField>Quartal_lang</DataField>
+        <Field Name="Quartal">
+          <DataField>Quartal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VertragsID">
-          <DataField>VertragsID</DataField>
+        <Field Name="H2IK">
+          <DataField>H2IK</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="HauptKassenIK">
-          <DataField>HauptKassenIK</DataField>
+        <Field Name="SVP">
+          <DataField>SVP</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VertragsKV">
-          <DataField>VertragsKV</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="NVI">
+          <DataField>NVI</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="LANR7">
-          <DataField>LANR7</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="LANR_FG">
-          <DataField>LANR_FG</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Vorname">
-          <DataField>Vorname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Nachname">
-          <DataField>Nachname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="StrasseHausNr">
-          <DataField>StrasseHausNr</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PLZ">
-          <DataField>PLZ</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Ort">
-          <DataField>Ort</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TeilnahmeBeginn">
-          <DataField>TeilnahmeBeginn</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="TeilnahmeEnde">
-          <DataField>TeilnahmeEnde</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="Anzahl_Versicherte">
-          <DataField>Anzahl_Versicherte</DataField>
+        <Field Name="AnzArzt">
+          <DataField>AnzArzt</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="HZV_Aerzte_Quartale">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@Kasse">
-            <Value>=Parameters!Kasse.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Aerzte_Quartale</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Quartal_lang">
-          <DataField>Quartal_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Rang_Quartal">
+          <DataField>Rang_Quartal</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="Quartal_Text_kurz">
-          <DataField>Quartal_Text_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Rang_Quartal_L1">
+          <DataField>Rang_Quartal_L1</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="Quartal_Text_lang">
-          <DataField>Quartal_Text_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Rang_Quartal_L2">
+          <DataField>Rang_Quartal_L2</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="HZV_Aerzte_KVRegionen">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@Kasse">
-            <Value>=Parameters!Kasse.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@Quartal">
-            <Value>=Parameters!Quartal.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_Aerzte_KVRegionen</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="VertragsKV">
-          <DataField>VertragsKV</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KV_kurz">
-          <DataField>KV_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KV_lang">
-          <DataField>KV_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Kuerzel_kurz">
-          <DataField>Kuerzel_kurz</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Kuerzel_lang">
-          <DataField>Kuerzel_lang</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Rang_Quartal_L3">
+          <DataField>Rang_Quartal_L3</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -221,43 +202,28 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.15667cm</Width>
+                  <Width>3.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01562cm</Width>
+                  <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.62542cm</Width>
+                  <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.32771cm</Width>
+                  <Width>5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.23271cm</Width>
+                  <Width>5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.92875cm</Width>
+                  <Width>3.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.96063cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.46813cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.05563cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.20333cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.05021cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.40167cm</Width>
+                  <Width>3.5cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -273,7 +239,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Vertragskennung</Value>
+                                  <Value>Hauptkassen-IK</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -308,7 +274,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Hauptkassen-IK</Value>
+                                  <Value>eGK-Nr</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -336,14 +302,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox22">
+                        <Textbox Name="Textbox10">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>KV</Value>
+                                  <Value>NVI-Summe</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -353,7 +319,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -378,7 +344,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>LANR</Value>
+                                  <Value>Anzahl Ärzte</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -413,7 +379,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Fachgruppe</Value>
+                                  <Value>Rang_Quartal</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -448,7 +414,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Vorname</Value>
+                                  <Value />
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -476,154 +442,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox23">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Nachname</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>#9f281d</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox27">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Straße</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox27</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>#9f281d</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox30">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>PLZ</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox30</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>#9f281d</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox32">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Ort</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox32</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>#9f281d</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox16">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -631,7 +449,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Teilnahme-Beginn</Value>
+                                  <Value />
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -668,7 +486,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Teilnahme-Ende</Value>
+                                  <Value />
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -696,41 +514,6 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox26">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Anzahl Versicherte</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox26</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>#9f281d</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -738,21 +521,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="VertragsID">
+                        <Textbox Name="H2IK">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!VertragsID.Value</Value>
+                                  <Value>=Fields!H2IK.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>VertragsID</rd:DefaultName>
+                          <rd:DefaultName>H2IK</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -770,21 +553,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="HauptKassenIK">
+                        <Textbox Name="SVP">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!HauptKassenIK.Value</Value>
+                                  <Value>=Fields!SVP.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>HauptKassenIK</rd:DefaultName>
+                          <rd:DefaultName>SVP</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -802,21 +585,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="VertragsKV">
+                        <Textbox Name="NVI">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!VertragsKV.Value</Value>
+                                  <Value>=Fields!NVI.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>VertragsKV</rd:DefaultName>
+                          <rd:DefaultName>NVI</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -834,21 +617,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LANR7">
+                        <Textbox Name="AnzArzt">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LANR7.Value</Value>
+                                  <Value>=Fields!AnzArzt.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LANR7</rd:DefaultName>
+                          <rd:DefaultName>AnzArzt</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -866,21 +649,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LANR_FG">
+                        <Textbox Name="Rang_Quartal">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LANR_FG.Value</Value>
+                                  <Value>=Fields!Rang_Quartal.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LANR_FG</rd:DefaultName>
+                          <rd:DefaultName>Rang_Quartal</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -898,21 +681,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Vorname">
+                        <Textbox Name="Rang_Quartal_L1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Vorname.Value</Value>
+                                  <Value>=Fields!Rang_Quartal_L1.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Vorname</rd:DefaultName>
+                          <rd:DefaultName>Rang_Quartal_L1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -930,150 +713,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Nachname">
+                        <Textbox Name="Rang_Quartal_L2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Nachname.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Nachname</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0,"#eaeaea","White")</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="StrasseHausNr">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!StrasseHausNr.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>StrasseHausNr</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0,"#eaeaea","White")</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="PLZ">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!PLZ.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>PLZ</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0,"#eaeaea","White")</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Ort">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Ort.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Ort</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0,"#eaeaea","White")</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="TeilnahmeBeginn">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!TeilnahmeBeginn.Value</Value>
+                                  <Value>=Fields!Rang_Quartal_L2.Value</Value>
                                   <Style>
                                     <Format>d</Format>
                                   </Style>
@@ -1084,7 +731,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>TeilnahmeBeginn</rd:DefaultName>
+                          <rd:DefaultName>Rang_Quartal_L2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1102,14 +749,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="TeilnahmeEnde">
+                        <Textbox Name="Rang_Quartal_L3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TeilnahmeEnde.Value</Value>
+                                  <Value>=Fields!Rang_Quartal_L3.Value</Value>
                                   <Style>
                                     <Format>d</Format>
                                   </Style>
@@ -1120,39 +767,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>TeilnahmeEnde</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0,"#eaeaea","White")</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Anzahl_Versicherte">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Anzahl_Versicherte.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Anzahl_Versicherte</rd:DefaultName>
+                          <rd:DefaultName>Rang_Quartal_L3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1182,11 +797,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1198,14 +808,25 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Vertrags_ID.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!sVP.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Teilnahme_Beginn.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>HZV_Aerzte</DataSetName>
+            <DataSetName>HZV_NVI_VI</DataSetName>
             <Top>2.19287cm</Top>
             <Left>0.3in</Left>
             <Height>2.032cm</Height>
-            <Width>38.42648cm</Width>
+            <Width>29.5cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1219,7 +840,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Teilnehmende Ärzte für " &amp; Parameters!KV.Label &amp; ", " &amp; Parameters!Quartal.Label &amp; " - " &amp; Parameters!Kasse.Label</Value>
+                    <Value>="Top NVI Versicherte für " &amp; Parameters!KV.Label &amp; ", " &amp; Parameters!Quartal.Label &amp; " - " &amp; Parameters!Kasse.Label</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1436,7 +1057,7 @@
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>19.78819in</Width>
+      <Width>16.13924in</Width>
       <Page>
         <PageHeader>
           <Height>1.79917cm</Height>
@@ -1602,8 +1223,8 @@
       <Prompt>Quartal</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_Aerzte_Quartale</DataSetName>
-          <ValueField>Quartal_lang</ValueField>
+          <DataSetName>HZV_Teilnehmer_Quartale</DataSetName>
+          <ValueField>Quartal</ValueField>
           <LabelField>Quartal_Text_lang</LabelField>
         </DataSetReference>
       </ValidValues>
@@ -1613,11 +1234,15 @@
       <Prompt>KV-Region</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_Aerzte_KVRegionen</DataSetName>
+          <DataSetName>HZV_Teilnehmer_KVRegionen</DataSetName>
           <ValueField>VertragsKV</ValueField>
           <LabelField>KV_lang</LabelField>
         </DataSetReference>
       </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Top">
+      <DataType>String</DataType>
+      <Prompt>Top</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
@@ -1644,6 +1269,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>User</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Top</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
