@@ -1547,9 +1547,9 @@
           </Chart>
           <Line Name="Line1">
             <Top>0.14111cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>0cm</Height>
-            <Width>18.51681cm</Width>
+            <Width>18.58031cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -1560,9 +1560,9 @@
           </Line>
           <Line Name="Line2">
             <Top>13.38792cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>0cm</Height>
-            <Width>18.51681cm</Width>
+            <Width>18.58031cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -1573,9 +1573,9 @@
           </Line>
           <Line Name="Line3">
             <Top>13.80949cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>0cm</Height>
-            <Width>18.51681cm</Width>
+            <Width>18.58031cm</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -1586,9 +1586,9 @@
           </Line>
           <Line Name="Line4">
             <Top>26.13025cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>0cm</Height>
-            <Width>18.51681cm</Width>
+            <Width>18.58031cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -1599,7 +1599,7 @@
           </Line>
           <Line Name="Line5">
             <Top>0.14111cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>13.24681cm</Height>
             <Width>0cm</Width>
             <ZIndex>14</ZIndex>
@@ -1625,7 +1625,7 @@
           </Line>
           <Line Name="Line7">
             <Top>13.80949cm</Top>
-            <Left>8.11953cm</Left>
+            <Left>8.05603cm</Left>
             <Height>12.32076cm</Height>
             <Width>0cm</Width>
             <ZIndex>16</ZIndex>
@@ -3849,6 +3849,26 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox53</rd:DefaultName>
+                          <ActionInfo>
+                            <Actions>
+                              <Action>
+                                <Drillthrough>
+                                  <ReportName>HZV_NVI</ReportName>
+                                  <Parameters>
+                                    <Parameter Name="User">
+                                      <Value>=Parameters!User.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Kasse">
+                                      <Value>=Parameters!Kasse.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Quartal">
+                                      <Value>=Parameters!Quartal.Value</Value>
+                                    </Parameter>
+                                  </Parameters>
+                                </Drillthrough>
+                              </Action>
+                            </Actions>
+                          </ActionInfo>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3862,6 +3882,7 @@
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -4032,7 +4053,8 @@
             <ZIndex>30</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
+                <Color>Silver</Color>
+                <Style>Solid</Style>
               </Border>
             </Style>
           </Tablix>
@@ -4069,9 +4091,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.7112cm</Top>
-              <Left>3.19667in</Left>
+              <Left>3.17167in</Left>
               <Height>0.4in</Height>
-              <Width>46.10764cm</Width>
+              <Width>46.17115cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4148,6 +4170,15 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
+    <ReportParameter Name="User">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=code.USRID(User!UserID)</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>User</Prompt>
+    </ReportParameter>
     <ReportParameter Name="Quartal">
       <DataType>String</DataType>
       <DefaultValue>
@@ -4175,15 +4206,6 @@
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
-    <ReportParameter Name="User">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>=code.USRID(User!UserID)</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>User</Prompt>
-    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -4191,18 +4213,18 @@
       <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>Quartal</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
+          <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>Kasse</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>User</ParameterName>
         </CellDefinition>
       </CellDefinitions>
