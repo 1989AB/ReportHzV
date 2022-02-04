@@ -1700,6 +1700,32 @@
                       <ChartDataLabel>
                         <Style />
                       </ChartDataLabel>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>HZV_NVI</ReportName>
+                              <Parameters>
+                                <Parameter Name="User">
+                                  <Value>=Parameters!User.Value</Value>
+                                </Parameter>
+                                <Parameter Name="Kasse">
+                                  <Value>=Parameters!Kasse.Value</Value>
+                                </Parameter>
+                                <Parameter Name="Quartal">
+                                  <Value>=Parameters!Quartal.Value</Value>
+                                </Parameter>
+                                <Parameter Name="KV">
+                                  <Value>=Fields!VertragsKV.Value</Value>
+                                </Parameter>
+                                <Parameter Name="TOP">
+                                  <Value>=50</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
                       <Style />
                       <ChartMarker>
                         <Style />
