@@ -85,6 +85,7 @@
     <Report Include="HZV_Bereinigung.rdl" />
     <Report Include="HZV_Dashboard.rdl" />
     <Report Include="HZV_DurchschnittKosten.rdl" />
+    <Report Include="HZV_NVI.rdl" />
     <Report Include="HZV_Teilnehmer.rdl" />
     <Report Include="HZV_Versicherte.rdl" />
   </ItemGroup>
