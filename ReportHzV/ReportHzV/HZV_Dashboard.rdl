@@ -214,9 +214,14 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="HZV_DB_Kassen">
+    <DataSet Name="HZV_Kassen">
       <SharedDataSet>
-        <SharedDataSetReference>HZV_DB_Kassen</SharedDataSetReference>
+        <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@User">
+            <Value>=Parameters!User.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
       </SharedDataSet>
       <Fields>
         <Field Name="Id">
@@ -3882,7 +3887,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -4178,6 +4182,7 @@
         </Values>
       </DefaultValue>
       <Prompt>User</Prompt>
+      <Hidden>true</Hidden>
     </ReportParameter>
     <ReportParameter Name="Quartal">
       <DataType>String</DataType>
@@ -4193,14 +4198,15 @@
     <ReportParameter Name="Kasse">
       <DataType>String</DataType>
       <DefaultValue>
-        <Values>
-          <Value>="000000000"</Value>
-        </Values>
+        <DataSetReference>
+          <DataSetName>HZV_Kassen</DataSetName>
+          <ValueField>HauptKassenIK</ValueField>
+        </DataSetReference>
       </DefaultValue>
       <Prompt>Krankenkasse</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>HZV_DB_Kassen</DataSetName>
+          <DataSetName>HZV_Kassen</DataSetName>
           <ValueField>HauptKassenIK</ValueField>
           <LabelField>KasseName</LabelField>
         </DataSetReference>

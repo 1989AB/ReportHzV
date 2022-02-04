@@ -4,12 +4,21 @@
   <DataSet Name="HZV_Kassen">
     <Query>
       <DataSourceReference>DS_Reporting</DataSourceReference>
-      <CommandText>SELECT * FROM [HZV].[Kassen]</CommandText>
+      <DataSetParameters>
+        <DataSetParameter Name="@User">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiString</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandType>StoredProcedure</CommandType>
+      <CommandText>HZV.SP_Dataset_Kassen</CommandText>
     </Query>
     <Fields>
       <Field Name="Id">
         <DataField>Id</DataField>
-        <rd:TypeName>System.Int32</rd:TypeName>
+        <rd:TypeName>System.Int64</rd:TypeName>
       </Field>
       <Field Name="HauptKassenIK">
         <DataField>HauptKassenIK</DataField>
