@@ -13,11 +13,16 @@
     <DataSet Name="HZV_Kassen">
       <SharedDataSet>
         <SharedDataSetReference>HZV_Kassen</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@User">
+            <Value>=Parameters!User.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
       </SharedDataSet>
       <Fields>
         <Field Name="Id">
           <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="HauptKassenIK">
           <DataField>HauptKassenIK</DataField>
@@ -1577,17 +1582,6 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="Kasse">
-      <DataType>String</DataType>
-      <Prompt>Krankenkasse</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>HZV_Kassen</DataSetName>
-          <ValueField>HauptKassenIK</ValueField>
-          <LabelField>KasseName</LabelField>
-        </DataSetReference>
-      </ValidValues>
-    </ReportParameter>
     <ReportParameter Name="User">
       <DataType>String</DataType>
       <DefaultValue>
@@ -1596,6 +1590,24 @@
         </Values>
       </DefaultValue>
       <Prompt>User</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Kasse">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>HZV_Kassen</DataSetName>
+          <ValueField>HauptKassenIK</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Krankenkasse</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HZV_Kassen</DataSetName>
+          <ValueField>HauptKassenIK</ValueField>
+          <LabelField>KasseName</LabelField>
+        </DataSetReference>
+      </ValidValues>
     </ReportParameter>
     <ReportParameter Name="Quartal">
       <DataType>String</DataType>
@@ -1622,26 +1634,26 @@
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>3</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
+          <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>Kasse</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>Quartal</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>KV</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
+          <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>User</ParameterName>
         </CellDefinition>
