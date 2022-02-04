@@ -996,66 +996,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox13">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>&lt; Zurück</Value>
-                    <Style>
-                      <FontSize>11pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>#575756</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox5</rd:DefaultName>
-            <ActionInfo>
-              <Actions>
-                <Action>
-                  <Drillthrough>
-                    <ReportName>HZV_Teilnehmer</ReportName>
-                    <Parameters>
-                      <Parameter Name="Kasse">
-                        <Value>=Parameters!Kasse.Value</Value>
-                      </Parameter>
-                      <Parameter Name="User">
-                        <Value>=Parameters!User.Value</Value>
-                      </Parameter>
-                      <Parameter Name="Quartal">
-                        <Value>=Parameters!Quartal.Value</Value>
-                      </Parameter>
-                      <Parameter Name="KV">
-                        <Value>=Parameters!KV.Value</Value>
-                      </Parameter>
-                    </Parameters>
-                  </Drillthrough>
-                </Action>
-              </Actions>
-            </ActionInfo>
-            <Top>1.0795cm</Top>
-            <Left>34.56644cm</Left>
-            <Height>0.3in</Height>
-            <Width>5.69556cm</Width>
-            <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <VerticalAlign>Middle</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
         <Height>2in</Height>
         <Style />
