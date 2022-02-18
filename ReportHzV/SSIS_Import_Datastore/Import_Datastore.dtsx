@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{125EB10C-2CF7-4950-8D85-7B2D806CC0C9}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{E94D6A19-AF4E-4341-8EA1-89C64842B2DD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -8227,6 +8227,485 @@ and PRUEF_KZ='U'</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Ansprechpartner_Kasse"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{632FF038-DC0C-44DF-A5FB-C32ECBFC9EE8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ansprechpartner_Kasse"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
+              description="OLE DB-Quelle"
+              name="OLE DB-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[V_HZV].[Ansprechpartner_Kasse]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Die Variable, die den auszuführenden SQL-Befehl enthält."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DATASTORE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DATASTORE]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]"
+                  name="Ausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KassenIK]"
+                      length="9"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]"
+                      name="KassenIK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
+                      length="50"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      name="Vorname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
+                      length="50"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      name="Nachname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Anrede]"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]"
+                      name="Anrede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Email]"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Personalkasse]"
+                      length="1"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]"
+                      name="Personalkasse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Produkt]"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]"
+                      name="Produkt"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KassenIK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="KassenIK" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Anrede]"
+                      dataType="wstr"
+                      length="100"
+                      name="Anrede" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Personalkasse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Personalkasse" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Produkt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Produkt" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KassenIK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KassenIK]"
+                      name="KassenIK" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
+                      name="Vorname" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
+                      name="Nachname" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Anrede]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Anrede]"
+                      name="Anrede" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Personalkasse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Personalkasse]"
+                      name="Personalkasse" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Produkt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Produkt]"
+                      name="Produkt" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[HZV].[Ansprechpartner_Kasse]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  connectionManagerRefId="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[KassenIK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="KassenIK"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KassenIK]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Anrede]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Anrede"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Email]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Personalkasse]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Personalkasse"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Personalkasse]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]" />
+                    <inputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Produkt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Produkt"
+                      externalMetadataColumnId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Produkt]"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KassenIK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="KassenIK" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
+                      dataType="wstr"
+                      length="100"
+                      name="Anrede" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Personalkasse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Personalkasse" />
+                    <externalMetadataColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Produkt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Produkt" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Ansprechpartner_Kasse.Paths[Ausgabe der OLE DB-Quelle]"
+              endId="Package\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der OLE DB-Quelle"
+              startId="Package\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ansprechpartner_Kasse leeren"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{B51894DF-00B0-4C64-A5FE-991CC19554B0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ansprechpartner_Kasse leeren"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:SqlStatementSource="truncate table HZV.[Ansprechpartner_Kasse]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\KM6 leeren"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
@@ -8707,6 +9186,23 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
               startId="Package\KM6 vom Store laden\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Salzgitter-User vervielfältigen auf Tui, Public"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{33D83BBB-A79E-48FF-9903-9B2CC81F4B08}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Salzgitter-User vervielfältigen auf Tui, Public"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:SqlStatementSource="insert into [HZV].[Ansprechpartner_Kasse]&#xA;select 101931440, Vorname, Nachname, Anrede, Email, Personalkasse, Produkt  FROM [HZV].[Ansprechpartner_Kasse]&#xA;where Produkt='HZV'&#xA;and KassenIK =101922757&#xA;&#xA;insert into [HZV].[Ansprechpartner_Kasse]&#xA;select 102137985, Vorname, Nachname, Anrede, Email, Personalkasse, Produkt  FROM [HZV].[Ansprechpartner_Kasse]&#xA;where Produkt='HZV'&#xA;and KassenIK =101922757" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -9773,7 +10269,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="-- Löschen der Ärzte deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.VertragsID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;where t1.TeilnahmeEnde&lt;t2.VertragBeginn or t1.TeilnahmeBeginn&gt;t2.VertragEnde&#xA;&#xA;-- Löschen der Ärzte die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.VertragsID=t2.VertragsID and &#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Löschen der Ärzte deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.VertragsID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;where t1.TeilnahmeEnde&lt;t2.VertragBeginn or t1.TeilnahmeBeginn&gt;t2.VertragEnde&#xA;&#xA;-- Löschen der Ärzte die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Aerzte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.VertragsID=t2.VertragsID and &#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10738,6 +11234,14 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:ObjectName="Einschränkung 18"
       DTS:To="Package\Ärzte leeren" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 19]"
+      DTS:CreationName=""
+      DTS:DTSID="{7A3E11DB-03D4-4398-89FC-584FADD04FEA}"
+      DTS:From="Package\Ansprechpartner_Kasse leeren"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 19"
+      DTS:To="Package\Ansprechpartner_Kasse" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 2]"
       DTS:CreationName=""
       DTS:DTSID="{E8E4F058-2EEC-4E6C-9269-2376963228CB}"
@@ -10746,6 +11250,14 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:ObjectName="Einschränkung 2"
       DTS:To="Package\Ärzte um Verträge bereinigen" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 20]"
+      DTS:CreationName=""
+      DTS:DTSID="{648C1A09-B256-45B5-B307-C81DFE436241}"
+      DTS:From="Package\Ansprechpartner_Kasse"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 20"
+      DTS:To="Package\Salzgitter-User vervielfältigen auf Tui, Public" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 3]"
       DTS:CreationName=""
       DTS:DTSID="{89F55737-5B4C-459F-B30C-5F1EC5CC12FD}"
@@ -10753,6 +11265,14 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 3"
       DTS:To="Package\Teilnehmer um Verträge bereinigen" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{A26544DD-E05D-4123-BAC3-19AB6FCC83CE}"
+      DTS:From="Package\Abr_Entgelt um Verträge bereinigen"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 4"
+      DTS:To="Package\Ansprechpartner_Kasse leeren" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 5]"
       DTS:CreationName=""
@@ -11338,6 +11858,96 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Ansprechpartner_Kasse leeren"
+          TopLeft="86,518" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Ansprechpartner_Kasse"
+          TopLeft="362,517" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 4]"
+          TopLeft="758,481">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-561,37"
+              Start="0,0"
+              End="-561,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-557,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-557,18.5"
+                    Point2="-561,18.5"
+                    Point3="-561,22.5" />
+                  <mssgle:LineSegment
+                    End="-561,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 19]"
+          TopLeft="308,538.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,0"
+              Start="0,0"
+              End="46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Salzgitter-User vervielfältigen auf Tui, Public"
+          TopLeft="639,516" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 20]"
+          TopLeft="551,537.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88,0"
+              Start="0,0"
+              End="80.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="80.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -11345,7 +11955,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abrechnung _Entgelt">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Abrechnung _Entgelt\OLE DB-Ziel"
@@ -11373,7 +11983,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11404,7 +12016,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abrechnung_Diagnosen">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Abrechnung_Diagnosen\OLE DB-Ziel"
@@ -11432,7 +12044,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11463,7 +12077,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abrechnung_Einzelfall">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,42"
           Id="Package\Abrechnung_Einzelfall\OLE DB-Quelle"
@@ -11491,7 +12105,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11522,7 +12138,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Ärzte von Store laden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,42"
           Id="Package\Ärzte von Store laden\OLE DB-Quelle"
@@ -11550,7 +12166,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11581,7 +12199,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\KM6 vom Store laden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,42"
           Id="Package\KM6 vom Store laden\OLE DB-Quelle"
@@ -11609,7 +12227,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11640,7 +12260,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Teilnehmer vom Store laden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
@@ -11668,7 +12288,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11684,6 +12306,70 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Teilnehmer vom Store laden\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Ansprechpartner_Kasse">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Ansprechpartner_Kasse\OLE DB-Quelle"
+          TopLeft="247,99" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Ansprechpartner_Kasse\OLE DB-Ziel"
+          TopLeft="251,223" />
+        <EdgeLayout
+          Id="Package\Ansprechpartner_Kasse.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="319.75,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ansprechpartner_Kasse\OLE DB-Quelle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ansprechpartner_Kasse\OLE DB-Ziel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
