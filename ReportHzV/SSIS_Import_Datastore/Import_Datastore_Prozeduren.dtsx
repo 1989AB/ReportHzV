@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore_Prozeduren"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{41873456-D0F4-405C-BF57-4743E8233CAE}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{B4943021-BECE-4732-AAF5-053723992A03}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,8 +36,47 @@
           DTS:ConnectionString="Data Source=LYO-PSTORE01;Initial Catalog=DATASTORE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[spK_MailServer_Verbindung]"
+      DTS:CreationName="SMTP"
+      DTS:Description="Verbindung spectrumK Mail-Server"
+      DTS:DTSID="{351D7328-1B50-49F2-9D60-5185169F5680}"
+      DTS:ObjectName="spK_MailServer_Verbindung">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mail.spectrumk.ads;UseWindowsAuthentication=True;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AA8BBD02-4780-49AE-9FE6-76467FB930C2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MailCc">
+      <DTS:VariableValue
+        DTS:DataType="8">jan.neubert@spectrumk.de</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E61C30AB-38CA-4E21-BB54-E539481DAECA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MailFrom">
+      <DTS:VariableValue
+        DTS:DataType="8">HzV-Abrechnung@spectrumK.de</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{054FD854-5BFB-4A70-8F95-7AFAC982A2FD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MailTo">
+      <DTS:VariableValue
+        DTS:DataType="8">antje.buksch@spectrumk.de</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Abrechnung _Entgelt"
@@ -9222,6 +9261,33 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Send Success-Mail"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Task &quot;Mail senden&quot;"
+      DTS:DTSID="{EB578089-48C1-42F1-BADC-B2DAE9397360}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Success-Mail"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+          SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+          SendMailTask:To="antje.buksch@spectrumk.de"
+          SendMailTask:CC="jan.neubert@spectrumk.de"
+          SendMailTask:Subject="Datenimport für HzV-Report abgeschlossen"
+          SendMailTask:MessageSource="Die Daten für den HzV-Report wurden erfolgreich übertragen und aktualisiert." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SP_Berichte_Kundenportal ausführen"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
@@ -9232,9 +9298,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{553995DB-C219-49FC-861B-EE43AD4649DE}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{195FEFAC-9117-4FED-B23C-3DF832E6EAC7}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{7D291753-7018-4809-A585-BB89BA2E7FC6}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Berichte_Kundenportal fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Berichte_Kundenportal&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Berichte_Kundenportal]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9249,9 +9366,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Import_Bereinigung ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{73D61A84-7544-4F3B-BED2-7A27E720B85C}"
+          DTS:EventID="-1426063361"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{432714C1-2229-4630-B2F2-D8D0AF0C553A}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Import_Bereinigung ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{8D674CD8-31E0-4CB2-BE38-A9DDF592F698}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Import_Bereinigung fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Import_Bereinigung&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Import_Bereinigung]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9266,9 +9434,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Import_NVI ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{E2DB0EE2-8128-43CD-B6E0-055E1E06DE25}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{E55B9934-9B7A-49BC-87BC-073AD64C821A}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Import_NVI ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{42A7F5C5-D87F-4647-9AD4-1BC87FD56339}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Import_NVI fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Import_NVI&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Import_NVI]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9283,6 +9502,56 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Import_Vertraege ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{367C4BCD-CB2C-4D38-901A-D4D288366110}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{0BA22CAF-53D5-4688-810C-DBD6AE080797}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Import_Vertraege ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{6DF867DF-330E-4CB5-B134-24E9C5F78C9B}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Import_Vertraege fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Import_Vertraege&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
@@ -9300,9 +9569,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Kassen ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{83DB6F94-A78A-455C-8218-196750042A33}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{1DC1891C-23F0-4768-B0AF-E42D0F120233}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Kassen ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{CE4CBA4F-14E4-41F4-9A0C-7A6D064AEA5F}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Kassen fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Kassen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Kassen]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9317,9 +9637,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Kosten ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{9218AE7B-B29D-43B7-95C9-B3D57A19C983}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{383E2700-2A40-4F8A-9EA9-283DB103E7B9}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Kosten ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{579DCC84-A9F7-491B-A355-65828AD0DA76}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Kosten fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Kosten&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Kosten]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9334,9 +9705,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Steuerung_Quartale ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{4A393CB4-AA2D-40A8-937D-429882044F82}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{66E2E5D5-BE7A-4B57-A0B8-966D883F49B2}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Steuerung_Quartale ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{7BB6CF7F-AB96-435C-A678-D98FFBEAA123}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Steuerung_Quartale fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Steuerung_Quartale&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Steuerung_Quartale]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -9351,9 +9773,60 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SP_Steuerung_Quartale erneut ausführen.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{F1F18BE9-5F1F-42B4-B6EA-6F2D987517D8}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+              DTS:DTSID="{EBDEA357-8097-43E4-AD75-8BE5358F749B}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SP_Steuerung_Quartale erneut ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+              DTS:CreationName="Microsoft.SendMailTask"
+              DTS:Description="Task &quot;Mail senden&quot;"
+              DTS:DTSID="{10662524-A4B0-45D4-8FBC-C0284C9CCA81}"
+              DTS:ExecutableType="Microsoft.SendMailTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Send Error-Mail"
+              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+              <DTS:PropertyExpression
+                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <SendMailTask:SendMailTaskData
+                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:CC="jan.neubert@spectrumk.de"
+                  SendMailTask:Subject="SSIS Error: Task SP_Steuerung_Quartale (2. Lauf) fehlgeschlagen"
+                  SendMailTask:MessageSource="Der Task &quot;SP_Steuerung_Quartale&quot; (2. Lauf) konnte aufgrund eines Fehlers nicht ausgeführt werden." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+          SQLTask:IsStoredProc="True"
           SQLTask:SqlStatementSource="EXEC [HZV].[SP_Steuerung_Quartale]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -11480,6 +11953,14 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:ObjectName="Einschränkung 28"
       DTS:To="Package\SP_Steuerung_Quartale erneut ausführen" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 29]"
+      DTS:CreationName=""
+      DTS:DTSID="{E1DA36C8-00CA-4059-B7AD-366DAD278BCD}"
+      DTS:From="Package\SP_Steuerung_Quartale erneut ausführen"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 29"
+      DTS:To="Package\Send Success-Mail" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 3]"
       DTS:CreationName=""
       DTS:DTSID="{89F55737-5B4C-459F-B30C-5F1EC5CC12FD}"
@@ -11624,6 +12105,42 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           Size="291,42"
           Id="Package\Salzgitter-User vervielfältigen auf Tui, Public"
           TopLeft="604,609" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Send Success-Mail"
+          TopLeft="545,815" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\SP_Berichte_Kundenportal ausführen"
+          TopLeft="560,694" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\SP_Import_Bereinigung ausführen"
+          TopLeft="351,60" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\SP_Import_NVI ausführen"
+          TopLeft="658,61" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SP_Import_Vertraege ausführen"
+          TopLeft="63,60" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\SP_Kassen ausführen"
+          TopLeft="74,695" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\SP_Kosten ausführen"
+          TopLeft="324,695" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\SP_Steuerung_Quartale ausführen"
+          TopLeft="920,61" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\SP_Steuerung_Quartale erneut ausführen"
+          TopLeft="884,695" />
         <NodeLayout
           Size="164,42"
           Id="Package\Teilnehmer leeren"
@@ -11993,6 +12510,240 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 21]"
+          TopLeft="294,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,0"
+              Start="0,0"
+              End="49.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 22]"
+          TopLeft="592,81.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 23]"
+          TopLeft="860,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60,0"
+              Start="0,0"
+              End="52.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 24]"
+          TopLeft="1040.5,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-881.5,33"
+              Start="0,0"
+              End="-881.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
+                  <mssgle:LineSegment
+                    End="-877.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-877.5,16.5"
+                    Point2="-881.5,16.5"
+                    Point3="-881.5,20.5" />
+                  <mssgle:LineSegment
+                    End="-881.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 25]"
+          TopLeft="749.5,651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-585.5,44"
+              Start="0,0"
+              End="-585.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-581.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-581.5,22"
+                    Point2="-585.5,22"
+                    Point3="-585.5,26" />
+                  <mssgle:LineSegment
+                    End="-585.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 26]"
+          TopLeft="254,716">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70,0"
+              Start="0,0"
+              End="62.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 27]"
+          TopLeft="503,715.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,0"
+              Start="0,0"
+              End="49.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 28]"
+          TopLeft="814,715.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70,0"
+              Start="0,0"
+              End="62.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 29]"
+          TopLeft="1021.5,737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-394,78"
+              Start="0,0"
+              End="-394,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
+                  <mssgle:LineSegment
+                    End="-390,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-390,39"
+                    Point2="-394,39"
+                    Point3="-394,43" />
+                  <mssgle:LineSegment
+                    End="-394,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 3]"
           TopLeft="519,159.5">
           <EdgeLayout.Curve>
@@ -12162,238 +12913,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                   Capacity="5">
                   <mssgle:LineSegment
                     End="98.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="231,42"
-          Id="Package\SP_Import_Vertraege ausführen"
-          TopLeft="63,60" />
-        <NodeLayout
-          Size="241,42"
-          Id="Package\SP_Import_Bereinigung ausführen"
-          TopLeft="351,60" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 21]"
-          TopLeft="294,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57,0"
-              Start="0,0"
-              End="49.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="49.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="202,42"
-          Id="Package\SP_Import_NVI ausführen"
-          TopLeft="658,61" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 22]"
-          TopLeft="592,81.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="66,0"
-              Start="0,0"
-              End="58.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="58.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="241,42"
-          Id="Package\SP_Steuerung_Quartale ausführen"
-          TopLeft="920,61" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 23]"
-          TopLeft="860,82">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="60,0"
-              Start="0,0"
-              End="52.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="52.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 24]"
-          TopLeft="1040.5,103">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-881.5,33"
-              Start="0,0"
-              End="-881.5,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="-4,16.5" />
-                  <mssgle:LineSegment
-                    End="-877.5,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-877.5,16.5"
-                    Point2="-881.5,16.5"
-                    Point3="-881.5,20.5" />
-                  <mssgle:LineSegment
-                    End="-881.5,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\SP_Kassen ausführen"
-          TopLeft="74,695" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\SP_Kosten ausführen"
-          TopLeft="324,695" />
-        <NodeLayout
-          Size="254,42"
-          Id="Package\SP_Berichte_Kundenportal ausführen"
-          TopLeft="560,694" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 25]"
-          TopLeft="749.5,651">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-585.5,44"
-              Start="0,0"
-              End="-585.5,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="-4,22" />
-                  <mssgle:LineSegment
-                    End="-581.5,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-581.5,22"
-                    Point2="-585.5,22"
-                    Point3="-585.5,26" />
-                  <mssgle:LineSegment
-                    End="-585.5,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 26]"
-          TopLeft="254,716">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="70,0"
-              Start="0,0"
-              End="62.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="62.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 27]"
-          TopLeft="503,715.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57,0"
-              Start="0,0"
-              End="49.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="49.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="275,42"
-          Id="Package\SP_Steuerung_Quartale erneut ausführen"
-          TopLeft="884,695" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 28]"
-          TopLeft="814,715.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="70,0"
-              Start="0,0"
-              End="62.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="62.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12592,15 +13111,15 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Ansprechpartner_Kasse">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Ansprechpartner_Kasse\OLE DB-Quelle"
-          TopLeft="247,99" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Ansprechpartner_Kasse\OLE DB-Ziel"
           TopLeft="251,223" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Ansprechpartner_Kasse\OLE DB-Quelle"
+          TopLeft="247,99" />
         <EdgeLayout
           Id="Package\Ansprechpartner_Kasse.Paths[Ausgabe der OLE DB-Quelle]"
           TopLeft="319.75,141">
@@ -12620,7 +13139,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12774,11 +13295,23 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\SP_Import_Vertraege ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Import_Vertraege ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="494,213" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\Teilnehmer vom Store laden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Teilnehmer vom Store laden\OLE DB-Ziel"
@@ -12806,7 +13339,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12833,5 +13368,89 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\SP_Import_Bereinigung ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Import_Bereinigung ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="494,222" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Import_NVI ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Import_NVI ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="492,231" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Steuerung_Quartale ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Steuerung_Quartale ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="499,223" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Kassen ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Kassen ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="556,261" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Kosten ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Kosten ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="520,283" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="528,321" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SP_Steuerung_Quartale erneut ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\SP_Steuerung_Quartale erneut ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="517,281" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
