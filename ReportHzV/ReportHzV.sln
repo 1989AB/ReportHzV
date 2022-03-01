@@ -7,7 +7,7 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ReportHzV", "ReportHzV\Repo
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_DDL_ETL", "SQL_DDL_ETL\SQL_DDL_ETL.sqlproj", "{D3CC6634-281F-410B-AC34-DCA4497BC977}"
 EndProject
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS_Import_Datastore", "SSIS_Import_Datastore\SSIS_Import_Datastore.dtproj", "{BF23F105-BD01-4FA9-975E-EA53CDEEC477}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS_Import", "SSIS_Import_Datastore\SSIS_Import.dtproj", "{BF23F105-BD01-4FA9-975E-EA53CDEEC477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
