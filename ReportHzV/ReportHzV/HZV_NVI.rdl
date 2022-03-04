@@ -388,7 +388,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Rang_Quartal</Value>
+                                  <Value>=Parameters!Quartal.Value</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -1170,6 +1170,11 @@
     </ReportParameter>
     <ReportParameter Name="Quartal">
       <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>20202</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>Quartal</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -1181,6 +1186,11 @@
     </ReportParameter>
     <ReportParameter Name="KV">
       <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>52</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>KV-Region</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -1192,6 +1202,11 @@
     </ReportParameter>
     <ReportParameter Name="TOP">
       <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>10</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>Top</Prompt>
     </ReportParameter>
   </ReportParameters>
