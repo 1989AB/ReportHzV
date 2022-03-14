@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore_Prozeduren"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{DB0C9C08-DF61-459E-B5AF-5FA765E2101E}">
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{760CE295-111A-4904-83FC-283F3801C85A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2285,7 +2285,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Diagnosen leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -2352,7 +2352,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Diagnosen um Verträge bereinigen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -5722,7 +5722,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Einzelfall leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -5789,7 +5789,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Einzelfall um Verträge bereinigen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -8644,7 +8644,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Entgelt leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -8711,7 +8711,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Abr_Entgelt um Verträge bereinigen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -8790,682 +8790,6 @@ and PRUEF_KZ='U'</property>
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Ansprechpartner"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequenzcontainer"
-      DTS:DTSID="{727D0F03-F2CE-4937-8997-21F8C9856FD1}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Ansprechpartner">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Datenflusstask"
-          DTS:DTSID="{632FF038-DC0C-44DF-A5FB-C32ECBFC9EE8}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Ansprechpartner_Kasse"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:EventHandlers>
-            <DTS:EventHandler
-              DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse.EventHandlers[OnTaskFailed]"
-              DTS:CreationName="OnTaskFailed"
-              DTS:DTSID="{82BFC1CC-44C3-442E-AE5D-E455A7C4359D}"
-              DTS:EventID="0"
-              DTS:EventName="OnTaskFailed"
-              DTS:LocaleID="-1">
-              <DTS:Variables>
-                <DTS:Variable
-                  DTS:CreationName=""
-                  DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
-                  DTS:DTSID="{DEF53B84-A0A2-4F66-A88E-CEE5BBEBDAE6}"
-                  DTS:IncludeInDebugDump="6789"
-                  DTS:Namespace="System"
-                  DTS:ObjectName="Propagate">
-                  <DTS:VariableValue
-                    DTS:DataType="11">-1</DTS:VariableValue>
-                </DTS:Variable>
-              </DTS:Variables>
-              <DTS:Executables>
-                <DTS:Executable
-                  DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse.EventHandlers[OnTaskFailed]\Send Error-Mail"
-                  DTS:CreationName="Microsoft.SendMailTask"
-                  DTS:Description="Task &quot;Mail senden&quot;"
-                  DTS:DTSID="{0A947A26-5EC3-48E8-8845-B9CE8AAE546E}"
-                  DTS:ExecutableType="Microsoft.SendMailTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="Send Error-Mail"
-                  DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-                  <DTS:Variables />
-                  <DTS:PropertyExpression
-                    DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
-                  <DTS:ObjectData>
-                    <SendMailTask:SendMailTaskData
-                      SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
-                      SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
-                      SendMailTask:CC="jan.neubert@spectrumk.de"
-                      SendMailTask:Subject="SSIS Error: Task &quot;Ansprechpartner_Kasse&quot; fehlgeschlagen"
-                      SendMailTask:MessageSource="Der Task &quot;Ansprechpartner_Kasse&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-                  </DTS:ObjectData>
-                </DTS:Executable>
-              </DTS:Executables>
-            </DTS:EventHandler>
-          </DTS:EventHandlers>
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB-Quelle"
-                  name="OLE DB-Quelle"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
-                      name="OpenRowset">[V_HZV].[Ansprechpartner_Kasse]</property>
-                    <property
-                      dataType="System.String"
-                      description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="Der auszuführende SQL-Befehl."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="Die Variable, die den auszuführenden SQL-Befehl enthält."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[DATASTORE]"
-                      connectionManagerRefId="Package.ConnectionManagers[DATASTORE]"
-                      description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]"
-                      name="Ausgabe der OLE DB-Quelle">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KassenIK]"
-                          length="9"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]"
-                          name="KassenIK"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
-                          length="50"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]"
-                          name="Vorname"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
-                          length="50"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]"
-                          name="Nachname"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Anrede]"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]"
-                          name="Anrede"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Email]"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]"
-                          name="Email"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Personalkasse]"
-                          length="1"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]"
-                          name="Personalkasse"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Konvertierung"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Produkt]"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]"
-                          name="Produkt"
-                          truncationRowDisposition="FailComponent" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[KassenIK]"
-                          codePage="1252"
-                          dataType="str"
-                          length="9"
-                          name="KassenIK" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Vorname]"
-                          dataType="wstr"
-                          length="50"
-                          name="Vorname" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Nachname]"
-                          dataType="wstr"
-                          length="50"
-                          name="Nachname" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Anrede]"
-                          dataType="wstr"
-                          length="100"
-                          name="Anrede" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Email]"
-                          dataType="wstr"
-                          length="100"
-                          name="Email" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Personalkasse]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="Personalkasse" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Produkt]"
-                          codePage="1252"
-                          dataType="str"
-                          length="100"
-                          name="Produkt" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle]"
-                      isErrorOut="true"
-                      name="Fehlerausgabe der OLE DB-Quelle">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KassenIK]"
-                          codePage="1252"
-                          dataType="str"
-                          length="9"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[KassenIK]"
-                          name="KassenIK" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
-                          dataType="wstr"
-                          length="50"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Vorname]"
-                          name="Vorname" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
-                          dataType="wstr"
-                          length="50"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Nachname]"
-                          name="Nachname" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Anrede]"
-                          dataType="wstr"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Anrede]"
-                          name="Anrede" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Email]"
-                          dataType="wstr"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Email]"
-                          name="Email" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Personalkasse]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Personalkasse]"
-                          name="Personalkasse" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Produkt]"
-                          codePage="1252"
-                          dataType="str"
-                          length="100"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Produkt]"
-                          name="Produkt" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB-Ziel"
-                  name="OLE DB-Ziel"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
-                      name="OpenRowset">[HZV].[Ansprechpartner_Kasse]</property>
-                    <property
-                      dataType="System.String"
-                      description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="Der auszuführende SQL-Befehl."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
-                      name="AccessMode"
-                      typeConverter="AccessMode">3</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                      name="FastLoadKeepIdentity">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                      name="FastLoadKeepNulls">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
-                      connectionManagerRefId="Package.ConnectionManagers[AbrBV_Reporting_DEV]"
-                      description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
-                      errorOrTruncationOperation="Einfügen"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="Eingabe des OLE DB-Ziels">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[KassenIK]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="9"
-                          cachedName="KassenIK"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KassenIK]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[KassenIK]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Vorname]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Vorname"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Vorname]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Nachname]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Nachname"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Nachname]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Anrede]"
-                          cachedDataType="wstr"
-                          cachedLength="100"
-                          cachedName="Anrede"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Anrede]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Email]"
-                          cachedDataType="wstr"
-                          cachedLength="100"
-                          cachedName="Email"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Email]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Email]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Personalkasse]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="Personalkasse"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Personalkasse]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Personalkasse]" />
-                        <inputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Produkt]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="100"
-                          cachedName="Produkt"
-                          externalMetadataColumnId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Produkt]"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle].Columns[Produkt]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[KassenIK]"
-                          codePage="1252"
-                          dataType="str"
-                          length="9"
-                          name="KassenIK" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
-                          dataType="wstr"
-                          length="50"
-                          name="Vorname" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
-                          dataType="wstr"
-                          length="50"
-                          name="Nachname" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Anrede]"
-                          dataType="wstr"
-                          length="100"
-                          name="Anrede" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Email]"
-                          dataType="wstr"
-                          length="100"
-                          name="Email" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Personalkasse]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          name="Personalkasse" />
-                        <externalMetadataColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Produkt]"
-                          codePage="1252"
-                          dataType="str"
-                          length="100"
-                          name="Produkt" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Fehlerausgabe des OLE DB-Ziels"
-                      synchronousInputId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\Ansprechpartner\Ansprechpartner_Kasse.Paths[Ausgabe der OLE DB-Quelle]"
-                  endId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
-                  name="Ausgabe der OLE DB-Quelle"
-                  startId="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle.Outputs[Ausgabe der OLE DB-Quelle]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse leeren"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Task &quot;SQL ausführen&quot;"
-          DTS:DTSID="{B51894DF-00B0-4C64-A5FE-991CC19554B0}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Ansprechpartner_Kasse leeren"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:EventHandlers>
-            <DTS:EventHandler
-              DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse leeren.EventHandlers[OnTaskFailed]"
-              DTS:CreationName="OnTaskFailed"
-              DTS:DTSID="{F75C58B9-C86F-46D2-B965-BD9287F52AC8}"
-              DTS:EventID="0"
-              DTS:EventName="OnTaskFailed"
-              DTS:LocaleID="-1">
-              <DTS:Variables>
-                <DTS:Variable
-                  DTS:CreationName=""
-                  DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
-                  DTS:DTSID="{CE0A08C9-1B75-4C76-8C26-3AD703BB92D2}"
-                  DTS:IncludeInDebugDump="6789"
-                  DTS:Namespace="System"
-                  DTS:ObjectName="Propagate">
-                  <DTS:VariableValue
-                    DTS:DataType="11">-1</DTS:VariableValue>
-                </DTS:Variable>
-              </DTS:Variables>
-              <DTS:Executables>
-                <DTS:Executable
-                  DTS:refId="Package\Ansprechpartner\Ansprechpartner_Kasse leeren.EventHandlers[OnTaskFailed]\Send Error-Mail"
-                  DTS:CreationName="Microsoft.SendMailTask"
-                  DTS:Description="Task &quot;Mail senden&quot;"
-                  DTS:DTSID="{C7B0CCEF-E4C8-4D8E-8851-B05BABCD0E93}"
-                  DTS:ExecutableType="Microsoft.SendMailTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="Send Error-Mail"
-                  DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-                  <DTS:Variables />
-                  <DTS:PropertyExpression
-                    DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
-                  <DTS:ObjectData>
-                    <SendMailTask:SendMailTaskData
-                      SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
-                      SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
-                      SendMailTask:CC="jan.neubert@spectrumk.de"
-                      SendMailTask:Subject="SSIS Error: Task &quot;Ansprechpartner_Kasse leeren&quot; fehlgeschlagen"
-                      SendMailTask:MessageSource="Der Task &quot;Ansprechpartner_Kasse leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-                  </DTS:ObjectData>
-                </DTS:Executable>
-              </DTS:Executables>
-            </DTS:EventHandler>
-          </DTS:EventHandlers>
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-              SQLTask:SqlStatementSource="truncate table HZV.[Ansprechpartner_Kasse]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Task &quot;SQL ausführen&quot;"
-          DTS:DTSID="{33D83BBB-A79E-48FF-9903-9B2CC81F4B08}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Salzgitter-User vervielfältigen auf Tui, Public"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:EventHandlers>
-            <DTS:EventHandler
-              DTS:refId="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public.EventHandlers[OnTaskFailed]"
-              DTS:CreationName="OnTaskFailed"
-              DTS:DTSID="{91FD29E1-C941-4543-BF9F-5697DCBE0526}"
-              DTS:EventID="0"
-              DTS:EventName="OnTaskFailed"
-              DTS:LocaleID="-1">
-              <DTS:Variables>
-                <DTS:Variable
-                  DTS:CreationName=""
-                  DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
-                  DTS:DTSID="{78BE76FB-3459-489C-B3D7-5E8A982522DC}"
-                  DTS:IncludeInDebugDump="6789"
-                  DTS:Namespace="System"
-                  DTS:ObjectName="Propagate">
-                  <DTS:VariableValue
-                    DTS:DataType="11">-1</DTS:VariableValue>
-                </DTS:Variable>
-              </DTS:Variables>
-              <DTS:Executables>
-                <DTS:Executable
-                  DTS:refId="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public.EventHandlers[OnTaskFailed]\Send Error-Mail"
-                  DTS:CreationName="Microsoft.SendMailTask"
-                  DTS:Description="Task &quot;Mail senden&quot;"
-                  DTS:DTSID="{C1DAB1B1-EB96-4477-9C6F-2437086B061F}"
-                  DTS:ExecutableType="Microsoft.SendMailTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="Send Error-Mail"
-                  DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-                  <DTS:Variables />
-                  <DTS:PropertyExpression
-                    DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
-                  <DTS:PropertyExpression
-                    DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
-                  <DTS:ObjectData>
-                    <SendMailTask:SendMailTaskData
-                      SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
-                      SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
-                      SendMailTask:CC="jan.neubert@spectrumk.de"
-                      SendMailTask:Subject="SSIS Error: Task &quot;Salzgitter-User vervielfältigen&quot; fehlgeschlagen"
-                      SendMailTask:MessageSource="Der Task &quot;Salzgitter-User vervielfältigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-                  </DTS:ObjectData>
-                </DTS:Executable>
-              </DTS:Executables>
-            </DTS:EventHandler>
-          </DTS:EventHandlers>
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-              SQLTask:SqlStatementSource="insert into [HZV].[Ansprechpartner_Kasse]&#xA;select 101931440, Vorname, Nachname, Anrede, Email, Personalkasse, Produkt  FROM [HZV].[Ansprechpartner_Kasse]&#xA;where Produkt='HZV'&#xA;and KassenIK =101922757&#xA;&#xA;insert into [HZV].[Ansprechpartner_Kasse]&#xA;select 102137985, Vorname, Nachname, Anrede, Email, Personalkasse, Produkt  FROM [HZV].[Ansprechpartner_Kasse]&#xA;where Produkt='HZV'&#xA;and KassenIK =101922757" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Ansprechpartner.PrecedenceConstraints[Einschränkung 19]"
-          DTS:CreationName=""
-          DTS:DTSID="{7A3E11DB-03D4-4398-89FC-584FADD04FEA}"
-          DTS:From="Package\Ansprechpartner\Ansprechpartner_Kasse leeren"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Einschränkung 19"
-          DTS:To="Package\Ansprechpartner\Ansprechpartner_Kasse" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Ansprechpartner.PrecedenceConstraints[Einschränkung 20]"
-          DTS:CreationName=""
-          DTS:DTSID="{648C1A09-B256-45B5-B307-C81DFE436241}"
-          DTS:From="Package\Ansprechpartner\Ansprechpartner_Kasse"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Einschränkung 20"
-          DTS:To="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Begin Abr_Diagnosen"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
@@ -9474,7 +8798,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Begin Abr_Diagnosen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9491,7 +8815,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Begin Abr_Einzelfall"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9508,29 +8832,12 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Begin Abr_Entgelt"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
           SQLTask:SqlStatementSource="BEGIN TRAN Abr_Entgelt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Begin Ansprechpartner"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:DTSID="{8e9654e8-7a08-42f7-b3b5-7fecc00c7c35}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Begin Ansprechpartner"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="BEGIN TRAN Ansprechpartner" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -9542,7 +8849,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Begin KM6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9576,7 +8883,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Begin Ärzte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9593,7 +8900,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Abr_Diagnosen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="7">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9610,7 +8917,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Abr_Einzelfall"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9627,29 +8934,12 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Abr_Entgelt"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
           SQLTask:SqlStatementSource="COMMIT TRAN Abr_Entgelt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Commit Ansprechpartner"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:DTSID="{f7fec302-91aa-44ce-a77f-d7bd8cbb4380}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Commit Ansprechpartner"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="COMMIT TRAN Ansprechpartner" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -9661,7 +8951,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit KM6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9678,7 +8968,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Teilnehmer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9695,7 +8985,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Ärzte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9722,7 +9012,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="KM6 leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -9789,7 +9079,7 @@ and PRUEF_KZ='U'</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="KM6 um Verträge bereinigen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -10375,7 +9665,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Abr_Diagnosen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10392,7 +9682,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Abr_Einzelfall"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="9">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10409,29 +9699,12 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Abr_Entgelt"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="11">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
           SQLTask:SqlStatementSource="ROLLBACK TRAN Abr_Entgelt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Rollback Ansprechpartner"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:DTSID="{5ab9c68a-9e40-49b8-b2db-e0f724ee69bb}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Rollback Ansprechpartner"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:SqlStatementSource="ROLLBACK TRAN Ansprechpartner" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10443,7 +9716,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback KM6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10460,7 +9733,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Teilnehmer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10477,7 +9750,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Ärzte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10494,7 +9767,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Success-Mail"
       DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:PropertyExpression
         DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
@@ -10510,74 +9783,6 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
           SendMailTask:CC="jan.neubert@spectrumk.de"
           SendMailTask:Subject="Datenimport für HzV-Report abgeschlossen"
           SendMailTask:MessageSource="Die Daten für den HzV-Report wurden erfolgreich übertragen und aktualisiert." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\SP_Berichte_Kundenportal ausführen"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:DTSID="{3399E745-B24D-4F3E-9208-D36CCD40715F}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="SP_Berichte_Kundenportal ausführen"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:EventHandlers>
-        <DTS:EventHandler
-          DTS:refId="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]"
-          DTS:CreationName="OnTaskFailed"
-          DTS:DTSID="{553995DB-C219-49FC-861B-EE43AD4649DE}"
-          DTS:EventID="0"
-          DTS:EventName="OnTaskFailed"
-          DTS:LocaleID="-1">
-          <DTS:Variables>
-            <DTS:Variable
-              DTS:CreationName=""
-              DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
-              DTS:DTSID="{195FEFAC-9117-4FED-B23C-3DF832E6EAC7}"
-              DTS:IncludeInDebugDump="6789"
-              DTS:Namespace="System"
-              DTS:ObjectName="Propagate">
-              <DTS:VariableValue
-                DTS:DataType="11">-1</DTS:VariableValue>
-            </DTS:Variable>
-          </DTS:Variables>
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
-              DTS:CreationName="Microsoft.SendMailTask"
-              DTS:Description="Task &quot;Mail senden&quot;"
-              DTS:DTSID="{7D291753-7018-4809-A585-BB89BA2E7FC6}"
-              DTS:ExecutableType="Microsoft.SendMailTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Send Error-Mail"
-              DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:PropertyExpression
-                DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
-              <DTS:PropertyExpression
-                DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
-              <DTS:PropertyExpression
-                DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
-              <DTS:ObjectData>
-                <SendMailTask:SendMailTaskData
-                  SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
-                  SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
-                  SendMailTask:CC="jan.neubert@spectrumk.de"
-                  SendMailTask:Subject="SSIS Error: Task SP_Berichte_Kundenportal fehlgeschlagen"
-                  SendMailTask:MessageSource="Der Task &quot;SP_Berichte_Kundenportal&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-        </DTS:EventHandler>
-      </DTS:EventHandlers>
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-          SQLTask:IsStoredProc="True"
-          SQLTask:SqlStatementSource="EXEC [HZV].[SP_Berichte_Kundenportal]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10792,7 +9997,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SP_Kassen ausführen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:EventHandlers>
         <DTS:EventHandler
@@ -10860,7 +10065,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SP_Kosten ausführen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:EventHandlers>
         <DTS:EventHandler
@@ -10996,7 +10201,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SP_Steuerung_Quartale erneut ausführen"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="12">
       <DTS:Variables />
       <DTS:EventHandlers>
         <DTS:EventHandler
@@ -12362,7 +11567,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
           DTS:LocaleID="-1"
           DTS:ObjectName="Ärzte leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -12429,7 +11634,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
           DTS:LocaleID="-1"
           DTS:ObjectName="Ärzte um Verträge bereinigen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
@@ -13489,11 +12694,10 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 15]"
       DTS:CreationName=""
-      DTS:DTSID="{043ACF68-D1B7-43D7-8DAE-890C63F45C6E}"
-      DTS:From="Package\Begin Ansprechpartner"
-      DTS:LogicalAnd="True"
+      DTS:DTSID="{19D578F7-0800-469C-9F11-661D51652456}"
+      DTS:From="Package\Commit Abr_Entgelt"
       DTS:ObjectName="Einschränkung 15"
-      DTS:To="Package\Ansprechpartner" />
+      DTS:To="Package\SP_Kassen ausführen" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 16]"
       DTS:CreationName=""
@@ -13539,11 +12743,10 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 20]"
       DTS:CreationName=""
-      DTS:DTSID="{310BC8A5-A928-4211-AEBC-FE0CC451D350}"
-      DTS:From="Package\Ansprechpartner"
-      DTS:LogicalAnd="True"
+      DTS:DTSID="{7E9AF735-A5E0-498F-90B1-002CCF1E6197}"
+      DTS:From="Package\Rollback Abr_Entgelt"
       DTS:ObjectName="Einschränkung 20"
-      DTS:To="Package\Commit Ansprechpartner" />
+      DTS:To="Package\SP_Kassen ausführen" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 21]"
       DTS:CreationName=""
@@ -13571,18 +12774,16 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 24]"
       DTS:CreationName=""
-      DTS:DTSID="{976FC1E3-1C62-46CC-B493-F916CDFDADE1}"
-      DTS:From="Package\Ansprechpartner"
+      DTS:DTSID="{46D5161B-5638-4B71-9921-43C5FAB90A30}"
+      DTS:From="Package\SP_Kosten ausführen"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 24"
-      DTS:To="Package\Rollback Ansprechpartner"
-      DTS:Value="1" />
+      DTS:To="Package\SP_Steuerung_Quartale erneut ausführen" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 25]"
       DTS:CreationName=""
       DTS:DTSID="{38E2A6FA-38F9-4C8D-BAD0-09406C270EFB}"
       DTS:From="Package\Commit Teilnehmer"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 25"
       DTS:To="Package\Begin Ärzte" />
     <DTS:PrecedenceConstraint
@@ -13593,22 +12794,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 26"
       DTS:To="Package\SP_Kosten ausführen" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 27]"
-      DTS:CreationName=""
-      DTS:DTSID="{84C6E122-77F4-40EE-BBE8-11EC6B703E40}"
-      DTS:From="Package\SP_Kosten ausführen"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 27"
-      DTS:To="Package\SP_Berichte_Kundenportal ausführen" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 28]"
-      DTS:CreationName=""
-      DTS:DTSID="{C506791A-714E-4377-9FA8-DC8EB4D72E8E}"
-      DTS:From="Package\SP_Berichte_Kundenportal ausführen"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 28"
-      DTS:To="Package\SP_Steuerung_Quartale erneut ausführen" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 29]"
       DTS:CreationName=""
@@ -13631,7 +12816,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{8D6C2E24-2C26-4A45-AB3A-9FD3CD90B95F}"
       DTS:From="Package\Rollback Teilnehmer"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 30"
       DTS:To="Package\Begin Ärzte" />
     <DTS:PrecedenceConstraint
@@ -13639,7 +12823,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{4976B808-2C34-4D68-B4FE-D24A7217E4BD}"
       DTS:From="Package\Commit Ärzte"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 31"
       DTS:To="Package\Begin KM6" />
     <DTS:PrecedenceConstraint
@@ -13647,7 +12830,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{C622052F-6787-43B3-9DED-0115CE44B661}"
       DTS:From="Package\Rollback Ärzte"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 32"
       DTS:To="Package\Begin KM6" />
     <DTS:PrecedenceConstraint
@@ -13655,7 +12837,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{77301CB3-59B7-4CDB-98DC-98216DBB6B1E}"
       DTS:From="Package\Commit KM6"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 33"
       DTS:To="Package\Begin Abr_Diagnosen" />
     <DTS:PrecedenceConstraint
@@ -13663,7 +12844,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{0A3382E4-BCFF-48BC-96D3-22E748A59219}"
       DTS:From="Package\Rollback KM6"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 34"
       DTS:To="Package\Begin Abr_Diagnosen" />
     <DTS:PrecedenceConstraint
@@ -13671,7 +12851,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{7390BD12-67E2-408C-A287-2745E998BB6D}"
       DTS:From="Package\Commit Abr_Diagnosen"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 35"
       DTS:To="Package\Begin Abr_Einzelfall" />
     <DTS:PrecedenceConstraint
@@ -13679,7 +12858,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{201F6DAA-7A35-4ACD-B562-11C89CB1F1D3}"
       DTS:From="Package\Rollback Abr_Diagnosen"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 36"
       DTS:To="Package\Begin Abr_Einzelfall" />
     <DTS:PrecedenceConstraint
@@ -13687,7 +12865,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{ABAF043E-36C0-4E8F-B61E-326B0AE80204}"
       DTS:From="Package\Commit Abr_Einzelfall"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 37"
       DTS:To="Package\Begin Abr_Entgelt" />
     <DTS:PrecedenceConstraint
@@ -13695,17 +12872,8 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:CreationName=""
       DTS:DTSID="{EEBA0143-E127-486A-B099-902CA4F94323}"
       DTS:From="Package\Rollback Abr_Einzelfall"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 38"
       DTS:To="Package\Begin Abr_Entgelt" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 39]"
-      DTS:CreationName=""
-      DTS:DTSID="{967529FC-5DB3-43F5-A1B5-B76CB7A63BCA}"
-      DTS:From="Package\Commit Abr_Entgelt"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 39"
-      DTS:To="Package\Begin Ansprechpartner" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 4]"
       DTS:CreationName=""
@@ -13714,30 +12882,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       DTS:LogicalAnd="True"
       DTS:ObjectName="Einschränkung 4"
       DTS:To="Package\Commit KM6" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 40]"
-      DTS:CreationName=""
-      DTS:DTSID="{A0627279-76CA-453F-9737-DF5BF468D90A}"
-      DTS:From="Package\Rollback Abr_Entgelt"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 40"
-      DTS:To="Package\Begin Ansprechpartner" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 41]"
-      DTS:CreationName=""
-      DTS:DTSID="{8998412F-0E6D-4072-84B5-AF85F67AB750}"
-      DTS:From="Package\Commit Ansprechpartner"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 41"
-      DTS:To="Package\SP_Kassen ausführen" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 42]"
-      DTS:CreationName=""
-      DTS:DTSID="{8B478EC1-430C-4A4A-B7A6-589940EAB0B0}"
-      DTS:From="Package\Rollback Ansprechpartner"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 42"
-      DTS:To="Package\SP_Kassen ausführen" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Einschränkung 5]"
       DTS:CreationName=""
@@ -13856,7 +13000,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="821,68"
           Size="821,111"
           Id="Package\Abr_Diagnosen"
-          TopLeft="255,556" />
+          TopLeft="414.761904761905,1041" />
         <NodeLayout
           Size="174,42"
           Id="Package\Abr_Einzelfall\Abr_Einzelfall leeren"
@@ -13868,21 +13012,21 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <NodeLayout
           Size="182,42"
           Id="Package\Abr_Einzelfall\Abrechnung_Einzelfall"
-          TopLeft="251,2" />
+          TopLeft="255,7" />
         <EdgeLayout
           Id="Package\Abr_Einzelfall.PrecedenceConstraints[Einschränkung 12]"
-          TopLeft="182,25.5">
+          TopLeft="182,28">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69,0"
+              EndConnector="73,0"
               Start="0,0"
-              End="61.5,0">
+              End="65.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.5,0" />
+                    End="65.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13893,18 +13037,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Abr_Einzelfall.PrecedenceConstraints[Einschränkung 9]"
-          TopLeft="433,25">
+          TopLeft="437,27.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="106,0"
+              EndConnector="102,0"
               Start="0,0"
-              End="98.5,0">
+              End="94.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="98.5,0" />
+                    End="94.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13916,10 +13060,10 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="805,65"
-          Size="805,108"
+          PanelSize="805,62"
+          Size="805,105"
           Id="Package\Abr_Einzelfall"
-          TopLeft="257,705" />
+          TopLeft="420.095238095238,1325" />
         <NodeLayout
           Size="166,42"
           Id="Package\Abr_Entgelt\Abr_Entgelt leeren"
@@ -13982,70 +13126,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="804,60"
           Size="804,103"
           Id="Package\Abr_Entgelt"
-          TopLeft="257,851" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse"
-          TopLeft="290,6" />
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse leeren"
-          TopLeft="14,7" />
-        <NodeLayout
-          Size="291,42"
-          Id="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public"
-          TopLeft="567,5" />
-        <EdgeLayout
-          Id="Package\Ansprechpartner.PrecedenceConstraints[Einschränkung 19]"
-          TopLeft="236,27.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="54,0"
-              Start="0,0"
-              End="46.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="46.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Ansprechpartner.PrecedenceConstraints[Einschränkung 20]"
-          TopLeft="479,26.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88,0"
-              Start="0,0"
-              End="80.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="80.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="869,62"
-          Size="869,106"
-          Id="Package\Ansprechpartner"
-          TopLeft="261,982" />
+          TopLeft="433.428571428572,1606" />
         <NodeLayout
           Size="136,42"
           Id="Package\Ärzte\Ärzte leeren"
@@ -14057,21 +13138,21 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <NodeLayout
           Size="180,42"
           Id="Package\Ärzte\Ärzte von Store laden"
-          TopLeft="248,3" />
+          TopLeft="255,6" />
         <EdgeLayout
           Id="Package\Ärzte.PrecedenceConstraints[Einschränkung 1]"
-          TopLeft="148,25.5">
+          TopLeft="148,27">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="100,0"
+              EndConnector="107,0"
               Start="0,0"
-              End="92.5,0">
+              End="99.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="92.5,0" />
+                    End="99.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14082,18 +13163,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ärzte.PrecedenceConstraints[Einschränkung 2]"
-          TopLeft="428,23.5">
+          TopLeft="435,25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="114,0"
+              EndConnector="107,0"
               Start="0,0"
-              End="106.5,0">
+              End="99.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="106.5,0" />
+                    End="99.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14105,10 +13186,58 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="800,68"
-          Size="800,111"
+          PanelSize="800,60"
+          Size="800,103"
           Id="Package\Ärzte"
-          TopLeft="247,271" />
+          TopLeft="429.857142857143,448.619047619047" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Begin Abr_Diagnosen"
+          TopLeft="742.095238095238,953.66666666667" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Begin Abr_Einzelfall"
+          TopLeft="736.428571428572,1247.66666666667" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Begin Abr_Entgelt"
+          TopLeft="749.761904761905,1527.33333333334" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Begin Ärzte"
+          TopLeft="769.761904761905,365.333333333334" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Begin KM6"
+          TopLeft="762.095238095239,666.000000000003" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Begin Teilnehmer"
+          TopLeft="783,73.3333333333332" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Commit Abr_Diagnosen"
+          TopLeft="595.33333333333,1183.38095238095" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Commit Abr_Einzelfall"
+          TopLeft="605.285714285716,1466" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Commit Abr_Entgelt"
+          TopLeft="609.7619047619,1752" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Commit Ärzte"
+          TopLeft="629.7619047619,585.047619047619" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Commit KM6"
+          TopLeft="634.095238095233,895.285714285713" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Commit Teilnehmer"
+          TopLeft="590.619047619047,291.571428571428" />
         <NodeLayout
           Size="132,42"
           Id="Package\KM6\KM6 leeren"
@@ -14171,47 +13300,67 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="766,65"
           Size="766,108"
           Id="Package\KM6"
-          TopLeft="252,411" />
+          TopLeft="448.428571428572,754.333333333337" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Rollback Abr_Diagnosen"
+          TopLeft="865.19047619048,1185.57142857143" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Rollback Abr_Einzelfall"
+          TopLeft="871.095238095233,1465.33333333334" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Rollback Abr_Entgelt"
+          TopLeft="885.095238095233,1749.66666666667" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Rollback Ärzte"
+          TopLeft="888.666666666663,589.380952380953" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Rollback KM6"
+          TopLeft="888.47619047619,893.190476190477" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Rollback Teilnehmer"
+          TopLeft="961.666666666666,294.238095238095" />
         <NodeLayout
           Size="165,42"
           Id="Package\Send Success-Mail"
-          TopLeft="710,1248" />
-        <NodeLayout
-          Size="254,42"
-          Id="Package\SP_Berichte_Kundenportal ausführen"
-          TopLeft="725,1127" />
+          TopLeft="722.428571428572,2288" />
         <NodeLayout
           Size="241,42"
           Id="Package\SP_Import_Bereinigung ausführen"
-          TopLeft="543,30" />
+          TopLeft="601.095238095239,6.42857142857143" />
         <NodeLayout
           Size="202,42"
           Id="Package\SP_Import_NVI ausführen"
-          TopLeft="850,31" />
+          TopLeft="908.095238095239,7.42857142857143" />
         <NodeLayout
           Size="231,42"
           Id="Package\SP_Import_Vertraege ausführen"
-          TopLeft="255,30" />
+          TopLeft="313.095238095238,6.42857142857143" />
         <NodeLayout
           Size="180,42"
           Id="Package\SP_Kassen ausführen"
-          TopLeft="239,1128" />
+          TopLeft="471.178571428572,1854.25" />
         <NodeLayout
           Size="179,42"
           Id="Package\SP_Kosten ausführen"
-          TopLeft="489,1128" />
+          TopLeft="692.678571428572,1854" />
         <NodeLayout
           Size="241,42"
           Id="Package\SP_Steuerung_Quartale ausführen"
-          TopLeft="1112,31" />
+          TopLeft="1170.09523809524,7.42857142857143" />
         <NodeLayout
           Size="275,42"
           Id="Package\SP_Steuerung_Quartale erneut ausführen"
-          TopLeft="1049,1128" />
+          TopLeft="907.42857142857,1851" />
         <NodeLayout
           Size="246,42"
           Id="Package\Teilnehmer\Altersgruppe, EndegrundText füllen"
-          TopLeft="858,20" />
+          TopLeft="852,14" />
         <NodeLayout
           Size="164,42"
           Id="Package\Teilnehmer\Teilnehmer leeren"
@@ -14219,7 +13368,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <NodeLayout
           Size="246,42"
           Id="Package\Teilnehmer\Teilnehmer um Verträge bereinigen"
-          TopLeft="546,18" />
+          TopLeft="552,13" />
         <NodeLayout
           Size="212,42"
           Id="Package\Teilnehmer\Teilnehmer vom Store laden"
@@ -14248,18 +13397,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Teilnehmer.PrecedenceConstraints[Einschränkung 17]"
-          TopLeft="792,40">
+          TopLeft="798,34.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66,0"
+              EndConnector="54,0"
               Start="0,0"
-              End="58.5,0">
+              End="46.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="58.5,0" />
+                    End="46.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14270,18 +13419,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Teilnehmer.PrecedenceConstraints[Einschränkung 3]"
-          TopLeft="462,36.5">
+          TopLeft="462,34">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="84,0"
+              EndConnector="90,0"
               Start="0,0"
-              End="76.5,0">
+              End="82.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="76.5,0" />
+                    End="82.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14293,13 +13442,293 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1114,79"
-          Size="1114,122"
+          PanelSize="1114,74"
+          Size="1114,117"
           Id="Package\Teilnehmer"
-          TopLeft="244,117" />
+          TopLeft="305.428571428571,143.428571428571" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung]"
+          TopLeft="1290.59523809524,49.4285714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-427.095238095238,23.9047619047618"
+              Start="0,0"
+              End="-427.095238095238,16.4047619047618">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.9523809523809" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.9523809523809"
+                    Point2="0,11.9523809523809"
+                    Point3="-4,11.9523809523809" />
+                  <mssgle:LineSegment
+                    End="-423.095238095238,11.9523809523809" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-423.095238095238,11.9523809523809"
+                    Point2="-427.095238095238,11.9523809523809"
+                    Point3="-427.095238095238,15.9523809523809" />
+                  <mssgle:LineSegment
+                    End="-427.095238095238,16.4047619047618" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 1]"
+          TopLeft="677.107142857142,260.428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.142857142857"
+              Start="0,0"
+              End="0,23.642857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.642857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 10]"
+          TopLeft="833.059523809524,407.333333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.285714285713"
+              Start="0,0"
+              End="0,33.785714285713">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.785714285713" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 11]"
+          TopLeft="829.011904761905,708.000000000003">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3333333333335"
+              Start="0,0"
+              End="0,38.8333333333335">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8333333333335" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 12]"
+          TopLeft="828.678571428572,995.66666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.3333333333331"
+              Start="0,0"
+              End="0,37.8333333333331">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8333333333331" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 13]"
+          TopLeft="822.261904761905,1289.66666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.3333333333301"
+              Start="0,0"
+              End="0,27.8333333333301">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.8333333333301" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 14]"
+          TopLeft="833.345238095238,1569.33333333334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.6666666666665"
+              Start="0,0"
+              End="0,29.1666666666665">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1666666666665" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 16]"
+          TopLeft="692.77380952381,1430">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 17]"
+          TopLeft="959.261904761902,1430">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.3333333333401"
+              Start="0,0"
+              End="0,27.8333333333401">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.8333333333401" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,9.05436197917004,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 18]"
+          TopLeft="699.511904761902,1709">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 19]"
+          TopLeft="970.595238095236,1709">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.6666666666663"
+              Start="0,0"
+              End="0,33.1666666666663">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.1666666666663" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,11.7210286458331,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 2]"
+          TopLeft="699.559523809522,551.619047619047">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.428571428572"
+              Start="0,0"
+              End="0,25.928571428572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.928571428572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 21]"
-          TopLeft="486,51">
+          TopLeft="544.095238095238,27.4285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14321,7 +13750,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 22]"
-          TopLeft="784,51.5">
+          TopLeft="842.095238095239,27.9285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14343,7 +13772,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 23]"
-          TopLeft="1052,52">
+          TopLeft="1110.09523809524,28.4285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -14364,63 +13793,53 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 25]"
+          TopLeft="676.119047619047,333.571428571428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.309523809525,31.7619047619052"
+              Start="0,0"
+              End="139.309523809525,24.2619047619052">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.8306092124817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.8306092124817"
+                    Point2="0,18.8306092124817"
+                    Point3="4,18.8306092124817" />
+                  <mssgle:LineSegment
+                    End="135.309523809525,18.8306092124817" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135.309523809525,18.8306092124817"
+                    Point2="139.309523809525,18.8306092124817"
+                    Point3="139.309523809525,22.8306092124817" />
+                  <mssgle:LineSegment
+                    End="139.309523809525,24.2619047619052" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 26]"
-          TopLeft="419,1149">
+          TopLeft="651.178571428572,1875.125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="70,0"
+              EndConnector="41.5,0"
               Start="0,0"
-              End="62.5,0">
+              End="34,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="62.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 27]"
-          TopLeft="668,1148.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57,0"
-              Start="0,0"
-              End="49.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="49.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 28]"
-          TopLeft="979,1148.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="70,0"
-              Start="0,0"
-              End="62.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="62.5,0" />
+                    End="34,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14431,372 +13850,30 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 29]"
-          TopLeft="1186.5,1170">
+          TopLeft="1044.92857142857,1893">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-394,78"
+              EndConnector="-239.999999999998,395"
               Start="0,0"
-              End="-394,70.5">
+              End="-239.999999999998,387.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35" />
+                    End="0,193.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35"
-                    Point2="0,39"
-                    Point3="-4,39" />
+                    Point1="0,193.5"
+                    Point2="0,197.5"
+                    Point3="-4,197.5" />
                   <mssgle:LineSegment
-                    End="-390,39" />
+                    End="-235.999999999998,197.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-390,39"
-                    Point2="-394,39"
-                    Point3="-394,43" />
+                    Point1="-235.999999999998,197.5"
+                    Point2="-239.999999999998,197.5"
+                    Point3="-239.999999999998,201.5" />
                   <mssgle:LineSegment
-                    End="-394,70.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Begin Teilnehmer"
-          TopLeft="18,155" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 8]"
-          TopLeft="179,177">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="65,0"
-              Start="0,0"
-              End="57.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="57.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Commit Teilnehmer"
-          TopLeft="1433,128" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 1]"
-          TopLeft="1358,159">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="75,-10"
-              Start="0,0"
-              End="67.5,-10">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="26.5825242718447,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="26.5825242718447,0"
-                    Point2="30.5825242718447,0"
-                    Point3="30.5825242718447,-4" />
-                  <mssgle:LineSegment
-                    End="30.5825242718447,-6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.5825242718447,-6"
-                    Point2="30.5825242718447,-10"
-                    Point3="34.5825242718447,-10" />
-                  <mssgle:LineSegment
-                    End="67.5,-10" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Rollback Teilnehmer"
-          TopLeft="1435,204" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 9]"
-          TopLeft="1358,197">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77,28"
-              Start="0,0"
-              End="69.5,28">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.3980582524272,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.3980582524272,0"
-                    Point2="31.3980582524272,0"
-                    Point3="31.3980582524272,4" />
-                  <mssgle:LineSegment
-                    End="31.3980582524272,24" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.3980582524272,24"
-                    Point2="31.3980582524272,28"
-                    Point3="35.3980582524272,28" />
-                  <mssgle:LineSegment
-                    End="69.5,28" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="17.1893668461772,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Begin Ärzte"
-          TopLeft="25,302" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 10]"
-          TopLeft="158,324.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="89,0"
-              Start="0,0"
-              End="81.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="81.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Begin KM6"
-          TopLeft="29,441" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 11]"
-          TopLeft="158,463.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="94,0"
-              Start="0,0"
-              End="86.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="86.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Begin Abr_Diagnosen"
-          TopLeft="29,587" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 12]"
-          TopLeft="209,609.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="46,0"
-              Start="0,0"
-              End="38.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="38.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Begin Abr_Einzelfall"
-          TopLeft="30,736" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 13]"
-          TopLeft="201,758">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="56,0"
-              Start="0,0"
-              End="48.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="48.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Begin Abr_Entgelt"
-          TopLeft="30,874" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 14]"
-          TopLeft="193,898.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="64,0"
-              Start="0,0"
-              End="56.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="56.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Begin Ansprechpartner"
-          TopLeft="28,1009" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 15]"
-          TopLeft="214,1032.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="47,0"
-              Start="0,0"
-              End="39.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="39.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="143,42"
-          Id="Package\Commit Ärzte"
-          TopLeft="1125,261" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Rollback Ärzte"
-          TopLeft="1127,337" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Commit KM6"
-          TopLeft="1096,406" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Rollback KM6"
-          TopLeft="1098,482" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Commit Abr_Diagnosen"
-          TopLeft="1162,556" />
-        <NodeLayout
-          Size="193,42"
-          Id="Package\Rollback Abr_Diagnosen"
-          TopLeft="1164,632" />
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Commit Abr_Einzelfall"
-          TopLeft="1136,701" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Rollback Abr_Einzelfall"
-          TopLeft="1138,777" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Commit Abr_Entgelt"
-          TopLeft="1140,847" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Rollback Abr_Entgelt"
-          TopLeft="1142,923" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Commit Ansprechpartner"
-          TopLeft="1199,977.5" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Rollback Ansprechpartner"
-          TopLeft="1203,1053.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 2]"
-          TopLeft="1047,309.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78,-27.3333333333333"
-              Start="0,0"
-              End="70.5,-27.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.8650088809947,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.8650088809947,0"
-                    Point2="31.8650088809947,0"
-                    Point3="31.8650088809947,-4" />
-                  <mssgle:LineSegment
-                    End="31.8650088809947,-23.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.8650088809947,-23.3333333333333"
-                    Point2="31.8650088809947,-27.3333333333333"
-                    Point3="35.8650088809947,-27.3333333333333" />
-                  <mssgle:LineSegment
-                    End="70.5,-27.3333333333333" />
+                    End="-239.999999999998,387.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14807,450 +13884,54 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 3]"
-          TopLeft="1047,343.666666666667">
+          TopLeft="961.761904761903,551.619047619047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="80,14.3333333333334"
+              EndConnector="0,37.761904761906"
               Start="0,0"
-              End="72.5,14.3333333333334">
+              End="0,30.261904761906">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="28.6820603907638,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.6820603907638,0"
-                    Point2="32.6820603907638,0"
-                    Point3="32.6820603907638,4" />
-                  <mssgle:LineSegment
-                    End="32.6820603907638,10.3333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="32.6820603907638,10.3333333333334"
-                    Point2="32.6820603907638,14.3333333333334"
-                    Point3="36.6820603907638,14.3333333333334" />
-                  <mssgle:LineSegment
-                    End="72.5,14.3333333333334" />
+                    End="0,30.261904761906" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="18.4733689845138,-15.724609375,28.4173828125,9.724609375"
+              BoundingBox="-14.20869140625,10.268647693453,28.4173828125,9.724609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 4]"
-          TopLeft="1018,465">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78,-38"
-              Start="0,0"
-              End="70.5,-38">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="35,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35,0"
-                    Point2="39,0"
-                    Point3="39,-4" />
-                  <mssgle:LineSegment
-                    End="39,-34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="39,-34"
-                    Point2="39,-38"
-                    Point3="43,-38" />
-                  <mssgle:LineSegment
-                    End="70.5,-38" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 5]"
-          TopLeft="1018,481.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="80,21.3333333333334"
-              Start="0,0"
-              End="72.5,21.3333333333334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="28.7007299270073,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.7007299270073,0"
-                    Point2="32.7007299270073,0"
-                    Point3="32.7007299270073,4" />
-                  <mssgle:LineSegment
-                    End="32.7007299270073,17.3333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="32.7007299270073,17.3333333333334"
-                    Point2="32.7007299270073,21.3333333333334"
-                    Point3="36.7007299270073,21.3333333333334" />
-                  <mssgle:LineSegment
-                    End="72.5,21.3333333333334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="18.4920385207573,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 6]"
-          TopLeft="1076,611.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="86,-34.5"
-              Start="0,0"
-              End="78.5,-34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="39,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="39,0"
-                    Point2="43,0"
-                    Point3="43,-4" />
-                  <mssgle:LineSegment
-                    End="43,-30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="43,-30.5"
-                    Point2="43,-34.5"
-                    Point3="47,-34.5" />
-                  <mssgle:LineSegment
-                    End="78.5,-34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 7]"
-          TopLeft="1076,628.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88,24.3333333333334"
-              Start="0,0"
-              End="80.5,24.3333333333334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="31.9502664298402,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.9502664298402,0"
-                    Point2="35.9502664298402,0"
-                    Point3="35.9502664298402,4" />
-                  <mssgle:LineSegment
-                    End="35.9502664298402,20.3333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35.9502664298402,20.3333333333334"
-                    Point2="35.9502664298402,24.3333333333334"
-                    Point3="39.9502664298402,24.3333333333334" />
-                  <mssgle:LineSegment
-                    End="80.5,24.3333333333334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="21.7415750235902,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 16]"
-          TopLeft="1062,759">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="74,-37"
-              Start="0,0"
-              End="66.5,-37">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="33,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="33,0"
-                    Point2="37,0"
-                    Point3="37,-4" />
-                  <mssgle:LineSegment
-                    End="37,-33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37,-33"
-                    Point2="37,-37"
-                    Point3="41,-37" />
-                  <mssgle:LineSegment
-                    End="66.5,-37" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 17]"
-          TopLeft="1062,775.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="76,22.3333333333334"
-              Start="0,0"
-              End="68.5,22.3333333333334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.065693430657,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.065693430657,0"
-                    Point2="31.065693430657,0"
-                    Point3="31.065693430657,4" />
-                  <mssgle:LineSegment
-                    End="31.065693430657,18.3333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.065693430657,18.3333333333334"
-                    Point2="31.065693430657,22.3333333333334"
-                    Point3="35.065693430657,22.3333333333334" />
-                  <mssgle:LineSegment
-                    End="68.5,22.3333333333334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="16.857002024407,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 18]"
-          TopLeft="1061,902.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="79,-34.5"
-              Start="0,0"
-              End="71.5,-34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="35.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35.5,0"
-                    Point2="39.5,0"
-                    Point3="39.5,-4" />
-                  <mssgle:LineSegment
-                    End="39.5,-30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="39.5,-30.5"
-                    Point2="39.5,-34.5"
-                    Point3="43.5,-34.5" />
-                  <mssgle:LineSegment
-                    End="71.5,-34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 19]"
-          TopLeft="1061,918.333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="81,25.6666666666666"
-              Start="0,0"
-              End="73.5,25.6666666666666">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="29.1434034416826,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="29.1434034416826,0"
-                    Point2="33.1434034416826,0"
-                    Point3="33.1434034416826,4" />
-                  <mssgle:LineSegment
-                    End="33.1434034416826,21.6666666666666" />
-                  <mssgle:CubicBezierSegment
-                    Point1="33.1434034416826,21.6666666666666"
-                    Point2="33.1434034416826,25.6666666666666"
-                    Point3="37.1434034416826,25.6666666666666" />
-                  <mssgle:LineSegment
-                    End="73.5,25.6666666666666" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="18.9347120354326,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 20]"
-          TopLeft="1130,1035">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,-36.5"
-              Start="0,0"
-              End="61.5,-36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="30.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.5,0"
-                    Point2="34.5,0"
-                    Point3="34.5,-4" />
-                  <mssgle:LineSegment
-                    End="34.5,-32.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="34.5,-32.5"
-                    Point2="34.5,-36.5"
-                    Point3="38.5,-36.5" />
-                  <mssgle:LineSegment
-                    End="61.5,-36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 24]"
-          TopLeft="1130,1051.33333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="73,23.1666666666667"
-              Start="0,0"
-              End="65.5,23.1666666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="25.8513011152417,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.8513011152417,0"
-                    Point2="29.8513011152417,0"
-                    Point3="29.8513011152417,4" />
-                  <mssgle:LineSegment
-                    End="29.8513011152417,19.1666666666667" />
-                  <mssgle:CubicBezierSegment
-                    Point1="29.8513011152417,19.1666666666667"
-                    Point2="29.8513011152417,23.1666666666667"
-                    Point3="33.8513011152417,23.1666666666667" />
-                  <mssgle:LineSegment
-                    End="65.5,23.1666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="15.6426097089917,-15.724609375,28.4173828125,9.724609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 25]"
-          TopLeft="1518.5,170">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-1427,132"
-              Start="0,0"
-              End="-1427,124.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,62"
-                    Point2="0,66"
-                    Point3="-4,66" />
-                  <mssgle:LineSegment
-                    End="-1423,66" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1423,66"
-                    Point2="-1427,66"
-                    Point3="-1427,70" />
-                  <mssgle:LineSegment
-                    End="-1427,124.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 30]"
-          TopLeft="1522,246">
+          TopLeft="1048.66666666667,336.238095238095">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1409.66666666667,56"
+              EndConnector="-191.571428571427,29.0952380952383"
               Start="0,0"
-              End="-1409.66666666667,48.5">
+              End="-191.571428571427,21.5952380952383">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.2005943536404" />
+                    End="0,13.2496285289749" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.2005943536404"
-                    Point2="0,33.2005943536404"
-                    Point3="-4,33.2005943536404" />
+                    Point1="0,13.2496285289749"
+                    Point2="0,17.2496285289749"
+                    Point3="-4,17.2496285289749" />
                   <mssgle:LineSegment
-                    End="-1405.66666666667,33.2005943536404" />
+                    End="-187.571428571427,17.2496285289749" />
                   <mssgle:CubicBezierSegment
-                    Point1="-1405.66666666667,33.2005943536404"
-                    Point2="-1409.66666666667,33.2005943536404"
-                    Point3="-1409.66666666667,37.2005943536404" />
+                    Point1="-187.571428571427,17.2496285289749"
+                    Point2="-191.571428571427,17.2496285289749"
+                    Point3="-191.571428571427,21.2496285289749" />
                   <mssgle:LineSegment
-                    End="-1409.66666666667,48.5" />
+                    End="-191.571428571427,21.5952380952383" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15261,30 +13942,30 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 31]"
-          TopLeft="1196.5,303">
+          TopLeft="701.2619047619,627.047619047619">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1103,138"
+              EndConnector="105.166666666672,38.9523809523837"
               Start="0,0"
-              End="-1103,130.5">
+              End="105.166666666672,31.4523809523837">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65" />
+                    End="0,19.0851017282886" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,65"
-                    Point2="0,69"
-                    Point3="-4,69" />
+                    Point1="0,19.0851017282886"
+                    Point2="0,23.0851017282886"
+                    Point3="4,23.0851017282886" />
                   <mssgle:LineSegment
-                    End="-1099,69" />
+                    End="101.166666666672,23.0851017282886" />
                   <mssgle:CubicBezierSegment
-                    Point1="-1099,69"
-                    Point2="-1103,69"
-                    Point3="-1103,73" />
+                    Point1="101.166666666672,23.0851017282886"
+                    Point2="105.166666666672,23.0851017282886"
+                    Point3="105.166666666672,27.0851017282886" />
                   <mssgle:LineSegment
-                    End="-1103,130.5" />
+                    End="105.166666666672,31.4523809523837" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15295,30 +13976,30 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 32]"
-          TopLeft="1200,379">
+          TopLeft="961.666666666663,631.380952380953">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1086.33333333333,62"
+              EndConnector="-114.904761904758,34.6190476190503"
               Start="0,0"
-              End="-1086.33333333333,54.5">
+              End="-114.904761904758,27.1190476190503">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.7442572741194" />
+                    End="0,16.5169547145061" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.7442572741194"
-                    Point2="0,36.7442572741194"
-                    Point3="-4,36.7442572741194" />
+                    Point1="0,16.5169547145061"
+                    Point2="0,20.5169547145061"
+                    Point3="-4,20.5169547145061" />
                   <mssgle:LineSegment
-                    End="-1082.33333333333,36.7442572741194" />
+                    End="-110.904761904758,20.5169547145061" />
                   <mssgle:CubicBezierSegment
-                    Point1="-1082.33333333333,36.7442572741194"
-                    Point2="-1086.33333333333,36.7442572741194"
-                    Point3="-1086.33333333333,40.7442572741194" />
+                    Point1="-110.904761904758,20.5169547145061"
+                    Point2="-114.904761904758,20.5169547145061"
+                    Point3="-114.904761904758,24.5169547145061" />
                   <mssgle:LineSegment
-                    End="-1086.33333333333,54.5" />
+                    End="-114.904761904758,27.1190476190503" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15329,30 +14010,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 33]"
-          TopLeft="1165.5,448">
+          TopLeft="773.095238095233,916.285714285713">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1046.5,139"
+              EndConnector="30.3333333333387,37.3809523809571"
               Start="0,0"
-              End="-1046.5,131.5">
+              End="30.3333333333387,29.8809523809571">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.5" />
+                    End="26.3333333333387,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,65.5"
-                    Point2="0,69.5"
-                    Point3="-4,69.5" />
+                    Point1="26.3333333333387,0"
+                    Point2="30.3333333333387,0"
+                    Point3="30.3333333333387,4" />
                   <mssgle:LineSegment
-                    End="-1042.5,69.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1042.5,69.5"
-                    Point2="-1046.5,69.5"
-                    Point3="-1046.5,73.5" />
-                  <mssgle:LineSegment
-                    End="-1046.5,131.5" />
+                    End="30.3333333333387,29.8809523809571" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15363,30 +14038,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 34]"
-          TopLeft="1169,524">
+          TopLeft="888.47619047619,914.190476190477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1021.33333333333,63"
+              EndConnector="-27.7142857142851,39.476190476193"
               Start="0,0"
-              End="-1021.33333333333,55.5">
+              End="-27.7142857142851,31.976190476193">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.4669603524229" />
+                    End="-23.7142857142851,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.4669603524229"
-                    Point2="0,37.4669603524229"
-                    Point3="-4,37.4669603524229" />
+                    Point1="-23.7142857142851,0"
+                    Point2="-27.7142857142851,0"
+                    Point3="-27.7142857142851,4" />
                   <mssgle:LineSegment
-                    End="-1017.33333333333,37.4669603524229" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1017.33333333333,37.4669603524229"
-                    Point2="-1021.33333333333,37.4669603524229"
-                    Point3="-1021.33333333333,41.4669603524229" />
-                  <mssgle:LineSegment
-                    End="-1021.33333333333,55.5" />
+                    End="-27.7142857142851,31.976190476193" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15397,30 +14066,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 35]"
-          TopLeft="1257,598">
+          TopLeft="785.33333333333,1204.38095238095">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1141.5,138"
+              EndConnector="9.42857142857463,43.2857142857197"
               Start="0,0"
-              End="-1141.5,130.5">
+              End="9.42857142857463,35.7857142857197">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65" />
+                    End="5.42857142857463,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,65"
-                    Point2="0,69"
-                    Point3="-4,69" />
+                    Point1="5.42857142857463,0"
+                    Point2="9.42857142857463,0"
+                    Point3="9.42857142857463,4" />
                   <mssgle:LineSegment
-                    End="-1137.5,69" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1137.5,69"
-                    Point2="-1141.5,69"
-                    Point3="-1141.5,73" />
-                  <mssgle:LineSegment
-                    End="-1141.5,130.5" />
+                    End="9.42857142857463,35.7857142857197" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15431,30 +14094,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 36]"
-          TopLeft="1260.5,674">
+          TopLeft="865.19047619048,1206.57142857143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1117.83333333333,62"
+              EndConnector="-16.0952380952416,41.0952380952367"
               Start="0,0"
-              End="-1117.83333333333,54.5">
+              End="-16.0952380952416,33.5952380952367">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.8551564310545" />
+                    End="-12.0952380952416,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.8551564310545"
-                    Point2="0,36.8551564310545"
-                    Point3="-4,36.8551564310545" />
+                    Point1="-12.0952380952416,0"
+                    Point2="-16.0952380952416,0"
+                    Point3="-16.0952380952416,4" />
                   <mssgle:LineSegment
-                    End="-1113.83333333333,36.8551564310545" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1113.83333333333,36.8551564310545"
-                    Point2="-1117.83333333333,36.8551564310545"
-                    Point3="-1117.83333333333,40.8551564310545" />
-                  <mssgle:LineSegment
-                    End="-1117.83333333333,54.5" />
+                    End="-16.0952380952416,33.5952380952367" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15465,30 +14122,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 37]"
-          TopLeft="1226.5,743">
+          TopLeft="786.285714285716,1487">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1115,131"
+              EndConnector="19.1428571428552,40.3333333333328"
               Start="0,0"
-              End="-1115,123.5">
+              End="19.1428571428552,32.8333333333328">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.5" />
+                    End="15.1428571428552,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.5"
-                    Point2="0,65.5"
-                    Point3="-4,65.5" />
+                    Point1="15.1428571428552,0"
+                    Point2="19.1428571428552,0"
+                    Point3="19.1428571428552,4" />
                   <mssgle:LineSegment
-                    End="-1111,65.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1111,65.5"
-                    Point2="-1115,65.5"
-                    Point3="-1115,69.5" />
-                  <mssgle:LineSegment
-                    End="-1115,123.5" />
+                    End="19.1428571428552,32.8333333333328" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15499,30 +14150,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 38]"
-          TopLeft="1230,819">
+          TopLeft="871.095238095233,1486.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1092.66666666667,55"
+              EndConnector="-13.999999999995,40.9999999999995"
               Start="0,0"
-              End="-1092.66666666667,47.5">
+              End="-13.999999999995,33.4999999999995">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6792223572296" />
+                    End="-9.999999999995,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.6792223572296"
-                    Point2="0,32.6792223572296"
-                    Point3="-4,32.6792223572296" />
+                    Point1="-9.999999999995,0"
+                    Point2="-13.999999999995,0"
+                    Point3="-13.999999999995,4" />
                   <mssgle:LineSegment
-                    End="-1088.66666666667,32.6792223572296" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1088.66666666667,32.6792223572296"
-                    Point2="-1092.66666666667,32.6792223572296"
-                    Point3="-1092.66666666667,36.6792223572296" />
-                  <mssgle:LineSegment
-                    End="-1092.66666666667,47.5" />
+                    End="-13.999999999995,33.4999999999995" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15532,31 +14177,19 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 39]"
-          TopLeft="1226.5,889">
+          Id="Package.PrecedenceConstraints[Einschränkung 4]"
+          TopLeft="704.345238095236,862.333333333337">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1105.5,120"
+              EndConnector="0,32.9523809523766"
               Start="0,0"
-              End="-1105.5,112.5">
+              End="0,25.4523809523766">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56"
-                    Point2="0,60"
-                    Point3="-4,60" />
-                  <mssgle:LineSegment
-                    End="-1101.5,60" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1101.5,60"
-                    Point2="-1105.5,60"
-                    Point3="-1105.5,64" />
-                  <mssgle:LineSegment
-                    End="-1105.5,112.5" />
+                    End="0,25.4523809523766" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15566,31 +14199,43 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 40]"
-          TopLeft="1230,965">
+          Id="Package.PrecedenceConstraints[Einschränkung 5]"
+          TopLeft="958.619047619047,862.333333333337">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1079.33333333333,44"
+              EndConnector="0,30.85714285714"
               Start="0,0"
-              End="-1079.33333333333,36.5">
+              End="0,23.35714285714">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.1748400852878" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.1748400852878"
-                    Point2="0,26.1748400852878"
-                    Point3="-4,26.1748400852878" />
+                    End="0,23.35714285714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,6.81626674107002,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 6]"
+          TopLeft="690.047619047618,1152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.3809523809471"
+              Start="0,0"
+              End="0,23.8809523809471">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-1075.33333333333,26.1748400852878" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-1075.33333333333,26.1748400852878"
-                    Point2="-1079.33333333333,26.1748400852878"
-                    Point3="-1079.33333333333,30.1748400852878" />
-                  <mssgle:LineSegment
-                    End="-1079.33333333333,36.5" />
+                    End="0,23.8809523809471" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15600,31 +14245,43 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 41]"
-          TopLeft="1297,1019.5">
+          Id="Package.PrecedenceConstraints[Einschränkung 7]"
+          TopLeft="961.226190476192,1152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-968,108.5"
+              EndConnector="0,33.57142857143"
               Start="0,0"
-              End="-968,101">
+              End="0,26.07142857143">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50.25"
-                    Point2="0,54.25"
-                    Point3="-4,54.25" />
+                    End="0,26.07142857143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,8.17340959821502,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 8]"
+          TopLeft="862.964285714286,115.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.0952380952378"
+              Start="0,0"
+              End="0,20.5952380952378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-964,54.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-964,54.25"
-                    Point2="-968,54.25"
-                    Point3="-968,58.25" />
-                  <mssgle:LineSegment
-                    End="-968,101" />
+                    End="0,20.5952380952378" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15634,31 +14291,55 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 42]"
-          TopLeft="1302.5,1095.5">
+          Id="Package.PrecedenceConstraints[Einschränkung 9]"
+          TopLeft="1047.71428571429,260.428571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-944.833333333333,32.5"
+              EndConnector="0,33.809523809524"
               Start="0,0"
-              End="-944.833333333333,25">
+              End="0,26.309523809524">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.3281938325991" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.3281938325991"
-                    Point2="0,19.3281938325991"
-                    Point3="-4,19.3281938325991" />
+                    End="0,26.309523809524" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,8.29245721726201,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 15]"
+          TopLeft="696.2619047619,1794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.083333333328,60.25"
+              Start="0,0"
+              End="-135.083333333328,52.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-940.833333333333,19.3281938325991" />
+                    End="0,26.125" />
                   <mssgle:CubicBezierSegment
-                    Point1="-940.833333333333,19.3281938325991"
-                    Point2="-944.833333333333,19.3281938325991"
-                    Point3="-944.833333333333,23.3281938325991" />
+                    Point1="0,26.125"
+                    Point2="0,30.125"
+                    Point3="-4,30.125" />
                   <mssgle:LineSegment
-                    End="-944.833333333333,25" />
+                    End="-131.083333333328,30.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131.083333333328,30.125"
+                    Point2="-135.083333333328,30.125"
+                    Point3="-135.083333333328,34.125" />
+                  <mssgle:LineSegment
+                    End="-135.083333333328,52.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15668,31 +14349,53 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung]"
-          TopLeft="1232.5,73">
+          Id="Package.PrecedenceConstraints[Einschränkung 20]"
+          TopLeft="973.095238095233,1791.66666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1134,82"
+              EndConnector="-383.249999999994,62.5833333333301"
               Start="0,0"
-              End="-1134,74.5">
+              End="-383.249999999994,55.0833333333301">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37" />
+                    End="0,33.2191629955928" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37"
-                    Point2="0,41"
-                    Point3="-4,41" />
+                    Point1="0,33.2191629955928"
+                    Point2="0,37.2191629955928"
+                    Point3="-4,37.2191629955928" />
                   <mssgle:LineSegment
-                    End="-1130,41" />
+                    End="-379.249999999994,37.2191629955928" />
                   <mssgle:CubicBezierSegment
-                    Point1="-1130,41"
-                    Point2="-1134,41"
-                    Point3="-1134,45" />
+                    Point1="-379.249999999994,37.2191629955928"
+                    Point2="-383.249999999994,37.2191629955928"
+                    Point3="-383.249999999994,41.2191629955928" />
                   <mssgle:LineSegment
-                    End="-1134,74.5" />
+                    End="-383.249999999994,55.0833333333301" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 24]"
+          TopLeft="871.678571428572,1873.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.749999999998,0"
+              Start="0,0"
+              End="28.249999999998,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.249999999998,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15732,7 +14435,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abr_Diagnosen\Abrechnung_Diagnosen">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Abr_Diagnosen\Abrechnung_Diagnosen\OLE DB-Ziel"
@@ -15760,9 +14463,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15829,7 +14530,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abr_Einzelfall\Abrechnung_Einzelfall">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="148,42"
           Id="Package\Abr_Einzelfall\Abrechnung_Einzelfall\OLE DB-Quelle"
@@ -15857,9 +14558,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15926,7 +14625,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Abr_Entgelt\Abrechnung _Entgelt">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Abr_Entgelt\Abrechnung _Entgelt\OLE DB-Ziel"
@@ -15954,9 +14653,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15995,108 +14692,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Ansprechpartner\Ansprechpartner_Kasse">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel"
-          TopLeft="251,223" />
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle"
-          TopLeft="247,99" />
-        <EdgeLayout
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="319.75,141">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,82"
-              Start="0,0"
-              End="0,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <DtsEventHandler
-    design-time-name="Package\Ansprechpartner\Ansprechpartner_Kasse.EventHandlers[OnTaskFailed]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse.EventHandlers[OnTaskFailed]\Send Error-Mail"
-          TopLeft="461,102" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <PipelineComponentMetadata
-    design-time-name="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Quelle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Ansprechpartner\Ansprechpartner_Kasse\OLE DB-Ziel">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Ansprechpartner\Ansprechpartner_Kasse leeren.EventHandlers[OnTaskFailed]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Ansprechpartner\Ansprechpartner_Kasse leeren.EventHandlers[OnTaskFailed]\Send Error-Mail"
-          TopLeft="510,121" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <DtsEventHandler
-    design-time-name="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public.EventHandlers[OnTaskFailed]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Ansprechpartner\Salzgitter-User vervielfältigen auf Tui, Public.EventHandlers[OnTaskFailed]\Send Error-Mail"
-          TopLeft="474,219" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
   <DtsEventHandler
     design-time-name="Package\Ärzte\Ärzte leeren.EventHandlers[OnTaskFailed]">
     <LayoutInfo>
@@ -16292,18 +14887,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     </Properties>
   </PipelineComponentMetadata>
   <DtsEventHandler
-    design-time-name="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\SP_Berichte_Kundenportal ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
-          TopLeft="528,321" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <DtsEventHandler
     design-time-name="Package\SP_Import_Bereinigung ausführen.EventHandlers[OnTaskFailed]">
     <LayoutInfo>
       <GraphLayout
@@ -16427,7 +15010,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
     design-time-name="Package\Teilnehmer\Teilnehmer vom Store laden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Teilnehmer\Teilnehmer vom Store laden\OLE DB-Ziel"
@@ -16455,9 +15038,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
