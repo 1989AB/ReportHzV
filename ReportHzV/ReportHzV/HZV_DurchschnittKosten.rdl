@@ -384,8 +384,17 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Hinweis: (Daten gem. Löschkonzept)</Value>
-                    <Style />
+                    <Value>Hinweis:</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> Die Auswahl und Anzeige der zur Verfügung stehenden Quartale wird entsprechend der vertraglich vereinbarten Löschfristen umgesetzt.</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -397,7 +406,7 @@
             <Top>27.23507cm</Top>
             <Left>0.762cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.12542cm</Width>
+            <Width>21.04729cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>

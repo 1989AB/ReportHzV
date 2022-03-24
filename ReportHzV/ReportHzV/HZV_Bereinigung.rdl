@@ -1359,8 +1359,17 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Hinweis: (Daten gem. Löschkonzept)</Value>
-                    <Style />
+                    <Value>Hinweis:</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> Die Auswahl und Anzeige der zur Verfügung stehenden Quartale wird entsprechend der vertraglich vereinbarten Löschfristen umgesetzt.</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -1369,10 +1378,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.25083cm</Top>
+            <Top>4.11551cm</Top>
             <Left>0.762cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.12542cm</Width>
+            <Width>21.04729cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1443,7 +1452,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.97917in</Height>
+        <Height>1.9375in</Height>
         <Style />
       </Body>
       <Width>16.52293in</Width>
