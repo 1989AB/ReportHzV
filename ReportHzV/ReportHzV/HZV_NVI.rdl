@@ -214,7 +214,10 @@
                   <Width>3.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3cm</Width>
+                  <Width>4cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>4cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3cm</Width>
@@ -223,16 +226,13 @@
                   <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5cm</Width>
+                  <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5cm</Width>
+                  <Width>3cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.5cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.5cm</Width>
+                  <Width>3cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -325,7 +325,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -360,7 +362,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox12</rd:DefaultName>
@@ -388,14 +392,16 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!Quartal.Value</Value>
+                                  <Value>="Rang" &amp; Environment.NewLine &amp; RIGHT(Parameters!Quartal.Value,1) &amp; ". Quartal " &amp; LEFT(Parameters!Quartal.Value,4)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox18</rd:DefaultName>
@@ -423,14 +429,20 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>="Rang" &amp; Environment.NewLine &amp; 
+IIF(RIGHT(Parameters!Quartal.Value,1) = 1,"4. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+IIF(RIGHT(Parameters!Quartal.Value,1) = 2,"1. Quartal " &amp; LEFT(Parameters!Quartal.Value,4),
+IIF(RIGHT(Parameters!Quartal.Value,1) = 3,"2. Quartal " &amp; LEFT(Parameters!Quartal.Value,4),
+"3. Quartal " &amp; LEFT(Parameters!Quartal.Value,4))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -458,7 +470,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>="Rang" &amp; Environment.NewLine &amp; 
+IIF(RIGHT(Parameters!Quartal.Value,1) = 1,"3. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+IIF(RIGHT(Parameters!Quartal.Value,1) = 2,"4. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+IIF(RIGHT(Parameters!Quartal.Value,1) = 3,"1. Quartal " &amp; LEFT(Parameters!Quartal.Value,4),
+"2. Quartal " &amp; LEFT(Parameters!Quartal.Value,4))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -466,7 +482,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -495,7 +511,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>="Rang" &amp; Environment.NewLine &amp; 
+IIF(RIGHT(Parameters!Quartal.Value,1) = 1,"2. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+IIF(RIGHT(Parameters!Quartal.Value,1) = 2,"3. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+IIF(RIGHT(Parameters!Quartal.Value,1) = 3,"4. Quartal " &amp; LEFT(Parameters!Quartal.Value,4) - 1,
+"1. Quartal " &amp; LEFT(Parameters!Quartal.Value,4))))</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -503,7 +523,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -602,10 +622,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!NVI.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>#,0.00'€'</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>NVI</rd:DefaultName>
@@ -620,6 +644,7 @@
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>de-DE</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -634,10 +659,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!AnzArzt.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>#,0</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>AnzArzt</rd:DefaultName>
@@ -669,7 +698,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rang_Quartal</rd:DefaultName>
@@ -698,10 +729,14 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rang_Quartal_L1.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>#,0</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rang_Quartal_L1</rd:DefaultName>
@@ -731,12 +766,12 @@
                                 <TextRun>
                                   <Value>=Fields!Rang_Quartal_L2.Value</Value>
                                   <Style>
-                                    <Format>d</Format>
+                                    <Format>#,0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -767,12 +802,12 @@
                                 <TextRun>
                                   <Value>=Fields!Rang_Quartal_L3.Value</Value>
                                   <Style>
-                                    <Format>d</Format>
+                                    <Format>#,0</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -829,7 +864,7 @@
             <Top>2.19287cm</Top>
             <Left>0.3in</Left>
             <Height>2.032cm</Height>
-            <Width>29.5cm</Width>
+            <Width>26.5cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -860,7 +895,7 @@
             <Top>0.14111cm</Top>
             <Left>0.762cm</Left>
             <Height>0.4in</Height>
-            <Width>31.41896cm</Width>
+            <Width>24.5cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1011,7 +1046,7 @@
               </Actions>
             </ActionInfo>
             <Top>0.14111cm</Top>
-            <Left>34.56644cm</Left>
+            <Left>25.43839cm</Left>
             <Height>0.3in</Height>
             <Width>5.69556cm</Width>
             <ZIndex>4</ZIndex>
@@ -1030,7 +1065,7 @@
         <Height>2.22917in</Height>
         <Style />
       </Body>
-      <Width>16.13924in</Width>
+      <Width>12.59757in</Width>
       <Page>
         <PageHeader>
           <Height>1.79917cm</Height>
@@ -1061,7 +1096,7 @@
               <Top>0.33867cm</Top>
               <Left>0.3in</Left>
               <Height>0.4in</Height>
-              <Width>39.5cm</Width>
+              <Width>30.37195cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1105,7 +1140,7 @@
               <Top>0.34572cm</Top>
               <Left>0.762cm</Left>
               <Height>0.6cm</Height>
-              <Width>21.04729cm</Width>
+              <Width>18.5cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1135,7 +1170,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.34572cm</Top>
-              <Left>32.12638cm</Left>
+              <Left>22.99833cm</Left>
               <Height>0.6cm</Height>
               <Width>8.13562cm</Width>
               <ZIndex>1</ZIndex>
@@ -1200,11 +1235,6 @@
     </ReportParameter>
     <ReportParameter Name="Quartal">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>20202</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>Quartal</Prompt>
       <ValidValues>
         <DataSetReference>
@@ -1216,11 +1246,6 @@
     </ReportParameter>
     <ReportParameter Name="KV">
       <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>52</Value>
-        </Values>
-      </DefaultValue>
       <Prompt>KV-Region</Prompt>
       <ValidValues>
         <DataSetReference>
