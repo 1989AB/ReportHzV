@@ -68,6 +68,7 @@
     <DataSet Include="HZV_DurchschnittKosten_StandKV.rsd" />
     <DataSet Include="HZV_Kassen.rsd" />
     <DataSet Include="HZV_LastUpdate.rsd" />
+    <DataSet Include="HZV_NVI_AI.rsd" />
     <DataSet Include="HZV_NVI_KVRegionen.rsd" />
     <DataSet Include="HZV_NVI_Quartale.rsd" />
     <DataSet Include="HZV_NVI_VI.rsd" />

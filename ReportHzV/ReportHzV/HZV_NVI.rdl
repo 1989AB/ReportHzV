@@ -197,8 +197,8 @@
       </Fields>
     </DataSet>
     <DataSet Name="HZV_NVI_AI">
-      <Query>
-        <DataSourceName>DS_Reporting</DataSourceName>
+      <SharedDataSet>
+        <SharedDataSetReference>HZV_NVI_AI</SharedDataSetReference>
         <QueryParameters>
           <QueryParameter Name="@Kasse">
             <Value>=Parameters!Kasse.Value</Value>
@@ -213,9 +213,7 @@
             <Value>=Parameters!TOP.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>HZV.SP_Dataset_TOP_NVI_AI</CommandText>
-      </Query>
+      </SharedDataSet>
       <Fields>
         <Field Name="Quartal">
           <DataField>Quartal</DataField>
