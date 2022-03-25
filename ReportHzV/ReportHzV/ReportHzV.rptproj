@@ -5,7 +5,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <ErrorLevel>2</ErrorLevel>
     <OverwriteDatasets>True</OverwriteDatasets>
-    <OverwriteDataSources>True</OverwriteDataSources>
+    <OverwriteDataSources>False</OverwriteDataSources>
     <TargetServerVersion>SSRS2008R2</TargetServerVersion>
     <Platform>Win32</Platform>
     <TargetReportFolder>AbrBV/Reporting</TargetReportFolder>
