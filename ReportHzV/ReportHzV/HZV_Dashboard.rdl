@@ -508,7 +508,7 @@
                   <Width>2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>2.3175cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2cm</Width>
@@ -902,9 +902,9 @@
               </Filter>
             </Filters>
             <Top>1.26401cm</Top>
-            <Left>18.31683cm</Left>
+            <Left>17.99933cm</Left>
             <Height>1.778cm</Height>
-            <Width>8cm</Width>
+            <Width>8.3175cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
