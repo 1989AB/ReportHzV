@@ -2503,7 +2503,7 @@
             <Top>1.26402cm</Top>
             <Left>35.8497cm</Left>
             <Height>11.82625cm</Height>
-            <Width>8.05232cm</Width>
+            <Width>7.78773cm</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
@@ -2604,7 +2604,7 @@
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.63229cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2921,9 +2921,9 @@
             </TablixRowHierarchy>
             <DataSetName>HZV_DB_Abrechnung</DataSetName>
             <Top>1.26402cm</Top>
-            <Left>44.25711cm</Left>
+            <Left>43.93961cm</Left>
             <Height>1.778cm</Height>
-            <Width>7.07938cm</Width>
+            <Width>7.21167cm</Width>
             <ZIndex>28</ZIndex>
             <Style>
               <Border>
