@@ -31,6 +31,12 @@
           <Nullable>true</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
         </DataSetParameter>
+        <DataSetParameter Name="@EGK">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiStringFixedLength</rd:DbType>
+        </DataSetParameter>
       </DataSetParameters>
       <CommandType>StoredProcedure</CommandType>
       <CommandText>HZV.SP_Dataset_Versicherte</CommandText>
