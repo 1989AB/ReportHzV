@@ -53,6 +53,7 @@
     <DataSet Include="HZV_Abrechnung_Entgelt.rsd" />
     <DataSet Include="HZV_Abrechnung_KVRegionen.rsd" />
     <DataSet Include="HZV_Abrechnung_Quartale.rsd" />
+    <DataSet Include="HZV_Abrechnung_Quote.rsd" />
     <DataSet Include="HZV_Aerzte.rsd" />
     <DataSet Include="HZV_Bereinigung.rsd" />
     <DataSet Include="HZV_Bereinigung_KVRegionen.rsd" />
