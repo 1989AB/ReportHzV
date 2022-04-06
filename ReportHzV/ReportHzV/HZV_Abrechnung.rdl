@@ -1334,7 +1334,7 @@
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Quartal_Text_kurz.Value</Value>
+                      <Value>=Fields!ABRECHNUNGSQUARTAL.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <Label>=Fields!Quartal_Text_kurz.Value</Label>
