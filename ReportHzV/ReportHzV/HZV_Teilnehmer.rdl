@@ -1195,6 +1195,9 @@
                       <Parameter Name="Arzt">
                         <Value>="0000000"</Value>
                       </Parameter>
+                      <Parameter Name="TNStatus">
+                        <Value>="alle"</Value>
+                      </Parameter>
                     </Parameters>
                   </Drillthrough>
                 </Action>
@@ -1266,6 +1269,9 @@
                       </Parameter>
                       <Parameter Name="Arzt">
                         <Value>="0000000"</Value>
+                      </Parameter>
+                      <Parameter Name="TNStatus">
+                        <Value>="alle"</Value>
                       </Parameter>
                     </Parameters>
                   </Drillthrough>
