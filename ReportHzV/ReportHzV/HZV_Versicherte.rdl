@@ -26,6 +26,10 @@
           <QueryParameter Name="@Arzt">
             <Value>=Parameters!Arzt.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@TNStatus">
+            <Value>=Parameters!TNStatus.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
         </QueryParameters>
       </SharedDataSet>
       <Fields>
@@ -111,6 +115,10 @@
         </Field>
         <Field Name="WohnortKV">
           <DataField>WohnortKV</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TNStatus">
+          <DataField>TNStatus</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1063,7 +1071,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Teilnehmende Versicherte für " &amp; Parameters!KV.Label &amp; ", " &amp; Parameters!Quartal.Label &amp; " - " &amp; Parameters!Kasse.Label</Value>
+                    <Value>="Teilnehmende Versicherte (" &amp; Parameters!TNStatus.Value &amp; ") für " &amp; Parameters!KV.Label &amp; ", " &amp; Parameters!Quartal.Label &amp; " - " &amp; Parameters!Kasse.Label</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1511,6 +1519,31 @@
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
+    <ReportParameter Name="TNStatus">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="alle"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Teilnahmestatus</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>="alle"</Value>
+            <Label>="alle"</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>="offen"</Value>
+            <Label>="offen"</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>="beendet"</Value>
+            <Label>="beendet"</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1533,14 +1566,19 @@
           <ParameterName>KV</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>4</ColumnIndex>
-          <RowIndex>0</RowIndex>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
           <ParameterName>Arzt</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>User</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>TNStatus</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

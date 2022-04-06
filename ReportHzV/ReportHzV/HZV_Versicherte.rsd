@@ -20,6 +20,12 @@
           <Nullable>true</Nullable>
           <OmitFromQuery>false</OmitFromQuery>
         </DataSetParameter>
+        <DataSetParameter Name="@TNStatus">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>AnsiString</rd:DbType>
+        </DataSetParameter>
         <DataSetParameter Name="@Arzt">
           <ReadOnly>false</ReadOnly>
           <Nullable>true</Nullable>
@@ -112,6 +118,10 @@
       </Field>
       <Field Name="WohnortKV">
         <DataField>WohnortKV</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TNStatus">
+        <DataField>TNStatus</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
     </Fields>
