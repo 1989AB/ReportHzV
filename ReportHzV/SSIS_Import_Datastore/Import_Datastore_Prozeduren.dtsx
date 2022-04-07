@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore_Prozeduren"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{866C75B8-DDD2-4556-A1A3-4CA5F775C7C9}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{25212DD3-53AE-4778-AFDE-536B06475412}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -80,7 +80,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="MailTo">
       <DTS:VariableValue
-        DTS:DataType="8">antje.buksch@spectrumk.de</DTS:VariableValue>
+        DTS:DataType="8">HzV-Abrechnung@spectrumk.de</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -145,7 +145,7 @@
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abrechnung_Diagnosen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abrechnung_Diagnosen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -2333,7 +2333,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Diagnosen leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Diagnosen leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -2400,7 +2400,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Diagnosen um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Diagnosen um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -2496,7 +2496,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abrechnung_Einzelfall&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abrechnung_Einzelfall&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -5770,7 +5770,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Einzelfall leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Einzelfall leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -5837,7 +5837,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Einzelfall um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Einzelfall um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -5933,7 +5933,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abrechnung_Entgelt&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abrechnung_Entgelt&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -8692,7 +8692,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Entgelt leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Entgelt leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -8759,7 +8759,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Abr_Entgelt um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Abr_Entgelt um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -8826,7 +8826,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task SP_Import_Storno_Entgelt fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;SP_Import_Storno_Entgelt&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9135,7 +9135,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;KM6 leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;KM6 leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9202,7 +9202,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;KM6 um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;KM6 um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9268,7 +9268,7 @@ and PRUEF_KZ='U'</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;KM6 vom Store laden&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;KM6 vom Store laden&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9859,7 +9859,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
         <SendMailTask:SendMailTaskData
           SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
           SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-          SendMailTask:To="antje.buksch@spectrumk.de"
+          SendMailTask:To="HzV-Abrechnung@spectrumk.de"
           SendMailTask:CC="jan.neubert@spectrumk.de"
           SendMailTask:Subject="Datenimport für HzV-Report abgeschlossen"
           SendMailTask:MessageSource="Die Daten für den HzV-Report wurden erfolgreich übertragen und aktualisiert." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9917,7 +9917,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Import_Bereinigung fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Import_Bereinigung&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -9985,7 +9985,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Import_NVI fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Import_NVI&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10053,7 +10053,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Import_Vertraege fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Import_Vertraege&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10120,7 +10120,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Kassen fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Kassen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10188,7 +10188,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Kosten fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Kosten&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10256,7 +10256,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Steuerung_Quartale fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Steuerung_Quartale&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10324,7 +10324,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                 <SendMailTask:SendMailTaskData
                   SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                   SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                  SendMailTask:To="antje.buksch@spectrumk.de"
+                  SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                   SendMailTask:CC="jan.neubert@spectrumk.de"
                   SendMailTask:Subject="SSIS Error: Task SP_Steuerung_Quartale (2. Lauf) fehlgeschlagen"
                   SendMailTask:MessageSource="Der Task &quot;SP_Steuerung_Quartale&quot; (2. Lauf) konnte aufgrund eines Fehlers nicht ausgeführt werden." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10402,7 +10402,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Altersgruppe, EndgrundText füllen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Altersgruppe, EndegrundText füllen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10469,7 +10469,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Teilnehmer leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Teilnehmer leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10536,7 +10536,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Teilnehmer um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Teilnehmer um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -10602,7 +10602,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Teilnehmer vom Store laden&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Teilnehmer vom Store laden&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -11690,7 +11690,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Ärzte leeren&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Ärzte leeren&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -11757,7 +11757,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Ärzte um Verträge bereinigen&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Ärzte um Verträge bereinigen&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
@@ -11823,7 +11823,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
                     <SendMailTask:SendMailTaskData
                       SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
                       SendMailTask:From="HzV-Abrechnung@spectrumK.de"
-                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:To="HzV-Abrechnung@spectrumk.de"
                       SendMailTask:CC="jan.neubert@spectrumk.de"
                       SendMailTask:Subject="SSIS Error: Task &quot;Ärzte von Store laden&quot; fehlgeschlagen"
                       SendMailTask:MessageSource="Der Task &quot;Ärzte von Store laden&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
