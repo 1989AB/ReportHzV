@@ -7,12 +7,12 @@
   DTS:CreatorName="SPECTRUMK\Jan.Neubert"
   DTS:DTSID="{8A627C92-E1B0-4A3C-B758-6CEA187252DC}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore_Prozeduren"
   DTS:PackageType="5"
-  DTS:VersionBuild="64"
-  DTS:VersionGUID="{760CE295-111A-4904-83FC-283F3801C85A}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{866C75B8-DDD2-4556-A1A3-4CA5F775C7C9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,6 +24,8 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Retain="True"
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=LYO-PSQL01\PSQLCL1_AG1_1;Initial Catalog=AbrBV_Reporting_DEV;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -34,6 +36,8 @@
       DTS:ObjectName="DATASTORE">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=LYO-PSTORE01;Initial Catalog=DATASTORE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -45,7 +49,8 @@
       DTS:ObjectName="spK_MailServer_Verbindung">
       <DTS:ObjectData>
         <SmtpConnectionManager
-          ConnectionString="SmtpServer=mail.spectrumk.ads;UseWindowsAuthentication=True;EnableSsl=False;" />
+          ConnectionString="SmtpServer=mail.spectrumk.ads;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectByProxy="False" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -178,7 +183,7 @@
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [SKUNDE]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [SKUNDE]
       ,[Jahr]
       ,[SVP]
       ,[SMA]
@@ -1501,7 +1506,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -2529,7 +2534,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT *
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
   FROM [V_HZV].[V_DIR_ABR_Einzelfall_Detail_R]
 where left(S_ABRECHNUNGSQUARTAL,4) &gt;=year(getdate())-4
 and PRUEF_KZ='U'</property>
@@ -4522,7 +4527,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -5966,7 +5971,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [V_HZV].[V_DIR_ABR_ENTGELT_DETAIL_R]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [V_HZV].[V_DIR_ABR_ENTGELT_DETAIL_R]
 where left(S_ABRECHNUNGSQUARTAL,4) &gt;=year(getdate())-4
 and PRUEF_KZ='U'</property>
                     <property
@@ -7634,7 +7639,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -8769,8 +8774,83 @@ and PRUEF_KZ='U'</property>
               SQLTask:SqlStatementSource="-- Löschen deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.kv=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.S_ABRECHNUNGSQUARTAL,4),right(t1.S_ABRECHNUNGSQUARTAL,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Abrechnung'&#xA;&#xA;-- Löschen die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select count(*)&#xA;from [HZV].Abrechnung_Entgelt t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.KV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Abrechnung'&#xA;where t2.HauptKassenIK is null&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Task &quot;SQL ausführen&quot;"
+          DTS:DTSID="{e7cb479c-59cc-4fbf-bffd-fe6cd146f5be}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SP_Import_Storno_Entgelt ausführen"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="10">
+          <DTS:Variables />
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen.EventHandlers[OnTaskFailed]"
+              DTS:CreationName="OnTaskFailed"
+              DTS:DTSID="{f826cf30-9d61-43a4-8d07-a07b71c98b79}"
+              DTS:EventID="0"
+              DTS:EventName="OnTaskFailed"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="Die Weitergabeeigenschaft des Ereignisses."
+                  DTS:DTSID="{5e6f0d10-29b5-41a0-87fb-c46978d67aee}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+                  DTS:CreationName="Microsoft.SendMailTask"
+                  DTS:Description="Task &quot;Mail senden&quot;"
+                  DTS:DTSID="{396aa96d-719c-412d-a024-44286f3f3afb}"
+                  DTS:ExecutableType="Microsoft.SendMailTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Send Error-Mail"
+                  DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:PropertyExpression
+                    DTS:Name="CCLine">@MailCc</DTS:PropertyExpression>
+                  <DTS:PropertyExpression
+                    DTS:Name="FromLine">@MailFrom</DTS:PropertyExpression>
+                  <DTS:PropertyExpression
+                    DTS:Name="ToLine">@MailTo</DTS:PropertyExpression>
+                  <DTS:ObjectData>
+                    <SendMailTask:SendMailTaskData
+                      SendMailTask:SMTPServer="{351D7328-1B50-49F2-9D60-5185169F5680}"
+                      SendMailTask:From="HzV-Abrechnung@spectrumK.de"
+                      SendMailTask:To="antje.buksch@spectrumk.de"
+                      SendMailTask:CC="jan.neubert@spectrumk.de"
+                      SendMailTask:Subject="SSIS Error: Task SP_Import_Storno_Entgelt fehlgeschlagen"
+                      SendMailTask:MessageSource="Der Task &quot;SP_Import_Storno_Entgelt&quot; konnte aufgrund eines Fehlers nicht ausgeführt werden.&#xA;Es wurden keine Daten übertragen." xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
+              SQLTask:SqlStatementSource="EXEC [HZV].[SP_Import_Storno_Entgelt]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Abr_Entgelt.PrecedenceConstraints[Einschränkung]"
+          DTS:CreationName=""
+          DTS:DTSID="{1E87AE65-E0D5-4C52-8E2C-6AFFA09E31C8}"
+          DTS:From="Package\Abr_Entgelt\Abr_Entgelt um Verträge bereinigen"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Einschränkung"
+          DTS:To="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Abr_Entgelt.PrecedenceConstraints[Einschränkung 13]"
           DTS:CreationName=""
@@ -8917,7 +8997,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Abr_Einzelfall"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="8">
+      DTS:ThreadHint="9">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8934,7 +9014,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Abr_Entgelt"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="10">
+      DTS:ThreadHint="11">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8951,7 +9031,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit KM6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8968,7 +9048,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Teilnehmer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8985,7 +9065,7 @@ and PRUEF_KZ='U'</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Commit Ärzte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9226,7 +9306,7 @@ and PRUEF_KZ='U'</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
 	 cast( concat(jahr,quartal_s) as varchar(5)) AS Quartal
 	,KASSEN_IK
 	,Kassenname AS Kasse
@@ -9467,7 +9547,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -9682,7 +9762,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Abr_Einzelfall"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="9">
+      DTS:ThreadHint="8">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9699,7 +9779,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Abr_Entgelt"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="11">
+      DTS:ThreadHint="10">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9716,7 +9796,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback KM6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9733,7 +9813,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Teilnehmer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -9750,7 +9830,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Rollback Ärzte"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -10560,7 +10640,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  
       [VERTRAGS_ID]
 	  ,case when SUBSTRING([VERTRAGS_ID],4,2)='99' then '52' else SUBSTRING([VERTRAGS_ID],4,2) end as VertragsKV
       ,[QUARTAL]
@@ -11153,7 +11233,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -11781,7 +11861,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">-- BSNR Join vorerst ausgesetzt da die Adressen nicht BSNRspezifisch vorhanden sind.
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">-- BSNR Join vorerst ausgesetzt da die Adressen nicht BSNRspezifisch vorhanden sind.
 select 
 	t1.VERTRAGS_ID,
 	case when SUBSTRING(t1.[VERTRAGS_ID],4,2)='99' then '52' else SUBSTRING(t1.[VERTRAGS_ID],4,2) end as VertragsKV,
@@ -12294,7 +12374,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                       dataType="System.String"
                       description="Der auszuführende SQL-Befehl."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -13071,25 +13151,25 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <NodeLayout
           Size="248,42"
           Id="Package\Abr_Entgelt\Abr_Entgelt um Verträge bereinigen"
-          TopLeft="544,6" />
+          TopLeft="446,6" />
         <NodeLayout
           Size="178,42"
           Id="Package\Abr_Entgelt\Abrechnung _Entgelt"
-          TopLeft="254,7" />
+          TopLeft="221,7" />
         <EdgeLayout
           Id="Package\Abr_Entgelt.PrecedenceConstraints[Einschränkung 13]"
           TopLeft="179,28">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="75,0"
+              EndConnector="42,0"
               Start="0,0"
-              End="67.5,0">
+              End="34.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="67.5,0" />
+                    End="34.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13100,18 +13180,44 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Abr_Entgelt.PrecedenceConstraints[Einschränkung 15]"
-          TopLeft="432,27.5">
+          TopLeft="399,27.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112,0"
+              EndConnector="47,0"
               Start="0,0"
-              End="104.5,0">
+              End="39.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="104.5,0" />
+                    End="39.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen"
+          TopLeft="745.428571428571,8" />
+        <EdgeLayout
+          Id="Package\Abr_Entgelt.PrecedenceConstraints[Einschränkung]"
+          TopLeft="694,28">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.4285714285711,0"
+              Start="0,0"
+              End="43.9285714285711,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.9285714285711,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13123,10 +13229,10 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="804,60"
-          Size="804,103"
+          PanelSize="1023,67"
+          Size="1023,110"
           Id="Package\Abr_Entgelt"
-          TopLeft="433.428571428572,1606" />
+          TopLeft="317.428571428572,1606" />
         <NodeLayout
           Size="136,42"
           Id="Package\Ärzte\Ärzte leeren"
@@ -13592,18 +13698,52 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 14]"
-          TopLeft="833.345238095238,1569.33333333334">
+          TopLeft="830.095238095239,1569.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.6666666666665"
+              EndConnector="0,36.6666666666599"
               Start="0,0"
-              End="0,29.1666666666665">
+              End="0,29.1666666666599">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.1666666666665" />
+                    End="0,29.1666666666599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 15]"
+          TopLeft="696.2619047619,1794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.083333333328,60.25"
+              Start="0,0"
+              End="-135.083333333328,52.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.125"
+                    Point2="0,30.125"
+                    Point3="-4,30.125" />
+                  <mssgle:LineSegment
+                    End="-131.083333333328,30.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131.083333333328,30.125"
+                    Point2="-135.083333333328,30.125"
+                    Point3="-135.083333333328,34.125" />
+                  <mssgle:LineSegment
+                    End="-135.083333333328,52.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13660,18 +13800,30 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 18]"
-          TopLeft="699.511904761902,1709">
+          TopLeft="659.761904761905,1716">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="36.4999999999948,36"
               Start="0,0"
-              End="0,35.5">
+              End="36.4999999999948,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,10.4337302361897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.4337302361897"
+                    Point2="0,14.4337302361897"
+                    Point3="4,14.4337302361897" />
+                  <mssgle:LineSegment
+                    End="32.4999999999948,14.4337302361897" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.4999999999948,14.4337302361897"
+                    Point2="36.4999999999948,14.4337302361897"
+                    Point3="36.4999999999948,18.4337302361897" />
+                  <mssgle:LineSegment
+                    End="36.4999999999948,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13682,25 +13834,37 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 19]"
-          TopLeft="970.595238095236,1709">
+          TopLeft="998.095238095239,1716">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.6666666666663"
+              EndConnector="-25.0000000000057,33.6666666666699"
               Start="0,0"
-              End="0,33.1666666666663">
+              End="-25.0000000000057,26.1666666666699">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.1666666666663" />
+                    End="0,9.49821068384541" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.49821068384541"
+                    Point2="0,13.4982106838454"
+                    Point3="-4,13.4982106838454" />
+                  <mssgle:LineSegment
+                    End="-21.0000000000057,13.4982106838454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.0000000000057,13.4982106838454"
+                    Point2="-25.0000000000057,13.4982106838454"
+                    Point3="-25.0000000000057,17.4982106838454" />
+                  <mssgle:LineSegment
+                    End="-25.0000000000057,26.1666666666699" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-14.20869140625,11.7210286458331,28.4173828125,9.724609375"
+              BoundingBox="-26.7086914062528,18.4982106838454,28.4173828125,9.724609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13718,6 +13882,40 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,25.928571428572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 20]"
+          TopLeft="973.095238095233,1791.66666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-383.249999999994,62.5833333333301"
+              Start="0,0"
+              End="-383.249999999994,55.0833333333301">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2191629955928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.2191629955928"
+                    Point2="0,37.2191629955928"
+                    Point3="-4,37.2191629955928" />
+                  <mssgle:LineSegment
+                    End="-379.249999999994,37.2191629955928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-379.249999999994,37.2191629955928"
+                    Point2="-383.249999999994,37.2191629955928"
+                    Point3="-383.249999999994,41.2191629955928" />
+                  <mssgle:LineSegment
+                    End="-383.249999999994,55.0833333333301" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13784,6 +13982,28 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                   Capacity="5">
                   <mssgle:LineSegment
                     End="52.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 24]"
+          TopLeft="871.678571428572,1873.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.749999999998,0"
+              Start="0,0"
+              End="28.249999999998,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.249999999998,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14312,96 +14532,6 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
             <mssgm:EdgeLabel
               BoundingBox="-14.20869140625,8.29245721726201,28.4173828125,9.724609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 15]"
-          TopLeft="696.2619047619,1794">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-135.083333333328,60.25"
-              Start="0,0"
-              End="-135.083333333328,52.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.125" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.125"
-                    Point2="0,30.125"
-                    Point3="-4,30.125" />
-                  <mssgle:LineSegment
-                    End="-131.083333333328,30.125" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-131.083333333328,30.125"
-                    Point2="-135.083333333328,30.125"
-                    Point3="-135.083333333328,34.125" />
-                  <mssgle:LineSegment
-                    End="-135.083333333328,52.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 20]"
-          TopLeft="973.095238095233,1791.66666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-383.249999999994,62.5833333333301"
-              Start="0,0"
-              End="-383.249999999994,55.0833333333301">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.2191629955928" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.2191629955928"
-                    Point2="0,37.2191629955928"
-                    Point3="-4,37.2191629955928" />
-                  <mssgle:LineSegment
-                    End="-379.249999999994,37.2191629955928" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-379.249999999994,37.2191629955928"
-                    Point2="-383.249999999994,37.2191629955928"
-                    Point3="-383.249999999994,41.2191629955928" />
-                  <mssgle:LineSegment
-                    End="-383.249999999994,55.0833333333301" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 24]"
-          TopLeft="871.678571428572,1873.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="35.749999999998,0"
-              Start="0,0"
-              End="28.249999999998,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="28.249999999998,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15077,5 +15207,17 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Abr_Entgelt\SP_Import_Storno_Entgelt ausführen.EventHandlers[OnTaskFailed]\Send Error-Mail"
+          TopLeft="556,261" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
