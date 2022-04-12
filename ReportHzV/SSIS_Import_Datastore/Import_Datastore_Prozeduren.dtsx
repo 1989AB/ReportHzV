@@ -11,8 +11,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="Import_Datastore_Prozeduren"
   DTS:PackageType="5"
-  DTS:VersionBuild="77"
-  DTS:VersionGUID="{1050C095-D027-41AA-8F6A-6F15F11104CA}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{66DCBC34-CAE4-4BD9-BBC3-F6868B93B34B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5878,6 +5878,7 @@ and PRUEF_KZ='U'</property>
       DTS:refId="Package\Abr_Entgelt"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequenzcontainer"
+      DTS:Disabled="True"
       DTS:DTSID="{CB1CC6C2-B012-4677-97EB-44B33237027E}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -11685,6 +11686,7 @@ AND ENT.GO_NR != '999999999999'</property>
       DTS:refId="Package\Begin Abr_Entgelt"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:Disabled="True"
       DTS:DTSID="{d51c5866-4d69-471a-b0a5-4ed2e51612ea}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -11738,7 +11740,6 @@ AND ENT.GO_NR != '999999999999'</property>
       DTS:refId="Package\Begin Teilnehmer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:Disabled="True"
       DTS:DTSID="{ACD180D6-FB3D-4CAF-9326-D7DBBF792E34}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -11810,6 +11811,7 @@ AND ENT.GO_NR != '999999999999'</property>
       DTS:refId="Package\Commit Abr_Entgelt"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:Disabled="True"
       DTS:DTSID="{32058ae4-b46b-4db8-a957-9d3bbdf6bc65}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -11863,7 +11865,6 @@ AND ENT.GO_NR != '999999999999'</property>
       DTS:refId="Package\Commit Teilnehmer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:Disabled="True"
       DTS:DTSID="{E1FDD139-16D1-470F-9E90-E171191D2E6F}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -12599,6 +12600,7 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:refId="Package\Rollback Abr_Entgelt"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:Disabled="True"
       DTS:DTSID="{c41fd5f9-1e32-4875-842d-8b14041a98f9}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -12652,7 +12654,6 @@ GROUP BY jahr,quartal_s,KASSEN_IK,Kassenname,KV,SPALTE</property>
       DTS:refId="Package\Rollback Teilnehmer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:Disabled="True"
       DTS:DTSID="{8144B87F-81E8-4326-9ECB-8311465DCFDE}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -13863,7 +13864,6 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
       DTS:refId="Package\Teilnehmer"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequenzcontainer"
-      DTS:Disabled="True"
       DTS:DTSID="{032FC2F4-E4B5-44E2-B148-5A89E1DB98E9}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -14068,7 +14068,7 @@ and (TEILNAHME_ENDE&gt;cast (concat(year(getdate())-5,'-12-31') as date) or TEIL
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{2EE4FBEB-4460-40A0-9078-FC82E2F08453}"
-              SQLTask:SqlStatementSource="-- Löschen der Teilnehmer deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der Teilnehmer die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select distinct vertrags_ID, skunde, t1.vertragsKV&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="-- Löschen der Teilnehmer deren Vertrag noch nicht gestartet oder beendet ist&#xA;delete t1&#x9;--&#x9;&#x9;select*&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on t1.Vertrags_ID=t2.VertragsID&#xA;and t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;where concat (left(t1.Quartal,4),right(t1.Quartal,1)) not between t2.DienstleistungBeginn and t2.DienstleistungEnde&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;&#xA;-- Löschen der Teilnehmer die keinen Vertrag haben&#xA;delete t1&#x9;--&#x9;&#x9;select distinct vertrags_ID, skunde, t1.vertragsKV&#xA;from [HZV].[Teilnehmer_Versicherte] t1&#xA;left join  [HZV].[Vertraege] t2&#xA;on --t1.Vertrags_ID=t2.VertragsID and&#x9;&#x9;&#x9;--entfernt, da mit VertragsID Fusionskassen gelöscht werden würden&#xA;t1.VertragsKV=t2.VertragsKV&#xA;and t1.H2IK =t2.HauptKassenIK&#xA;and t2.Dienstleistung='Teilnehmermanagement'&#xA;where t2.HauptKassenIK is null&#xA;&#xA;&#xA;DELETE T1--SELECT T1.*,T2.DienstleistungBeginn,T2.DienstleistungEnde&#xA;FROM [HZV].[Teilnehmer_Versicherte] T1&#xA;LEFT JOIN [HZV].[Vertraege] T2&#xA;&#x9;ON T2.VertragsID = T1.Vertrags_ID&#xA;&#x9;AND T2.VertragsKV = T1.VertragsKV&#xA;&#x9;AND T2.HauptKassenIK = T1.H2IK&#xA;&#x9;AND T2.Dienstleistung = 'Teilnehmermanagement'&#xA;WHERE 1 = 1&#xA;AND T2.DienstleistungBeginn IS NULL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -16640,7 +16640,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="821,68"
           Size="821,111"
           Id="Package\Abr_Diagnosen"
-          TopLeft="1146.76190476191,1356" />
+          TopLeft="155.76190476191,1366" />
         <NodeLayout
           Size="174,42"
           Id="Package\Abr_Einzelfall\Abr_Einzelfall leeren"
@@ -16703,7 +16703,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="805,62"
           Size="805,105"
           Id="Package\Abr_Einzelfall"
-          TopLeft="1152.09523809524,1640" />
+          TopLeft="161.09523809524,1650" />
         <NodeLayout
           Size="166,42"
           Id="Package\Abr_Entgelt\Abr_Entgelt leeren"
@@ -16792,7 +16792,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="1077,67"
           Size="1077,110"
           Id="Package\Abr_Entgelt"
-          TopLeft="1023.42857142857,1922" />
+          TopLeft="32.42857142857,1932" />
         <NodeLayout
           Size="136,42"
           Id="Package\Ärzte\Ärzte leeren"
@@ -16855,63 +16855,63 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="800,60"
           Size="800,103"
           Id="Package\Ärzte"
-          TopLeft="1161.85714285714,763.619047619047" />
+          TopLeft="170.85714285714,773.619047619047" />
         <NodeLayout
           Size="180,42"
           Id="Package\Begin Abr_Diagnosen"
-          TopLeft="1474.09523809524,1268.66666666667" />
+          TopLeft="483.09523809524,1278.66666666667" />
         <NodeLayout
           Size="171,42"
           Id="Package\Begin Abr_Einzelfall"
-          TopLeft="1468.42857142857,1562.66666666667" />
+          TopLeft="477.42857142857,1572.66666666667" />
         <NodeLayout
           Size="163,42"
           Id="Package\Begin Abr_Entgelt"
-          TopLeft="1481.76190476191,1842.33333333334" />
+          TopLeft="490.76190476191,1852.33333333334" />
         <NodeLayout
           Size="133,42"
           Id="Package\Begin Ärzte"
-          TopLeft="1501.76190476191,680.333333333334" />
+          TopLeft="510.76190476191,690.333333333334" />
         <NodeLayout
           Size="129,42"
           Id="Package\Begin KM6"
-          TopLeft="1494.09523809524,981.000000000003" />
+          TopLeft="503.09523809524,991.000000000003" />
         <NodeLayout
           Size="148,42"
           Id="Package\Begin SKUNDE"
-          TopLeft="1527.57142857143,78" />
+          TopLeft="536.57142857143,88" />
         <NodeLayout
           Size="161,42"
           Id="Package\Begin Teilnehmer"
-          TopLeft="1516,388.333333333333" />
+          TopLeft="525,398.333333333333" />
         <NodeLayout
           Size="190,42"
           Id="Package\Commit Abr_Diagnosen"
-          TopLeft="1327.33333333333,1498.38095238095" />
+          TopLeft="336.33333333333,1508.38095238095" />
         <NodeLayout
           Size="181,42"
           Id="Package\Commit Abr_Einzelfall"
-          TopLeft="1337.28571428572,1781" />
+          TopLeft="346.28571428572,1791" />
         <NodeLayout
           Size="173,42"
           Id="Package\Commit Abr_Entgelt"
-          TopLeft="1364.7619047619,2065" />
+          TopLeft="373.7619047619,2075" />
         <NodeLayout
           Size="143,42"
           Id="Package\Commit Ärzte"
-          TopLeft="1361.7619047619,900.047619047619" />
+          TopLeft="370.7619047619,910.047619047619" />
         <NodeLayout
           Size="139,42"
           Id="Package\Commit KM6"
-          TopLeft="1366.09523809523,1210.28571428571" />
+          TopLeft="375.09523809523,1220.28571428571" />
         <NodeLayout
           Size="158,42"
           Id="Package\Commit SKUNDE"
-          TopLeft="1335.19047619048,296.238095238095" />
+          TopLeft="344.19047619048,306.238095238095" />
         <NodeLayout
           Size="171,42"
           Id="Package\Commit Teilnehmer"
-          TopLeft="1322.61904761905,606.571428571428" />
+          TopLeft="331.61904761905,616.571428571428" />
         <NodeLayout
           Size="132,42"
           Id="Package\KM6\KM6 leeren"
@@ -16974,39 +16974,39 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="766,65"
           Size="766,108"
           Id="Package\KM6"
-          TopLeft="1180.42857142857,1069.33333333334" />
+          TopLeft="189.42857142857,1079.33333333334" />
         <NodeLayout
           Size="193,42"
           Id="Package\Rollback Abr_Diagnosen"
-          TopLeft="1597.19047619048,1500.57142857143" />
+          TopLeft="606.19047619048,1510.57142857143" />
         <NodeLayout
           Size="184,42"
           Id="Package\Rollback Abr_Einzelfall"
-          TopLeft="1603.09523809523,1780.33333333334" />
+          TopLeft="612.09523809523,1790.33333333334" />
         <NodeLayout
           Size="176,42"
           Id="Package\Rollback Abr_Entgelt"
-          TopLeft="1587.09523809523,2067.66666666667" />
+          TopLeft="596.09523809523,2077.66666666667" />
         <NodeLayout
           Size="146,42"
           Id="Package\Rollback Ärzte"
-          TopLeft="1620.66666666666,904.380952380953" />
+          TopLeft="629.66666666666,914.380952380953" />
         <NodeLayout
           Size="142,42"
           Id="Package\Rollback KM6"
-          TopLeft="1620.47619047619,1208.19047619048" />
+          TopLeft="629.47619047619,1218.19047619048" />
         <NodeLayout
           Size="161,42"
           Id="Package\Rollback SKUNDE"
-          TopLeft="1706.23809523809,298.904761904762" />
+          TopLeft="715.23809523809,308.904761904762" />
         <NodeLayout
           Size="174,42"
           Id="Package\Rollback Teilnehmer"
-          TopLeft="1693.66666666667,609.238095238095" />
+          TopLeft="702.66666666667,619.238095238095" />
         <NodeLayout
           Size="165,42"
           Id="Package\Send Success-Mail"
-          TopLeft="1465.42857142857,2275" />
+          TopLeft="474.42857142857,2285" />
         <NodeLayout
           Size="200,42"
           Id="Package\SKUNDE\SKUNDE_MATCH leeren"
@@ -17043,35 +17043,35 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           PanelSize="540,67"
           Size="540,110"
           Id="Package\SKUNDE"
-          TopLeft="1337.5,144.095238095238" />
+          TopLeft="346.5,154.095238095238" />
         <NodeLayout
           Size="241,42"
           Id="Package\SP_Import_Bereinigung ausführen"
-          TopLeft="1339.09523809524,6.42857142857143" />
+          TopLeft="348.09523809524,16.4285714285714" />
         <NodeLayout
           Size="202,42"
           Id="Package\SP_Import_NVI ausführen"
-          TopLeft="1646.09523809524,7.42857142857143" />
+          TopLeft="655.09523809524,17.4285714285714" />
         <NodeLayout
           Size="231,42"
           Id="Package\SP_Import_Vertraege ausführen"
-          TopLeft="1051.09523809524,6.42857142857143" />
+          TopLeft="60.0952380952399,16.4285714285714" />
         <NodeLayout
           Size="180,42"
           Id="Package\SP_Kassen ausführen"
-          TopLeft="1203.17857142857,2169.25" />
+          TopLeft="212.17857142857,2179.25" />
         <NodeLayout
           Size="179,42"
           Id="Package\SP_Kosten ausführen"
-          TopLeft="1424.67857142857,2169" />
+          TopLeft="433.67857142857,2179" />
         <NodeLayout
           Size="241,42"
           Id="Package\SP_Steuerung_Quartale ausführen"
-          TopLeft="1908.09523809524,7.42857142857143" />
+          TopLeft="917.09523809524,17.4285714285714" />
         <NodeLayout
           Size="275,42"
           Id="Package\SP_Steuerung_Quartale erneut ausführen"
-          TopLeft="1639.42857142857,2166" />
+          TopLeft="648.42857142857,2176" />
         <NodeLayout
           Size="246,42"
           Id="Package\Teilnehmer\Altersgruppe, EndegrundText füllen"
@@ -17157,13 +17157,13 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1114,74"
-          Size="1114,117"
+          PanelSize="1114,69"
+          Size="1114,112"
           Id="Package\Teilnehmer"
-          TopLeft="1037.42857142857,458.428571428571" />
+          TopLeft="46.42857142857,468.428571428571" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung]"
-          TopLeft="2028.59523809524,49.4285714285714">
+          TopLeft="1037.59523809524,59.4285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17197,18 +17197,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 1]"
-          TopLeft="1409.10714285714,575.428571428571">
+          TopLeft="418.107142857143,580.428571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.142857142857"
+              EndConnector="0,36.142857142857"
               Start="0,0"
-              End="0,23.642857142857">
+              End="0,28.642857142857">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.642857142857" />
+                    End="0,28.642857142857" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17219,7 +17219,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 1 1]"
-          TopLeft="1518.83333333333,254.095238095238">
+          TopLeft="527.83333333333,264.095238095238">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17253,7 +17253,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 10]"
-          TopLeft="1565.05952380952,722.333333333334">
+          TopLeft="574.05952380952,732.333333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17275,7 +17275,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 11]"
-          TopLeft="1561.01190476191,1023">
+          TopLeft="570.01190476191,1033">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17297,7 +17297,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 12]"
-          TopLeft="1560.67857142857,1310.66666666667">
+          TopLeft="569.67857142857,1320.66666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17319,7 +17319,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 13]"
-          TopLeft="1554.26190476191,1604.66666666667">
+          TopLeft="563.26190476191,1614.66666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17341,7 +17341,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 14]"
-          TopLeft="1562.59523809524,1884.33333333334">
+          TopLeft="571.59523809524,1894.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17363,7 +17363,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 15]"
-          TopLeft="1451.2619047619,2107">
+          TopLeft="460.2619047619,2117">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17397,7 +17397,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 16]"
-          TopLeft="1424.77380952381,1745">
+          TopLeft="433.77380952381,1755">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17419,7 +17419,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 17]"
-          TopLeft="1691.2619047619,1745">
+          TopLeft="700.2619047619,1755">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17443,7 +17443,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 18]"
-          TopLeft="1383.7619047619,2032">
+          TopLeft="392.761904761903,2042">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17454,9 +17454,9 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.22937140737994" />
+                    End="0,9.22937140737986" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.22937140737994"
+                    Point1="0,9.22937140737986"
                     Point2="0,13.2293714073799"
                     Point3="4,13.2293714073799" />
                   <mssgle:LineSegment
@@ -17477,7 +17477,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 19]"
-          TopLeft="1740.09523809524,2032">
+          TopLeft="749.095238095237,2042">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17488,17 +17488,17 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.298411521109" />
+                    End="0,10.2984115211093" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.298411521109"
-                    Point2="0,14.298411521109"
-                    Point3="-4,14.298411521109" />
+                    Point1="0,10.2984115211093"
+                    Point2="0,14.2984115211093"
+                    Point3="-4,14.2984115211093" />
                   <mssgle:LineSegment
-                    End="-61.0000000000068,14.298411521109" />
+                    End="-61.0000000000068,14.2984115211093" />
                   <mssgle:CubicBezierSegment
-                    Point1="-61.0000000000068,14.298411521109"
-                    Point2="-65.0000000000068,14.298411521109"
-                    Point3="-65.0000000000068,18.298411521109" />
+                    Point1="-61.0000000000068,14.2984115211093"
+                    Point2="-65.0000000000068,14.2984115211093"
+                    Point3="-65.0000000000068,18.2984115211093" />
                   <mssgle:LineSegment
                     End="-65.0000000000068,28.1666666666702" />
                 </mssgle:SegmentCollection>
@@ -17507,13 +17507,13 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-46.7086914062534,19.298411521109,28.4173828125,9.724609375"
+              BoundingBox="-46.7086914062534,19.2984115211093,28.4173828125,9.724609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 2]"
-          TopLeft="1431.55952380952,866.619047619047">
+          TopLeft="440.55952380952,876.619047619047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17535,7 +17535,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 20]"
-          TopLeft="1675.09523809523,2109.66666666667">
+          TopLeft="684.09523809523,2119.66666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17546,17 +17546,17 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.4350220264297" />
+                    End="0,31.4350220264296" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.4350220264297"
-                    Point2="0,35.4350220264297"
-                    Point3="-4,35.4350220264297" />
+                    Point1="0,31.4350220264296"
+                    Point2="0,35.4350220264296"
+                    Point3="-4,35.4350220264296" />
                   <mssgle:LineSegment
-                    End="-349.249999999993,35.4350220264297" />
+                    End="-349.249999999993,35.4350220264296" />
                   <mssgle:CubicBezierSegment
-                    Point1="-349.249999999993,35.4350220264297"
-                    Point2="-353.249999999993,35.4350220264297"
-                    Point3="-353.249999999993,39.4350220264297" />
+                    Point1="-349.249999999993,35.4350220264296"
+                    Point2="-353.249999999993,35.4350220264296"
+                    Point3="-353.249999999993,39.4350220264296" />
                   <mssgle:LineSegment
                     End="-353.249999999993,52.0833333333298" />
                 </mssgle:SegmentCollection>
@@ -17569,7 +17569,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 21]"
-          TopLeft="1282.09523809524,27.4285714285714">
+          TopLeft="291.09523809524,37.4285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17591,7 +17591,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 22]"
-          TopLeft="1580.09523809524,27.9285714285714">
+          TopLeft="589.09523809524,37.9285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17613,7 +17613,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 23]"
-          TopLeft="1848.09523809524,28.4285714285714">
+          TopLeft="857.09523809524,38.4285714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17635,7 +17635,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 24]"
-          TopLeft="1603.67857142857,2188.5">
+          TopLeft="612.67857142857,2198.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17657,7 +17657,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 25]"
-          TopLeft="1408.11904761905,648.571428571428">
+          TopLeft="417.11904761905,658.571428571428">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17691,7 +17691,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 26]"
-          TopLeft="1383.17857142857,2190.125">
+          TopLeft="392.17857142857,2200.125">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17713,7 +17713,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 27]"
-          TopLeft="1414.19047619048,338.238095238095">
+          TopLeft="423.19047619048,348.238095238095">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17747,7 +17747,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 28]"
-          TopLeft="1786.73809523809,340.904761904762">
+          TopLeft="795.73809523809,350.904761904762">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17781,7 +17781,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 29]"
-          TopLeft="1776.92857142857,2208">
+          TopLeft="785.92857142857,2218">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17815,7 +17815,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 3]"
-          TopLeft="1693.7619047619,866.619047619047">
+          TopLeft="702.7619047619,876.619047619047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17839,7 +17839,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 30]"
-          TopLeft="1780.66666666667,651.238095238095">
+          TopLeft="789.66666666667,661.238095238095">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17873,7 +17873,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 31]"
-          TopLeft="1433.2619047619,942.047619047619">
+          TopLeft="442.2619047619,952.047619047619">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17907,7 +17907,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 32]"
-          TopLeft="1693.66666666666,946.380952380953">
+          TopLeft="702.66666666666,956.380952380953">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17941,7 +17941,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 33]"
-          TopLeft="1505.09523809523,1231.28571428571">
+          TopLeft="514.09523809523,1241.28571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17969,7 +17969,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 34]"
-          TopLeft="1620.47619047619,1229.19047619048">
+          TopLeft="629.47619047619,1239.19047619048">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -17997,24 +17997,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 35]"
-          TopLeft="1517.33333333333,1519.38095238095">
+          TopLeft="526.33333333333,1529.38095238095">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9.42857142857463,43.2857142857197"
+              EndConnector="9.42857142857474,43.2857142857197"
               Start="0,0"
-              End="9.42857142857463,35.7857142857197">
+              End="9.42857142857474,35.7857142857197">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="5.42857142857463,0" />
+                    End="5.42857142857474,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="5.42857142857463,0"
-                    Point2="9.42857142857463,0"
-                    Point3="9.42857142857463,4" />
+                    Point1="5.42857142857474,0"
+                    Point2="9.42857142857474,0"
+                    Point3="9.42857142857474,4" />
                   <mssgle:LineSegment
-                    End="9.42857142857463,35.7857142857197" />
+                    End="9.42857142857474,35.7857142857197" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18025,24 +18025,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 36]"
-          TopLeft="1597.19047619048,1521.57142857143">
+          TopLeft="606.19047619048,1531.57142857143">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-16.0952380952416,41.0952380952367"
+              EndConnector="-16.0952380952417,41.0952380952367"
               Start="0,0"
-              End="-16.0952380952416,33.5952380952367">
+              End="-16.0952380952417,33.5952380952367">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-12.0952380952416,0" />
+                    End="-12.0952380952417,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-12.0952380952416,0"
-                    Point2="-16.0952380952416,0"
-                    Point3="-16.0952380952416,4" />
+                    Point1="-12.0952380952417,0"
+                    Point2="-16.0952380952417,0"
+                    Point3="-16.0952380952417,4" />
                   <mssgle:LineSegment
-                    End="-16.0952380952416,33.5952380952367" />
+                    End="-16.0952380952417,33.5952380952367" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18053,24 +18053,24 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 37]"
-          TopLeft="1518.28571428572,1802">
+          TopLeft="527.28571428572,1812">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.1428571428552,40.3333333333328"
+              EndConnector="19.1428571428553,40.3333333333328"
               Start="0,0"
-              End="19.1428571428552,32.8333333333328">
+              End="19.1428571428553,32.8333333333328">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="15.1428571428552,0" />
+                    End="15.1428571428553,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="15.1428571428552,0"
-                    Point2="19.1428571428552,0"
-                    Point3="19.1428571428552,4" />
+                    Point1="15.1428571428553,0"
+                    Point2="19.1428571428553,0"
+                    Point3="19.1428571428553,4" />
                   <mssgle:LineSegment
-                    End="19.1428571428552,32.8333333333328" />
+                    End="19.1428571428553,32.8333333333328" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18081,7 +18081,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 38]"
-          TopLeft="1603.09523809523,1801.33333333334">
+          TopLeft="612.09523809523,1811.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18109,7 +18109,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 4]"
-          TopLeft="1436.34523809524,1177.33333333334">
+          TopLeft="445.34523809524,1187.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18131,7 +18131,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 5]"
-          TopLeft="1690.61904761905,1177.33333333334">
+          TopLeft="699.61904761905,1187.33333333334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18155,7 +18155,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 6]"
-          TopLeft="1422.04761904762,1467">
+          TopLeft="431.04761904762,1477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18177,7 +18177,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 7]"
-          TopLeft="1693.22619047619,1467">
+          TopLeft="702.22619047619,1477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18201,18 +18201,18 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 8]"
-          TopLeft="1595.46428571429,430.333333333333">
+          TopLeft="604.464285714285,440.333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.0952380952378"
+              EndConnector="0,28.095238095238"
               Start="0,0"
-              End="0,20.5952380952378">
+              End="0,20.595238095238">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5952380952378" />
+                    End="0,20.595238095238" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18223,7 +18223,7 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 8 1]"
-          TopLeft="1604.53571428571,120">
+          TopLeft="613.53571428571,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -18245,31 +18245,31 @@ where t1.GUELTIG_BIS&gt;cast (concat(year(getdate())-5,'-12-31') as date)</prope
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 9]"
-          TopLeft="1779.71428571429,575.428571428571">
+          TopLeft="788.714285714287,580.428571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.809523809524"
+              EndConnector="0,38.809523809524"
               Start="0,0"
-              End="0,26.309523809524">
+              End="0,31.309523809524">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.309523809524" />
+                    End="0,31.309523809524" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-14.20869140625,8.29245721726198,28.4173828125,9.724609375"
+              BoundingBox="-14.20869140625,10.792457217262,28.4173828125,9.724609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Einschränkung 9 1]"
-          TopLeft="1696.16666666667,254.095238095238">
+          TopLeft="705.16666666667,264.095238095238">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
