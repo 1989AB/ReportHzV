@@ -61,6 +61,7 @@
   <ItemGroup>
     <Build Include="DDL_Create_Tables.sql" />
     <Build Include="DDL_Create_Procedures.sql" />
+    <Build Include="DDL_Create_Views.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ETL_Insert.sql" />
